@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.headingstudy{
+    margin-left: 3%;
+}
+
+.inforect{
+    margin-top: 1%;
+    margin-top: 5%;
+    margin-left: 20%;
+    max-width: 60%;
+    max-height: 40%;
+    width: 65%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    font-size: 90%;
+}
+
+
+
+.writingtask2btn{
+    max-width: 150px;
+    max-height: 60px;
+    background: #7C3BCF;
+    margin-left: 44%;
+    margin-top: 3%;
+    border-radius: 20px;
+}

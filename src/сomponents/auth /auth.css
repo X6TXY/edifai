@@ -1,0 +1,47 @@
+
+@import url('https://fonts.cdnfonts.com/css/inter');      
+.logo3{
+    position: absolute;
+    top:-0.5px;
+    left:-0.5px;
+}
+
+
+.Logo{
+    position: absolute;
+    top:0%;
+    right: -35%;
+    height: 90%;
+    width: 90%;
+}
+
+.edifaibg{
+    width: 40%;
+}
+
+
+
+.landing{
+    
+    padding: 0;
+    margin: 0;
+}
+.landingpg{
+    position: relative;
+    top:20%;
+    height: 50%;
+    width: 70%;
+    border-radius: 10px;
+}
+.landheading{
+    font-size: 200%;
+    position: relative;
+}
+.imgicon{
+    position: relative;
+    border-radius: 10px;
+}
+
+.textsection{
+    width: 30%;
+}

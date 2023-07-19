@@ -1,0 +1,42 @@
+.textareatask2{
+    position: absolute;
+    top:15%;
+    min-height: 60%;
+    margin-top: 3%;
+
+}
+
+.choose1{
+
+    padding: 1%;
+}
+
+.buttonsubmit1{
+    position: absolute;
+    top:90%;
+    left: 45%;
+}
+
+.textareatask2r{
+    position: absolute;
+    top:15%;
+    min-height: 60%;
+    max-height: 60%;
+    margin-top: 3%;
+    left:55%;
+}
+
+.timer1{
+    position: absolute;
+    top:5%;
+    right: 0;
+    background: red;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.score-section{
+    position: absolute;
+    top:80%;
+    right:20%;
+}
+

@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.cdnfonts.com/css/inter');                
+      
+
+*{
+    font-family: 'Inter';
+    color: black;
+}
+
+
+.logout{
+    top:95%;
+}
+
+.rect{
+    border-radius: 0 30px 30px 0;
+}
+  
+  

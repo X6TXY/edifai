@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.cdnfonts.com/css/inter');
+
+* {
+  font-family: 'Inter';
+}
+
+h1 {
+  font-weight: bold;
+  font-family: 'Inter';
+}
+
+.main {
+  position: absolute;
+  top: 25%;
+  left: 15%;
+}
+
+.rect1 {
+  position: absolute;
+  width: 500px;
+  height: 250px;
+  top: 20%;
+  left: 40%;
+
+}
+
+.about {
+  position: absolute;
+  top: 65%;
+  left: 70%;
+}
+
+.rect2 {
+  position: absolute;
+  width: 500px;
+  height: 250px;
+  top: 60%;
+  left: 10%;
+}

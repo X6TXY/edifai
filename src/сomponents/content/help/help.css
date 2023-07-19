@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    padding: 0;
+}
+body{
+    background-color: #F5F5F5;
+}
+
+
+form{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10%;
+}
+
+.buttonsub{
+    border-radius: 0px 10px 10px 0px;
+}
+
+.answer{
+    margin-top: 5%;
+    width: 50%;
+    font-size:100%;
+    border-radius: 10px;
+    padding: 2%;
+}
