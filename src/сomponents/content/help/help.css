@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 *{
     padding: 0;
@@ -13,13 +10,19 @@ body{
 form{
     display: flex;
     flex-direction: row;
-    margin-top: 10%;
+    margin-top: 5%;
 }
+
+
+
 
 .buttonsub{
     border-radius: 0px 10px 10px 0px;
 }
 
+.input1{
+    width: 43rem;
+}
 .answer{
     margin-top: 5%;
     width: 50%;

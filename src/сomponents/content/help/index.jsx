@@ -8,6 +8,7 @@ export const Help = () => {
   const [answer, setAnswer] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [dots, setDots] = useState('');
+  const [typedAnswer, setTypedAnswer] = useState('');
 
   useEffect(() => {
     // Update dots animation
@@ -42,20 +43,37 @@ export const Help = () => {
     }
   };
 
+  useEffect(() => {
+    if (answer && !isLoading) {
+      let currentIndex = 0;
+
+      const typeAnswer = () => {
+        if (currentIndex <= answer.length) {
+          setTypedAnswer(answer.slice(0, currentIndex));
+          currentIndex++;
+          setTimeout(typeAnswer, 50); // Adjust the typing speed here (milliseconds per character)
+        }
+      };
+
+      typeAnswer();
+    }
+  }, [answer, isLoading]);
+
   return (
     <div>
       <div className='h-screen w-screen bg-[#f5f5f5]'>
-        <div className='w-4/5 h-screen absolute right-0 bg-[#f5f5f5] '>
-          <div className='headinghelp mt-7 text-black text-3xl font-semibold ml-4 '>
-            Help
-          </div>
-          <div className='headinginfoielst text-[#7C3BCF] font-bold flex justify-center text-5xl '>
+        <div className=' sm:w-2/3 md:w-1/2 lg:w-4/5 xl:w-3/4 2xl:w-4/5  h-screen absolute right-0 bg-[#f5f5f5] '>
+          
+          <div className='headinginfoielst mt-10 text-[#C7002B] font-bold flex justify-center text-5xl'>
             IELTS Information
           </div>
+          <div className='flex justify-center mt-20'>
+            <div className='bg-white p-5 flex justify-center w-3/4 drop-shadow-md rounded font-medium'>Get IELTS info and resources from our helpful bot! Ace the exam with tips and study materials.</div>
+            </div>
           <div className='helparea flex justify-center items-center'>
             <form onSubmit={handleSubmit}>
               <input
-                className='input1 border drop-shadow-md h-12 w-96 p-3 rounded'
+                className='input1  drop-shadow-md h-12 p-3 rounded '
                 type='text'
                 value={inputValue}
                 onChange={handleInputChange}
@@ -66,11 +84,11 @@ export const Help = () => {
               </button>
             </form>
           </div>
-          <div className='flex justify-center items-center'>
+          <div className='flex justify-center items-center '>
             {isLoading ? (
               <div className='answer bg-white border drop-shadow-md'>
                 <div role="status" class="space-y-2.5 animate-pulse max-w-lg">
-    <div class="flex items-center w-full space-x-2">
+                <div class="flex items-center w-full space-x-2">
         <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-32"></div>
         <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
         <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
@@ -101,16 +119,15 @@ export const Help = () => {
         <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
     </div>
     <span class="sr-only">Loading...</span>
-      </div>
+                </div>
               </div>
-            ) : answer ? (
-              <div className='answer bg-white border drop-shadow-md'>{answer}</div>
+            ) : typedAnswer ? (
+              <div className='answer w-96 bg-white border drop-shadow-md'>{typedAnswer}</div>
             ) : null}
           </div>
         </div>
-        
-        <Navbar />
-        
+
+        <Navbar/>
       </div>
     </div>
   );

@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 .home{
     position:absolute;
@@ -28,17 +26,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
+
 .mottext{
     position: fixed;
     left: 10%;
 }
 
 .start{
-    position: fixed;
-    left: 70%;
-    border-radius: 30px ;
-    width: 20%;
+  position: relative;
+  left: 14rem;
+  width: 150px;
 }
 
 .calendar{
@@ -52,7 +51,7 @@
   place-items: center;
 }
 .typing-demo{
-    width: 14ch;
+  width: 14ch;
   animation: typing 2s steps(22), blink .4s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;

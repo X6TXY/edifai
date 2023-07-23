@@ -1,5 +1,20 @@
 
-@import url('https://fonts.cdnfonts.com/css/inter');      
+@import url('https://fonts.cdnfonts.com/css/inter');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
 .logo3{
     position: absolute;
     top:-0.5px;
@@ -33,15 +48,9 @@
     width: 70%;
     border-radius: 10px;
 }
-.landheading{
-    font-size: 200%;
-    position: relative;
-}
-.imgicon{
-    position: relative;
-    border-radius: 10px;
-}
 
-.textsection{
-    width: 30%;
+.buttuonstart{
+    position: relative;
+    top:80%;
+
 }

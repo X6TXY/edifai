@@ -11,6 +11,11 @@ export const Task2 = () => {
   const [timer, setTimer] = useState(40 * 60); // 40 minutes in seconds
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [score, setScore] = useState(0); // Initial score value
+  const [showHintModal, setShowHintModal] = useState(false);
+
+  const closeHintModal = () => {
+    setShowHintModal(false);
+  };
 
   const handleInputChange = (e) => {
     setInputText(e.target.value);
@@ -93,12 +98,18 @@ export const Task2 = () => {
     const formattedSeconds = remainingSeconds.toString().padStart(2, '0');
     return `${formattedMinutes}:${formattedSeconds}`;
   };
+
+  useEffect(() => {
+    setShowHintModal(true);
+  }, []);
+  
   return (
     <div>
+      
       <div className='h-screen w-screen bg-[#f5f5f5]'>
-        <div className='w-4/5 h-screen absolute right-0 bg-[#f5f5f5]'>
+        <div className='w-4/5 h-screen absolute right-0 bg-[#f5f5f5]'>  
           <button
-            className='btn btn-primary buttonsubmit1 hover:text-white hover:bg-purple-500 transition-colors duration-500'
+            className='btn btn-primary buttonsubmit1 border-none text-white hover:bg-red-600 transition-colors duration-500'
             onClick={handleButtonClick}
           >
             {isLoading ? 'Loading...' : 'Submit'}
@@ -107,21 +118,7 @@ export const Task2 = () => {
           <div className='headingstudy mt-7 text-black text-3xl font-semibold'>
             Writing Task 2
           </div>
-          <div className='choose1 stopic-select mt-5 flex items-center justify-center'>
-            <label htmlFor='topic-select' className='text-lg font-semibold mb-2'>
-              Choose a topic:
-            </label>
-            <select
-              id='topic-select'
-              className='topic-select-dropdown ml-3 p-2 border border-gray-300 rounded flex items-center mb-2'
-              value={selectedTopic}
-              onChange={handleTopicChange}
-            >
-              <option value='topic1'>Topic</option>
-              <option value='topic2'>Topic 2</option>
-              <option value='topic3'>Topic 3</option>
-            </select>
-          </div>
+          
           <div className=' h-4/5'>
             <textarea
               className='textareatask2 absolute w-2/5 p-4 text-lg resize-none border border-gray-300 drop-shadow-md rounded ml-20'
@@ -220,16 +217,65 @@ export const Task2 = () => {
               <button onClick={pauseTimer} className='bg-yellow-400 w-16 rounded hover:bg-yellow-600 text-white'>Pause</button>
             )}
             {!isTimerRunning && timer !== 40 * 60 && (
-              <button onClick={resetTimer} className='bg-[#7C3BCF] w-16 rounded text-white hover:bg-purple-800'>Reset</button>
+              <button onClick={resetTimer} className='bg-orange-600 w-16 rounded text-white hover:bg-red-700'>Reset</button>
             )}
           </div>
           </div>
-          <div className='score-section bg-[#7C3BCF] w-28  flex justify-center items-center rounded-md drop-shadow-md '>
+          <div className='score-section bg-[#C7002B] w-28  flex justify-center items-center rounded-md drop-shadow-md '>
             <p className='text-lg font-semibold text-white p-1 '>Score: {score}</p>
           </div>
           </div>
         </div>
         <Navbar className='' />
+        {showHintModal && (
+        <div className="h-screen w-screen flex justify-center items-center fixed inset-0">
+          <div className="modal-container p-4 rounded">
+            <div className="buttonhint w-screen flex justify-center">
+              <div className="modal-container  bg-gray-600 bg-opacity-75  p-4 rounded">
+                <p className='text-[#c7200b] font-medium text-2xl w-full rounded bg-opacity-90 bg-gray-400 p-5 flex justify-center'>Warning: AI assessment may not be fully accurate. Remember, artificial intelligence evaluates your essay, but human evaluation remains invaluable.</p>
+                <p className="font-semibold text-xl mb-4 text-white mt-3">Hints for IELTS Task 2:</p>
+                <p className="text-md text-white">
+                  - You have 40 minutes to write the essay in the IELTS Task 2.
+                </p>
+                <p className="text-md text-white">
+                  - The time limit is set to assess your ability to express your ideas
+                  effectively within a reasonable timeframe.
+                </p>
+                <p className="text-md text-white">
+                  - Use the time wisely to plan, write, and revise your essay
+                  adequately.
+                </p>
+                <p className="text-md text-white">- Make sure to address the given topic.</p>
+                <p className="text-md text-white">
+                  - You will be evaluated based on your response's coherence,
+                  cohesion, vocabulary, grammar, and overall argument quality.
+                </p>
+                <p className="text-md text-white">
+                  - Remember to have an introduction, body paragraphs, and a
+                  conclusion in your essay.
+                </p>
+                <p className="text-md text-white">- Use formal language and avoid slang.</p>
+                <p className="text-md text-white">
+                  - Focus on presenting a well-structured and organized essay.
+                </p>
+                <p className="text-md text-white">
+                  - You can choose any topic; just write "Topic:" and then provide
+                  your essay on that topic.
+                </p>
+                
+                <div className="flex justify-center">
+                  <button
+                    onClick={closeHintModal}
+                    className="btn btn-primary mt-4 text-white"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
     </div>
   );

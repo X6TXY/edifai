@@ -10,6 +10,7 @@ import { Study } from '../сomponents/content/study';
 import { Writing } from '../сomponents/content/study/writing';
 import { Task1 } from '../сomponents/content/study/writing/task1';
 import { Task2 } from '../сomponents/content/study/writing/task2';
+import { Landing } from '../сomponents/landing';
 
 
 
@@ -17,12 +18,13 @@ export const RouteList = () => {
     return (
       <Routes>
         <Route path="/home" element={<Home/>} />
-        <Route path="/" element={<Auth/>} />
+        <Route path="/login" element={<Auth/>} />
+        <Route path='/' element={<Landing/>} />
         <Route path="/history" element={<History/>} />
-        <Route path="/info" element={<Info/>} />
+        <Route path="/about" element={<Info/>} />
         <Route path="/study" element={<Study/>} />
         <Route path='/storybot' element={<Storybot/>}/>
-        <Route path='/help' element={<Help/>}/>
+        <Route path='/assistant' element={<Help/>}/>
         <Route path='/study/writing' element={<Writing/>}/>
         <Route path='/study/writing/task2' element={<Task2/>}/>
         <Route path='/study/writing/task1' element={<Task1/>}/>

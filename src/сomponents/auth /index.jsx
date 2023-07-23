@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as HideIcon } from '../../assets/hide.svg';
-import Ieltsicon from '../../assets/ishard.webp';
 import { ReactComponent as ShowIcon } from '../../assets/show.svg';
 import './auth.css';
 
@@ -102,40 +101,18 @@ export const Auth = () => {
   
   return (
     <div>
-      <nav className="border-gray-200 bg-[#7C3BCF]">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-          <a href="https://flowbite.com" className="flex items-center">
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">EdifAI</span>
-          </a>
-          <div className="flex items-center">
-            <button
-              href="#"
-              className="text-md w-16 flex justify-center  border rounded-md text-[#f5f5f5]  hover:underline "
-              onClick={handleLoginClick}
-            >
-              Login
-            </button>
-          </div>
-        </div>
-      </nav>
-      <div className='landing w-screen h-screen flex justify-center '>
-          <div  className='landingpg bg-white '>
-            <div className='landheading  flex justify-center h-full items-center '>
-              <p className='textsection'> <span className='text-[#7C3BCF] font-medium'>Get your dream Score  on</span> <span className='text-red-600 font-bold'>IELTS</span></p>
-            <img src={Ieltsicon} alt='icon' className='imgicon h-72 '></img></div>
-            </div>
-      </div>
-      <div className="main min-w-screen min-h-screen relative overflow-hidden flex justify-center bg-[#F5F5F5] p-4 md:p-24 top-0 left-0 right-0 ">
+      
+      <div className="main w-screen h-screen  relative overflow-hidden flex justify-center bg-[#F5F5F5] p-4 md:p-24 top-0 left-0 right-0 ">
         <div className="edifaibg" ref={signInUpSectionRef}>
         <div className="logo flex justify-center h-24 md:h-48 bg-slate-50 items-center rounded-lg drop-shadow-lg">
-          <h3 className="text-3xl md:text-5xl text-black">Edif<span className="text-[#7C3BCF]">AI</span></h3>
+          <h3 className="xl:text-5xl md:text-4xl sm:text-4xl text-black">Edif<span className="text-[#C7002B]">AI</span></h3>
         </div>
-        <div className="singup-signin btn-group flex justify-center mt-4 md:mt-6 ">
+        <div className="singup-signin btn-group flex justify-center mt-4 sm:mt-12 md:mt-6 ">
           <input
             type="radio"
             name="options"
             data-title="Sign In"
-            className={`btn text-black bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${!isSignUp ? 'checked' : ''}`}
+            className={`btn  text-black text-sm md:text-xs bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${!isSignUp ? 'checked' : ''}`}
             checked={!isSignUp}
             onChange={() => toggleSignUp()}
           />
@@ -143,12 +120,12 @@ export const Auth = () => {
             type="radio"
             name="options"
             data-title="Sign Up"
-            className={`btn text-black bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${isSignUp ? 'checked' : ''}`}
+            className={`btn    text-black text-sm md:text-xs bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${isSignUp ? 'checked' : ''}`}
             checked={isSignUp}
             onChange={() => toggleSignUp()}
           />
         </div>
-        <form onSubmit={handleFormSubmit} className="flex flex-col justify-center items-center mt-4 md:mt-8">
+        <form onSubmit={handleFormSubmit} className="flex flex-col justify-center items-center mt-4 md:mt-4">
           <input
             type="text"
             placeholder="Username"
