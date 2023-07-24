@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Calendar from 'react-github-contribution-calendar';
 import { Link } from 'react-router-dom';
-import { Navbar } from '../Navbar';
+import { Sidebar } from '../../sidebar';
 import './home.css';
 
 export const Home = () => {
@@ -60,7 +60,7 @@ export const Home = () => {
   const randomMotivationalPhrase = motivationalPhrases[Math.floor(Math.random() * motivationalPhrases.length)];
 
   return (
-    <div className='w-screen h-screen bg-[#f5f5f5]'>
+    <div className='w-screen h-screen bg-[#f5f5f5] text-black'>
       <div className='xl:w-4/5 lg:w-4/5 md:w-3/4 sm:w-2/3 w-2/3 h-screen absolute -right-0 bg-[#f5f5f5]'>
         <div className='heading'>
           <h1 className='home mt-7 text-black text-3xl font-semibold'>Home</h1>
@@ -89,7 +89,7 @@ export const Home = () => {
           </div>
         </div>
       </div>
-      <Navbar />
+      <Sidebar />
     </div>
   );
 };

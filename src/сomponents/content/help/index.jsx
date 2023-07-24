@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Navbar } from '../Navbar';
+import { Sidebar } from '../../sidebar';
+
 import './help.css';
 
 export const Help = () => {
@@ -61,7 +62,7 @@ export const Help = () => {
 
   return (
     <div>
-      <div className='h-screen w-screen bg-[#f5f5f5]'>
+      <div className='h-screen w-screen bg-[#f5f5f5] text-black'>
         <div className=' sm:w-2/3 md:w-1/2 lg:w-4/5 xl:w-3/4 2xl:w-4/5  h-screen absolute right-0 bg-[#f5f5f5] '>
           
           <div className='headinginfoielst mt-10 text-[#C7002B] font-bold flex justify-center text-5xl'>
@@ -127,7 +128,7 @@ export const Help = () => {
           </div>
         </div>
 
-        <Navbar/>
+        <Sidebar/>
       </div>
     </div>
   );

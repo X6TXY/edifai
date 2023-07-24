@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as LfArrow } from '../../../assets/leftarrow.svg';
 import { ReactComponent as RtArrow } from '../../../assets/rightarrow.svg';
-import { Navbar } from '../Navbar';
+import { Sidebar } from '../../sidebar';
 import './history.css';
+
 
 export const History = () => {
   const [responses, setResponses] = useState([]);
@@ -54,7 +55,7 @@ export const History = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className='w-screen h-screen  bg-[#f5f5f5]'>
+    <div className='w-screen h-screen  bg-[#f5f5f5] text-black'>
       <div className='grid grid-cols-1 xl:w-4/5 lg:w-4/5 md:w-3/4 sm:w-2/3 w-2/3 h-screen absolute -right-0 bg-[#f5f5f5]'>
         <div className='flex justify-center text-5xl mt-5 font-bold text-[#c7200b]'>History</div>
         <div className='absolute lg:mt-20 xl:mt-24 parent mx-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
@@ -106,7 +107,7 @@ export const History = () => {
           </div>
         </div>
       )}
-      <Navbar selectedResponse={selectedResponse} className='fixed ' />
+      <Sidebar selectedResponse={selectedResponse} className='fixed ' />
     </div>
   );
 };

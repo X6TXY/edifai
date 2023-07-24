@@ -8,9 +8,9 @@ import MainIcon from '../../assets/ieltsmainicon.png';
 import { ReactComponent as Landing1 } from '../../assets/landing1.svg';
 import { ReactComponent as TimeIcon } from '../../assets/timelanding.svg';
 import { ReactComponent as TriangleIcon } from '../../assets/trianglelanding.svg';
-import './landing.css';
+import './test.css';
 
-export const Landing = () => {
+export const Test = () => {
   return (
     <div>
       <div className='backgroundlanding bg-[#f5f5f5] text-black '>
@@ -81,7 +81,6 @@ export const Landing = () => {
         
         <Landing1 ></Landing1>
         <TriangleIcon></TriangleIcon>
-
       </div>
     </div>
   );

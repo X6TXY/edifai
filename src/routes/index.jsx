@@ -11,6 +11,8 @@ import { Writing } from '../сomponents/content/study/writing';
 import { Task1 } from '../сomponents/content/study/writing/task1';
 import { Task2 } from '../сomponents/content/study/writing/task2';
 import { Landing } from '../сomponents/landing';
+import { Sidebar } from '../сomponents/sidebar';
+import { Test } from '../сomponents/test';
 
 
 
@@ -18,6 +20,8 @@ export const RouteList = () => {
     return (
       <Routes>
         <Route path="/home" element={<Home/>} />
+        <Route path='/sidebar' element={<Sidebar/>} />
+        <Route path='/test' element={<Test/>}/>
         <Route path="/login" element={<Auth/>} />
         <Route path='/' element={<Landing/>} />
         <Route path="/history" element={<History/>} />

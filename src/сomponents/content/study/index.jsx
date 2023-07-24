@@ -1,11 +1,11 @@
 import React from 'react';
-import { Navbar } from '../Navbar';
+import { Sidebar } from '../../sidebar';
 import './study.css';
 
 export const Study = () => {
   return (
     <div>
-      <div className='h-screen w-screen bg-[#f5f5f5]'>
+      <div className='h-screen w-screen bg-[#f5f5f5] text-black'>
         <div className='xl:w-4/5 lg:w-4/5 md:w-3/4 sm:w-2/3 w-2/3 h-screen absolute -right-0 bg-[#f5f5f5] '>
           
           <div className='headinginfoielst text-[#C7002B] font-bold flex justify-center text-5xl mt-10 '>IELTS Information</div>
@@ -14,7 +14,7 @@ export const Study = () => {
           </div>
           <a href='/study/writing/task2' className='writingtask2btn flex justify-center items-center text-white hover:bg-red-600 transition-colors duration-500'>Start writing task 2</a>
         </div>
-        <Navbar/>
+        <Sidebar/>
       </div>
     </div>
   );

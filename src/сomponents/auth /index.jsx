@@ -39,7 +39,6 @@ export const Auth = () => {
 
         const response = await axios.request(config)
           .then((response) => {
-            console.log(JSON.stringify(response.data));
             setIsRegistrationSuccessful(true);
           })
           .catch((error) => {
@@ -53,7 +52,7 @@ export const Auth = () => {
       }
     }  else {
       try {
-        console.log(typeof username, typeof password)
+        
         const config = {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -65,12 +64,10 @@ export const Auth = () => {
           password: password,
         }, config);
 
-        console.log(response)
-        console.log(response.data);
 
         // Save the token to local storage or a state variable for later use
         const token = response.data.access_token;
-        console.log(token)
+        
         localStorage.setItem('token', token);
         
         // Redirect to /home after successful sign-in
@@ -102,7 +99,7 @@ export const Auth = () => {
   return (
     <div>
       
-      <div className="main w-screen h-screen  relative overflow-hidden flex justify-center bg-[#F5F5F5] p-4 md:p-24 top-0 left-0 right-0 ">
+      <div className="main text-black w-screen h-screen  relative overflow-hidden flex justify-center bg-[#F5F5F5] p-4 md:p-24 top-0 left-0 right-0 ">
         <div className="edifaibg" ref={signInUpSectionRef}>
         <div className="logo flex justify-center h-24 md:h-48 bg-slate-50 items-center rounded-lg drop-shadow-lg">
           <h3 className="xl:text-5xl md:text-4xl sm:text-4xl text-black">Edif<span className="text-[#C7002B]">AI</span></h3>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Navbar } from '../../../Navbar';
+import { Sidebar } from '../../../../sidebar';
 import './task2.css';
 
 export const Task2 = () => {
@@ -107,7 +107,7 @@ export const Task2 = () => {
     <div>
       
       <div className='h-screen w-screen bg-[#f5f5f5]'>
-        <div className='w-4/5 h-screen absolute right-0 bg-[#f5f5f5]'>  
+        <div className='w-4/5 h-screen absolute right-0 bg-[#f5f5f5] text-black'>  
           <button
             className='btn btn-primary buttonsubmit1 border-none text-white hover:bg-red-600 transition-colors duration-500'
             onClick={handleButtonClick}
@@ -226,7 +226,7 @@ export const Task2 = () => {
           </div>
           </div>
         </div>
-        <Navbar className='' />
+        <Sidebar className='' />
         {showHintModal && (
         <div className="h-screen w-screen flex justify-center items-center fixed inset-0">
           <div className="modal-container p-4 rounded">

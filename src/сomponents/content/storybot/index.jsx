@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Navbar } from '../Navbar';
+import { Sidebar } from '../../sidebar';
 import './tips.css';
 
 export const Storybot = () => {
@@ -51,7 +51,7 @@ export const Storybot = () => {
   return (
     <div>
       <div className='h-screen w-screen bg-[#f5f5f5]'>
-        <div className=' xl:w-4/5 lg:w-4/5 md:w-3/4 sm:w-2/3 w-2/3 h-screen absolute right-0 bg-[#f5f5f5] '>
+        <div className=' xl:w-4/5 lg:w-4/5 md:w-3/4 sm:w-2/3 w-2/3 h-screen absolute right-0 bg-[#f5f5f5] text-black'>
           <div className='mt-10 headinginfoielst text-[#C7002B] font-bold flex justify-center text-5xl '>
             Enjoy Storybot
           </div>
@@ -92,7 +92,7 @@ export const Storybot = () => {
             ) : null}
           </div>
         </div>
-        <Navbar />
+        <Sidebar />
       </div>
     </div>
   );
