@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as HideIcon } from '../../assets/hide.svg';
 import { ReactComponent as ShowIcon } from '../../assets/show.svg';
-import { host_url } from '../../urls.jsx';
+import { host_url } from '../../urls';
 import './auth.css';
 
 
@@ -56,7 +56,8 @@ export const Auth = () => {
         
         const config = {
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'accept': 'application/json',
           }
         };
         
