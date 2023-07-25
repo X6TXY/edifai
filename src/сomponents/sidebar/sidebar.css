@@ -1,7 +1,7 @@
 .sidebarbg{
     position: absolute;
     background-color: #edeaea;
-    width: 50%;
+    width: 100%;
     height: 100%;
     display: fixed ;
     transition: width 0.3s ease-in-out;
