@@ -1,48 +1,84 @@
+.workingspacehome{
+  width: 80%;
+  height: 100%;
+  background: #f5f5f5;
+  position: absolute;
+  right:0px;
+}
+.Homeheading{
+  position: absolute;
+  font-size: 30px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 20px;
+  left: 30px;
+  height: 40px;
+}
+.motivaitontext{
+  font-size: 30px;
+  margin-left: 10px;
+}
+.motivationbtn{
+  margin-left: 50px;
 
-
-.home{
-    position:absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: #1E1E1E;
-    font-family: Inter;
-    font-weight: 700;
-    left:3%;
+}
+.motivationsection{
+  display: flex;
+  justify-content: center;
+}
+.backgroundmotivation{
+  position: relative;
+  top:100px;
+  height: 20%;
+  display: flex;
+  background-color: white;
+}
+.date{
+  position: relative;
+  top:70px;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+}
+.typinghello{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top:80px;
 }
 
+  
 
-.hello{
-    position: relative;
-    top:10%;
-    margin-bottom: 5%;
-}
-
-.rectmot{
-    margin-top: 5%;
-    width: 760px;
-    height: 100px;
-    border-radius: 20px;
+@media (max-width:767px){
+  .motivaitontext{
+    font-size: 20px;
+    margin-left: 10px;
+  }
+  .motivationbtn{
+  
+    padding: 10px;
+    margin-left: 15px;
+  
+  }
+  .Homeheading{
+    position: absolute;
+    font-size: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-
-}
-
-.mottext{
-    position: fixed;
-    left: 10%;
-}
-
-.start{
-  position: relative;
-  left: 14rem;
-  width: 150px;
-}
-
-.calendar{
-    border-radius: 10px;
-    margin-left: 16%;
+    height: 30px;
+    left: 60px;
+    width: 90px;
+  }
+  .workingspacehome{
+    width: 100%;
+    height: 100%;
+    background: #f5f5f5;
+    position: absolute;
+    right:0px;
+  }
 }
 
 .wrapper{
@@ -51,23 +87,54 @@
   place-items: center;
 }
 .typing-demo{
-  width: 14ch;
+  width: 310px;
   animation: typing 2s steps(22), blink .4s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;
-  
   border-right: 3px solid;
-  font-size: 2em;
+  font-size: 35px;
 }
 
 @keyframes typing {
-    from {
-      width: 0
-    }
+  from {
+    width: 0
   }
-      
-  @keyframes blink {
-    50% {
-      border-color: transparent
-    }
+}
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
   }
+}
+
+@media (max-width:420px) {
+  .motivaitontext{
+    font-size: 15px;
+    margin-left: 5px;
+  }
+  .motivationbtn{
+    width: 70px;
+    height: 10px;
+    padding: 10px;
+    margin-left: 15px;
+  
+  }
+  .Homeheading{
+    position: absolute;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    left: 60px;
+    width: 90px;
+  }
+  .workingspacehome{
+    width: 100%;
+    height: 100%;
+    background: #f5f5f5;
+    position: absolute;
+    right:0px;
+  }
+  
+}

@@ -95,7 +95,7 @@ export const History = () => {
         </div>
       </div>
       {selectedResponse && (
-        <div className={`fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50 ${selectedResponse ? '' : 'modal-hidden'}`}>
+        <div className={`absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50 ${selectedResponse ? '' : 'modal-hidden'}`} style={{ zIndex: '100' }}>
           <div className='modal-card bg-white w-4/5 rounded-md p-4 transform transition-all ease-in-out'>
             <p className=''><span className='font-bold text-[#c7200b]'>Date: </span>{selectedResponse.date}</p>
             <p className='mt-2'><span className='font-bold text-[#c7200b]'>Essay:</span> {selectedResponse.request}</p>
@@ -107,7 +107,7 @@ export const History = () => {
           </div>
         </div>
       )}
-      <Sidebar selectedResponse={selectedResponse} className='fixed ' />
+      <Sidebar selectedResponse={selectedResponse} className='absolute ' style={{ zIndex: '1' }}/>
     </div>
   );
 };

@@ -52,6 +52,14 @@ export const Task2 = () => {
       });
   };
 
+  // Add this event listener to close the modal when clicking on the backdrop
+  const handleBackdropClick = (e) => {
+    // Check if the click target is the backdrop itself (not its children)
+    if (e.target === e.currentTarget) {
+      closeHintModal();
+    }
+  };
+
   const submitScore = () => {
     // Implement the score submission logic here
     // You can use the score and any other relevant data to calculate the final score
@@ -228,10 +236,12 @@ export const Task2 = () => {
         </div>
         <Sidebar className='' />
         {showHintModal && (
-        <div className="h-screen w-screen flex justify-center items-center fixed inset-0">
-          <div className="modal-container p-4 rounded">
-            <div className="buttonhint w-screen flex justify-center">
-              <div className="modal-container  bg-gray-600 bg-opacity-75  p-4 rounded">
+        <div>
+          
+        <div onClick={handleBackdropClick} className="h-screen w-screen backdrop-filter backdrop-blur-sm flex justify-center items-center fixed inset-0 ">
+          <div className="modal-container p-4 rounded ">
+            <div className="lg:ml-64 xl:ml-72 flex justify-center   items-center">
+              <div className="modal-container  bg-gray-500 bg-opacity-75  p-4 rounded w-5/6 ">
                 <p className='text-[#c7200b] font-medium text-2xl w-full rounded bg-opacity-90 bg-gray-400 p-5 flex justify-center'>Warning: AI assessment may not be fully accurate. Remember, artificial intelligence evaluates your essay, but human evaluation remains invaluable.</p>
                 <p className="font-semibold text-xl mb-4 text-white mt-3">Hints for IELTS Task 2:</p>
                 <p className="text-md text-white">
@@ -274,6 +284,7 @@ export const Task2 = () => {
               </div>
             </div>
           </div>
+        </div>
         </div>
       )}
       </div>

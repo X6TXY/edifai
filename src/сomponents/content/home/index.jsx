@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Calendar from 'react-github-contribution-calendar';
 import { Link } from 'react-router-dom';
 import { Sidebar } from '../../sidebar';
 import './home.css';
@@ -56,40 +55,37 @@ export const Home = () => {
       });
   }, []);
 
-  // Select a random motivational phrase from the array
+  
   const randomMotivationalPhrase = motivationalPhrases[Math.floor(Math.random() * motivationalPhrases.length)];
 
   return (
-    <div className='w-screen h-screen bg-[#f5f5f5] text-black'>
-      <div className='xl:w-4/5 lg:w-4/5 md:w-3/4 sm:w-2/3 w-2/3 h-screen absolute -right-0 bg-[#f5f5f5]'>
-        <div className='heading'>
-          <h1 className='home mt-7 text-black text-3xl font-semibold'>Home</h1>
-        </div>
-        <div className='hello flex justify-center flex-col'>
-          <div className='date flex justify-center text-xl font-medium mb-3'>{formattedDate}</div>
-          <div className='wrapper'>
-            <div className='typing-demo mb-0 md:mb-6 flex justify-center xl:text-3xl lg:text-2xl font-medium'>
-              Hello<span className='text-[#C7002B]'>, Dear friend</span>.
+    <div>
+      <div className='text-black'>
+        <div className='workingspacehome'>
+          <div className='Homeheading font-bold'>Home</div>
+          <div className='Homemainsections'>
+            <div className='date font-medium'>{formattedDate}</div>
+            <div className='typinghello'>
+              <div className='wrapper'>
+                <div className='typing-demo font-semibold '>Hello<span className='text-[#c7200b]'>, Dear friend.</span></div>
+              </div>
+            </div>
+            <div className='motivationsection'>
+              <div className='backgroundmotivation drop-shadow-md rounded-xl p-6'>
+                <div className='flex items-center'>
+                  <div className='font-medium motivaitontext '>{randomMotivationalPhrase}</div>
+                  <Link to='/study/writing/task2'>
+                    <button className='motivationbtn  btn btn-primary text-white '>
+                      Start Now!
+                    </button>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className='motivation'>
-          <div className='rectposition flex justify-center'>
-            <div className='rectmot bg-white drop-shadow'>
-              <h2 className='mottext xl:text-2xl lg:text-2xl font-medium'>{randomMotivationalPhrase}</h2>
-              <Link to='/study/writing/task2'>
-                <button className='start rofl btn btn-primary text-white normal-case text-xl'>
-                  Start Now!
-                </button>
-              </Link>
-            </div>
-          </div>
-          <div className='calendar bg-white xl:h-36 lg:h-32 md:h-28 w-4/6 p-6 flex justify-center items-center mt-96 drop-shadow-md'>
-            <Calendar values={values} until={until} panelColors={panelColors} className='xl:h-32 md:h-24 lg:h-28' />
-          </div>
-        </div>
+        <Sidebar/>
       </div>
-      <Sidebar />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { ReactComponent as InfoIcon } from "../../assets/info.svg";
 import { ReactComponent as LogOutIcon } from "../../assets/logout.svg";
 import { ReactComponent as StudyIcon } from "../../assets/study.svg";
 import { ReactComponent as TipsIcon } from "../../assets/tips.svg";
+import { ReactComponent as XmarkIcon } from '../../assets/xmar.svg';
 import "./sidebar.css";
 
 export const Sidebar = ({ selectedResponse }) => {
@@ -51,7 +52,8 @@ export const Sidebar = ({ selectedResponse }) => {
           <div className="hamburger-menu">
             <div className="menustyle ">
               <button className="hamburger-button" onClick={toggleSidebar}>
-                <BarsIcon />
+              {isSidebarOpen ? <BarsIcon className="openicon "/> :  <XmarkIcon className="closeicon" />}
+
               </button>
             </div>
           </div>

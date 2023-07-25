@@ -8,25 +8,5 @@ body{
 /* Add this CSS in your main CSS file or a separate CSS file and import it */
 
 /* history.css */
-@keyframes fade-in {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .animate-fade-in {
-    animation: fade-in 0.5s ease-in-out;
-  }
-  
-
- .modalwindow{
-    height: 100%;
-    width:100%;
- }
 
  

@@ -1,87 +1,95 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Calendar from 'react-github-contribution-calendar';
 import { Link } from 'react-router-dom';
-import { ReactComponent as AIIcon } from '../../assets/ailanding.svg';
-import { ReactComponent as AnalyzeIcon } from '../../assets/analyzelanding.svg';
-import { ReactComponent as DataIcon } from '../../assets/datalanding.svg';
-import IeltsIcon from '../../assets/ieltsicon2.png';
-import MainIcon from '../../assets/ieltsmainicon.png';
-import { ReactComponent as Landing1 } from '../../assets/landing1.svg';
-import { ReactComponent as TimeIcon } from '../../assets/timelanding.svg';
-import { ReactComponent as TriangleIcon } from '../../assets/trianglelanding.svg';
+import { Sidebar } from '../sidebar';
 import './test.css';
 
 export const Test = () => {
+  const today = new Date();
+  const options = { weekday: 'long', month: 'long', day: 'numeric' };
+  const formattedDate = today.toLocaleString('en-US', options);
+  const [until, setUntil] = useState(new Date().toISOString().split('T')[0]);
+  const [values, setValues] = useState({});
+  const panelColors = [
+    '#f5f5f5',
+    '#F7B4BB',
+    '#F46D75',
+    '#C7002B',
+    '#a31000'
+  ];
+
+  const motivationalPhrases = [
+    'Start now, no regrets.',
+    'Take the first step.',
+    'Embrace the challenge, begin.',
+    'Just start, make progress.',
+    'Begin the journey today.'
+  ];
+
+  useEffect(() => {
+    // Fetch the data from the API endpoint
+    const user_token = localStorage.getItem('token');
+    axios.get('http://localhost:8000/wtask2/get_dates', {
+      headers: {
+        Authorization: `Bearer ${user_token}`,
+      },
+    })
+      .then((response) => {
+        // Extract the values from the response data
+        const data = response.data;
+        const calendarValues = {};
+        for (const date in data) {
+          calendarValues[date] = data[date];
+        }
+        // Update the values state
+        setValues(calendarValues);
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 401) {
+          // Handle unauthorized error (e.g., redirect to login page)
+          console.error('Unauthorized');
+        } else {
+          // Handle other errors
+          console.error(error);
+        }
+      });
+  }, []);
+
+  // Select a random motivational phrase from the array
+  const randomMotivationalPhrase = motivationalPhrases[Math.floor(Math.random() * motivationalPhrases.length)];
+
   return (
-    <div>
-      <div className='backgroundlanding bg-[#f5f5f5] text-black '>
-        <div className='flex justify-center'>
-          <div className='headinsection'>
-            <div className='headingicon text-black font-medium'>Edif<span className='text-[#c7200b]'>AI</span></div>
-            <a href='/login' className='loginbtn text-[#c7200b] border p-2 rounded-md border-[#c7200b] hover:underline'>Login</a>
-          </div>
+    <div className='w-screen h-screen bg-[#f5f5f5] text-black'>
+      <div className='xl:w-4/5 lg:w-4/5 md:w-3/4 sm:w-2/3 w-2/3 h-screen absolute -right-0 bg-[#f5f5f5]'>
+        <div className='heading'>
+          <h1 className='home mt-7 text-black text-3xl font-semibold'>Home</h1>
         </div>
-        <div className='w-full relative flex justify-center'>
-          <div className='mainsection'>
-            <div className='mainsectiontext'>
-              <div className='mainsectionheading font-semibold'>We take your score higher</div>
-              <p className='secondarytext text-[#7C7A7A] font-medium'>Prepare for the IELTS exam by practicing your skills with artificial intelligence</p>
-              <div className='flex justify-center'>
-                <Link to='/login'>
-                  <button className='btn btn-primary text-white'>Start Now!</button>
-                </Link>
-              </div>
-            </div>
-            <img src={MainIcon} className='firstimg' alt="IELTS Main Icon" />
-          </div>
-        </div>
-        <div className='landingsection2'>
-          <div className='flex justify-center'>
-            <div className='landingheading2 font-semibold'>Why use EdifAI?</div>
-          </div>
-          <div className='flex justify-center rounded-xl drop-shadow-md mt-2'>
-            <div className='landingrect2 flex justify-center'>
-              <div className='sectionslanding justify-between mt-8'>
-                <div className='section'>
-                  <TimeIcon className='sectionicon'></TimeIcon>
-                  <div className='sectionh font-medium mt-4'>Quickly get a Score</div>
-                  <div className='sectionp mt-3'>After submitting your essay, you can immediately receive your score and feedback</div>
-                </div>
-                <div className='section'>
-                  <AnalyzeIcon className='sectionicon'></AnalyzeIcon>
-                  <div className='sectionh font-medium mt-4'>Analyze your mistakes</div>
-                  <div className='sectionp mt-3'>Watch your progress. And watch out for your first essays</div>
-                </div>
-                <div className='section'>
-                  <AIIcon className='sectionicon'></AIIcon>
-                  <div className='sectionh font-medium mt-4'>Special project</div>
-                  <div className='sectionp mt-10'>The first product that uses AI to prepare for IELTS</div>
-                </div>
-                <div className='section'>
-                  <DataIcon className='sectionicon1'></DataIcon>
-                  <div className='sectionh font-medium mt-4'>Take recent actual resources</div>
-                  <div className='sectionp mt-3'>Really useful materials for studying and preparing for IELTS</div>
-                </div>
-              </div>
+        <div className='hello flex justify-center flex-col'>
+          <div className=' flex justify-center text-xl font-medium mb-3'>{formattedDate}</div>
+          <div className='wrapper'>
+            <div className='typing-demo mb-0 md:mb-6 flex justify-center xl:text-3xl lg:text-2xl font-medium'>
+              Hello<span className='text-[#C7002B]'>, Dear friend</span>.
             </div>
           </div>
         </div>
-        <div className=' flex justify-center items-center'>
-          <div className='mainsection3'>
-            <div className='mainsectiontext'>
-              <div className='mainsectionh font-semibold flex justify-center items-center'>Get Instant Essay Scores! Improve your Writing Today!</div>
-              <div className='flex justify-center mt-10'>
-                <Link to='/login'>
-                  <button className='buttonjoin btn btn-primary text-white lg:h-20 lg:w-40 xl:text-xl'>JOIN NOW!</button>
-                </Link>
-              </div>
+        <div className='motivation'>
+          <div className='rectposition flex justify-center'>
+            <div className='rectmot bg-white drop-shadow'>
+              <h2 className='mottext xl:text-2xl lg:text-2xl font-medium'>{randomMotivationalPhrase}</h2>
+              <Link to='/study/writing/task2'>
+                <button className='start rofl btn btn-primary text-white normal-case text-xl'>
+                  Start Now!
+                </button>
+              </Link>
             </div>
-            <img src={IeltsIcon} className='firstimg1' alt="IELTS Main Icon" />
+          </div>
+          <div className='calendar bg-white xl:h-36 lg:h-32 md:h-28 w-4/6 p-6 flex justify-center items-center mt-96 drop-shadow-md'>
+            <Calendar values={values} until={until} panelColors={panelColors} className='xl:h-32 md:h-24 lg:h-28' />
           </div>
         </div>
-        
-        <Landing1 ></Landing1>
-        <TriangleIcon></TriangleIcon>
       </div>
+      <Sidebar />
     </div>
   );
 };

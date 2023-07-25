@@ -1,0 +1,35 @@
+
+*{
+    padding: 0;
+}
+body{
+    background-color: #F5F5F5;
+}
+
+
+form{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+}
+
+.input1{
+    width: 200px;
+}
+@media (max-width:768px){
+    .input1{
+        width: 200px;
+    }
+}
+
+@media (min-width:768px) {
+    .input1{
+        width:43rem;
+    }
+    
+}
+@media (max-width:1024px) {
+    .input1{
+        width: 500px;
+    }
+}
