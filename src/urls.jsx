@@ -1,1 +1,1 @@
-const host_url='https://edifai-backend.onrender.com/'
+const host_url='https://edifai-backend.onrender.com'
