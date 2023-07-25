@@ -60,7 +60,7 @@ export const Auth = () => {
           }
         };
         
-        const response = await axios.post("https://9ddd-89-250-86-68.ngrok-free.app/auth/users/tokens", {
+        const response = await axios.post(`${host_url}/auth/users/tokens`, {
           username: username,
           password: password,
         }, config);
