@@ -31,7 +31,7 @@ export const Auth = () => {
         let config = {
           method: 'post',
           maxBodyLength: Infinity,
-          url: `http://localhost:8000/auth/users?email=${username}&password=${password}`,
+          url: `https://9ddd-89-250-86-68.ngrok-free.app/auth/users?email=${username}&password=${password}`,
           headers: { 
             'Content-Type': 'application/json'
           }
