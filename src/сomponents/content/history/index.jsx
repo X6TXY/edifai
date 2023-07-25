@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as LfArrow } from '../../../assets/leftarrow.svg';
 import { ReactComponent as RtArrow } from '../../../assets/rightarrow.svg';
+import { host_url } from '../../../urls.jsx';
 import { Sidebar } from '../../sidebar';
 import './history.css';
 
@@ -17,7 +18,7 @@ export const History = () => {
     // Fetch responses data from the backend API
     const user_token = localStorage.getItem('token');
     axios
-      .get('http://localhost:8000/wtask2/get_responses', {
+      .get(`${host_url}/wtask2/get_responses`, {
         headers: {
           Authorization: `Bearer ${user_token}`,
         },

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { host_url } from '../../../urls.jsx';
 import { Sidebar } from '../../sidebar';
 import './home.css';
 
@@ -29,7 +30,7 @@ export const Home = () => {
   useEffect(() => {
     // Fetch the data from the API endpoint
     const user_token = localStorage.getItem('token');
-    axios.get('http://localhost:8000/wtask2/get_dates', {
+    axios.get(`${host_url}/wtask2/get_dates`, {
       headers: {
         Authorization: `Bearer ${user_token}`,
       },

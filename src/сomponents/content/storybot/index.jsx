@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { host_url } from '../../../urls.jsx';
 import { Sidebar } from '../../sidebar';
 import './tips.css';
 
@@ -29,7 +30,7 @@ export const Storybot = () => {
     event.preventDefault();
     try {
       setIsLoading(true); // Set loading state to true
-      const response = await axios.get('http://localhost:8000/storybot/generate_story', {
+      const response = await axios.get(`${host_url}/storybot/generate_story`, {
         params: {
           request: inputValue
         },

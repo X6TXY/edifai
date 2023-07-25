@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { host_url } from '../../../../../urls';
 import { Sidebar } from '../../../../sidebar';
 import './task2.css';
 
@@ -29,7 +30,7 @@ export const Task2 = () => {
     const user_token = localStorage.getItem('token');
     setIsLoading(true); // Set loading state to true
     axios
-      .post('http://localhost:8000/wtask2/get_answer', {
+      .post(`${host_url}/wtask2/get_answer`, {
         request: inputText,
       }, {
         headers: {

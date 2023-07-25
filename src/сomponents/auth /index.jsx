@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as HideIcon } from '../../assets/hide.svg';
 import { ReactComponent as ShowIcon } from '../../assets/show.svg';
+import { host_url } from '../../urls.jsx';
 import './auth.css';
 
 
@@ -31,7 +32,7 @@ export const Auth = () => {
         let config = {
           method: 'post',
           maxBodyLength: Infinity,
-          url: `https://9ddd-89-250-86-68.ngrok-free.app/auth/users?email=${username}&password=${password}`,
+          url: `${host_url}/auth/users?email=${username}&password=${password}`,
           headers: { 
             'Content-Type': 'application/json'
           }
@@ -59,7 +60,7 @@ export const Auth = () => {
           }
         };
         
-        const response = await axios.post("http://localhost:8000/auth/users/tokens", {
+        const response = await axios.post("https://9ddd-89-250-86-68.ngrok-free.app/auth/users/tokens", {
           username: username,
           password: password,
         }, config);
