@@ -1,1 +1,1 @@
-export const host_url='https://9e9f-89-250-86-68.ngrok-free.app'
+export const host_url='https://edifai-backend.onrender.com'
