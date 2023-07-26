@@ -116,7 +116,18 @@ export const Test = () => {
     <div>
       <div className='text-black'>
         <div className='workingspacestudy'>
-          
+          <div className='headingstudy font-bold'>
+            Writing Task 2 
+          </div>
+          <div></div>
+          <div className='submitionbtn '>
+            <button
+              className='btn btn-primary  border-none text-white hover:bg-red-600 transition-colors duration-500'
+              onClick={handleButtonClick}
+            >
+              {isLoading ? 'Loading...' : 'Submit'}
+            </button>
+          </div>
         </div>
         <Sidebar className='fixed'/>
       </div>

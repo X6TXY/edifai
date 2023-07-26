@@ -1,4 +1,13 @@
-
+.headingstudy{
+  font-size: 30px;
+  position: relative;
+  top:25px;
+}
+.submitionbtn{
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
 .workingspacestudy{
   width: 80%;
   height: 100%;
@@ -7,6 +16,14 @@
   right:0px;
 }
 @media (max-width:767px){
+  .headingstudy{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top:10px;
+    color:#c7200b;
+    font-size: 30px;
+  }
   .workingspacestudy{
     width: 100%;
     height: 750px;

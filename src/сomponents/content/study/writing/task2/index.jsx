@@ -118,7 +118,7 @@ export const Task2 = () => {
       <div className='h-screen w-screen bg-[#f5f5f5]'>
         <div className='w-4/5 h-screen absolute right-0 bg-[#f5f5f5] text-black'>  
           <button
-            className='btn btn-primary buttonsubmit1 border-none text-white hover:bg-red-600 transition-colors duration-500'
+            className='btn btn-primary  border-none text-white hover:bg-red-600 transition-colors duration-500'
             onClick={handleButtonClick}
           >
             {isLoading ? 'Loading...' : 'Submit'}
