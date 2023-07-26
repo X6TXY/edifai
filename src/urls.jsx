@@ -1,1 +1,1 @@
-export const host_url='http://localhost:8000'
+export const host_url='https://edifai-backend.onrender.com'

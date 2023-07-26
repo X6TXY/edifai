@@ -48,9 +48,19 @@
   margin-bottom: 20px;
 }
 
-.firstimg{
-  width: 500px;
-  margin-top: 30px;
+
+@media (max-width:500px){
+  .mainsectionheading{
+    font-size: 30px;
+    display: block;
+  }
+  .secondarytext{
+    display: block;
+  }
+  .firstimg{
+    height: 0;
+    width: 0;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -114,8 +124,9 @@
   }
 
   .firstimg {
+    display: block;
     position: relative;
-    width: 690px;
+    width: 0px;
     padding: auto;
   }
   .firstimg1{
@@ -139,6 +150,7 @@
       background-color: #f5f5f5;
     }
   .buttonjoin{
+  
       width: 100px;
       height: 100px;
   }
@@ -209,6 +221,9 @@
       display: flex;
       justify-content: center;
     }
+  .firstimg{
+    display: block;
+  }
   .sectionicon1{
       width: 100%;
       display: flex;

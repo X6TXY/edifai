@@ -79,6 +79,7 @@
 
 .openicon{
     position: absolute;
+    
 }
   .hamburger-button {
     display: flex;
@@ -122,6 +123,7 @@
     .sections{
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         font-size: 20px;
         padding: 5px;
         
