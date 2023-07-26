@@ -52,7 +52,7 @@ export const Sidebar = ({ selectedResponse }) => {
           <div className="hamburger-menu">
             <div className="menustyle ">
               <button className="hamburger-button" onClick={toggleSidebar}>
-              {isSidebarOpen ? <BarsIcon className="openicon "/> :  <XmarkIcon className="closeicon" />}
+              {isSidebarOpen ? <BarsIcon className="openicon fixed "/> :  <XmarkIcon className="closeicon fixed" />}
               </button>
             </div>
           </div>
