@@ -34,6 +34,82 @@
   position: absolute;
   right:0px;
 }
+@media (max-width:1024px){
+  .headingstudy{
+    font-size: 30px;
+    position: relative;
+    top:25px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 70px; /* Adjust the distance from the bottom as needed */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .textareawriting{
+    width: 340px;
+    height: 450px;
+    margin-right: 30px;
+  }
+  .responseareabg{
+    width: 340px;
+    height: 450px;
+    margin-left: 30px;
+  }
+  .workingspacewriting{
+    position: relative;
+    top:100px;
+    display: flex;
+    flex-direction: row;
+  }
+  .workingspacestudy{
+    width: 80%;
+    height: 100%;
+    background: #f5f5f5;
+    position: absolute;
+    right:0px;
+  }
+}
+@media (min-width:1440px){
+  .headingstudy{
+    font-size: 30px;
+    position: relative;
+    top:25px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 70px; /* Adjust the distance from the bottom as needed */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .textareawriting{
+    width: 400px;
+    height: 450px;
+    margin-right: 30px;
+  }
+  .responseareabg{
+    width: 400px;
+    height: 450px;
+    margin-left: 30px;
+  }
+  .workingspacewriting{
+    position: relative;
+    top:100px;
+    display: flex;
+    flex-direction: row;
+  }
+  .workingspacestudy{
+    width: 80%;
+    height: 100%;
+    background: #f5f5f5;
+    position: absolute;
+    right:0px;
+  }
+}
 @media (max-width: 768px) {
   .textareawriting {
     width: 300px;
