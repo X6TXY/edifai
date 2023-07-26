@@ -118,7 +118,7 @@ export const Test = () => {
         <div className='workingspacestudy'>
           
         </div>
-        <Sidebar/>
+        <Sidebar className='fixed'/>
       </div>
     </div>
   );
