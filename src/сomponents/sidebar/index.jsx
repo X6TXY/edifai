@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as BarsIcon } from "../../assets/bars.svg";
 import { ReactComponent as HelpIcon } from "../../assets/help.svg";
 import { ReactComponent as HistoryIcon } from "../../assets/history.svg";
@@ -45,6 +46,9 @@ export const Sidebar = ({ selectedResponse }) => {
     };
   }, []);
 
+  // Use useLocation() hook to get the current location
+  const location = useLocation();
+
   return (
     <div>
       <div className={`sidebarbg ${isSidebarOpen ? "sidebar-open" : ""} text-black`}>
@@ -52,7 +56,7 @@ export const Sidebar = ({ selectedResponse }) => {
           <div className="hamburger-menu">
             <div className="menustyle ">
               <button className="hamburger-button" onClick={toggleSidebar}>
-              {isSidebarOpen ? <BarsIcon className="openicon fixed "/> :  <XmarkIcon className="closeicon fixed" />}
+                {isSidebarOpen ? <BarsIcon className="openicon fixed" /> : <XmarkIcon className="closeicon fixed" />}
               </button>
             </div>
           </div>
@@ -60,9 +64,9 @@ export const Sidebar = ({ selectedResponse }) => {
 
         {isSidebarOpen ? null : (
           <>
-            <a href="/home" className="sidebarheading font-semibold">
+            <Link to="/home" className="sidebarheading font-semibold">
               Edif<span className="text-[#c7200b] ">AI</span>
-            </a>
+            </Link>
             <div className="flex justify-center">
               <hr className="line"></hr>
             </div>
@@ -74,75 +78,75 @@ export const Sidebar = ({ selectedResponse }) => {
             <>
               <li
                 className={`${
-                  currentPage === "/home" ? "bg-[#d9d9d9] " : ""
+                  location.pathname === "/home" ? "bg-[#d9d9d9] " : ""
                 }homesection  hover:bg-[#d9d9d9] transition-colors duration-500 rounded-xl`}
               >
-                <a href="/home" className="sections   text-black rounded">
+                <Link to="/home" className="sections   text-black rounded">
                   <HomeIcon className="icons" />
                   Home
-                </a>
+                </Link>
               </li>
               <li
                 className={`${
-                  currentPage === "/study/writing/task2" ? "bg-[#d9d9d9] " : ""
+                  location.pathname === "/study/writing/task2" ? "bg-[#d9d9d9] " : ""
                 }mt-2 hover:bg-[#d9d9d9] transition-colors duration-500 rounded-xl`}
               >
-                <a href="/study/writing/task2" className="sections text-black rounded">
+                <Link to="/study/writing/task2" className="sections text-black rounded">
                   <StudyIcon className="icons" />
                   Study
-                </a>
+                </Link>
               </li>
               <li
                 className={`${
-                  currentPage === "/history" ? "bg-[#d9d9d9] " : ""
+                  location.pathname === "/history" ? "bg-[#d9d9d9] " : ""
                 }mt-2 hover:bg-[#d9d9d9] transition-colors duration-500 rounded-xl`}
               >
-                <a href="/history" className="sections  text-black rounded">
+                <Link to="/history" className="sections  text-black rounded">
                   <HistoryIcon className="icons" />
                   History
-                </a>
+                </Link>
               </li>
               <li
                 className={`${
-                  currentPage === "/storybot" ? "bg-[#d9d9d9] " : ""
+                  location.pathname === "/storybot" ? "bg-[#d9d9d9] " : ""
                 }mt-2 hover:bg-[#d9d9d9]  transition-colors duration-500 rounded-xl`}
               >
-                <a href="/storybot" className="sections text-black rounded">
+                <Link to="/storybot" className="sections text-black rounded">
                   <TipsIcon className="icons" />
                   Storybot
-                </a>
+                </Link>
               </li>
               <li
                 className={`${
-                  currentPage === "/assistant" ? "bg-[#d9d9d9] " : ""
+                  location.pathname === "/assistant" ? "bg-[#d9d9d9] " : ""
                 } mt-2 hover:bg-[#d9d9d9] transition-colors duration-500 rounded-xl`}
               >
-                <a href="/assistant" className="sections text-black rounded">
+                <Link to="/assistant" className="sections text-black rounded">
                   <HelpIcon className="icons" />
                   Assistant
-                </a>
+                </Link>
               </li>
               <li
                 className={`${
-                  currentPage === "/about" ? "bg-[#d9d9d9] " : ""
+                  location.pathname === "/about" ? "bg-[#d9d9d9] " : ""
                 }mt-2 hover:bg-[#d9d9d9] transition-colors duration-500 rounded-xl`}
               >
-                <a href="/about" className="sections text-black rounded">
+                <Link to="/about" className="sections text-black rounded">
                   <InfoIcon className="icons" />
                   About
-                </a>
+                </Link>
               </li>
               {!selectedResponse && (
                 <li>
                   <div className="flex justify-center text-black  ">
-                    <a
-                        onClick={handleLogout}
-                      href="/"
+                    <Link
+                      to="/"
+                      onClick={handleLogout}
                       className="sections logoutsection hover:bg-red-600 p-2 rounded-md"
                     >
                       <LogOutIcon className="logouticon " />
                       Log Out
-                    </a>
+                    </Link>
                   </div>
                 </li>
               )}
