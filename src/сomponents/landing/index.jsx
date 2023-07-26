@@ -9,6 +9,7 @@ import { ReactComponent as Landing1 } from '../../assets/landing1.svg';
 import { ReactComponent as TimeIcon } from '../../assets/timelanding.svg';
 import { ReactComponent as TriangleIcon } from '../../assets/trianglelanding.svg';
 import './landing.css';
+import './landing1.css';
 
 export const Landing = () => {
   return (

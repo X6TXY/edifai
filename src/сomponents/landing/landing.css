@@ -49,6 +49,16 @@
 }
 
 
+@media (max-width:900px) {
+  .firstimg{
+    width: 500px;
+  }
+}
+@media(max-width:800px){
+  .firstimg{
+    width: 380px;
+  }
+}
 @media (max-width:580px){
   .startbtn{
     position: relative;

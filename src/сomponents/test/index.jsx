@@ -1,95 +1,125 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import Calendar from 'react-github-contribution-calendar';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { host_url } from '../../urls';
 import { Sidebar } from '../sidebar';
 import './test.css';
 
 export const Test = () => {
-  const today = new Date();
-  const options = { weekday: 'long', month: 'long', day: 'numeric' };
-  const formattedDate = today.toLocaleString('en-US', options);
-  const [until, setUntil] = useState(new Date().toISOString().split('T')[0]);
-  const [values, setValues] = useState({});
-  const panelColors = [
-    '#f5f5f5',
-    '#F7B4BB',
-    '#F46D75',
-    '#C7002B',
-    '#a31000'
-  ];
+  const [inputText, setInputText] = useState('');
+  const [selectedTopic, setSelectedTopic] = useState('');
+  const [responseText, setResponseText] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [timer, setTimer] = useState(40 * 60); // 40 minutes in seconds
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const [score, setScore] = useState(0); // Initial score value
+  const [showHintModal, setShowHintModal] = useState(false);
 
-  const motivationalPhrases = [
-    'Start now, no regrets.',
-    'Take the first step.',
-    'Embrace the challenge, begin.',
-    'Just start, make progress.',
-    'Begin the journey today.'
-  ];
+  const closeHintModal = () => {
+    setShowHintModal(false);
+  };
 
-  useEffect(() => {
-    // Fetch the data from the API endpoint
+  const handleInputChange = (e) => {
+    setInputText(e.target.value);
+  };
+
+  const handleTopicChange = (e) => {
+    setSelectedTopic(e.target.value);
+  };
+
+  const handleButtonClick = () => {
     const user_token = localStorage.getItem('token');
-    axios.get('http://localhost:8000/wtask2/get_dates', {
-      headers: {
-        Authorization: `Bearer ${user_token}`,
-      },
-    })
+    setIsLoading(true); // Set loading state to true
+    axios
+      .post(`${host_url}/wtask2/get_answer`, {
+        request: inputText,
+      }, {
+        headers: {
+          Authorization: `Bearer ${user_token}`,
+        },
+      })
       .then((response) => {
-        // Extract the values from the response data
-        const data = response.data;
-        const calendarValues = {};
-        for (const date in data) {
-          calendarValues[date] = data[date];
-        }
-        // Update the values state
-        setValues(calendarValues);
+        const responseData = response.data;
+        // Update the state with the response data
+        setResponseText(responseData.response);
+        const newScore = responseData.score; // Assuming the score is included in the response data
+        setScore(newScore); // Update the score state with the new score
       })
       .catch((error) => {
-        if (error.response && error.response.status === 401) {
-          // Handle unauthorized error (e.g., redirect to login page)
-          console.error('Unauthorized');
-        } else {
-          // Handle other errors
-          console.error(error);
-        }
+        console.error(error);
+        // Handle errors
+      })
+      .finally(() => {
+        setIsLoading(false); // Set loading state to false
       });
+  };
+
+  // Add this event listener to close the modal when clicking on the backdrop
+  const handleBackdropClick = (e) => {
+    // Check if the click target is the backdrop itself (not its children)
+    if (e.target === e.currentTarget) {
+      closeHintModal();
+    }
+  };
+
+  const submitScore = () => {
+    // Implement the score submission logic here
+    // You can use the score and any other relevant data to calculate the final score
+    // Send the score to the server or perform any other required actions
+    console.log('Score submitted:', score);
+  };
+
+  const startTimer = () => {
+    setIsTimerRunning(true);
+  };
+
+  const pauseTimer = () => {
+    setIsTimerRunning(false);
+  };
+
+  const resetTimer = () => {
+    setTimer(40 * 60); // Reset the timer to 40 minutes in seconds
+    setIsTimerRunning(false);
+  };
+
+  useEffect(() => {
+    let intervalId;
+    if (isTimerRunning) {
+      intervalId = setInterval(() => {
+        setTimer((prevTimer) => {
+          if (prevTimer === 0) {
+            clearInterval(intervalId);
+            submitScore(); // Call submitScore function when the timer reaches 0
+            return 0;
+          }
+          return prevTimer - 1;
+        });
+      }, 1000);
+    }
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [isTimerRunning]);
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    const formattedMinutes = minutes.toString().padStart(2, '0');
+    const formattedSeconds = remainingSeconds.toString().padStart(2, '0');
+    return `${formattedMinutes}:${formattedSeconds}`;
+  };
+
+  useEffect(() => {
+    setShowHintModal(true);
   }, []);
-
-  // Select a random motivational phrase from the array
-  const randomMotivationalPhrase = motivationalPhrases[Math.floor(Math.random() * motivationalPhrases.length)];
-
+  
   return (
-    <div className='w-screen h-screen bg-[#f5f5f5] text-black'>
-      <div className='xl:w-4/5 lg:w-4/5 md:w-3/4 sm:w-2/3 w-2/3 h-screen absolute -right-0 bg-[#f5f5f5]'>
-        <div className='heading'>
-          <h1 className='home mt-7 text-black text-3xl font-semibold'>Home</h1>
+    <div>
+      <div className='text-black'>
+        <div className='workingspacestudy'>
+          
         </div>
-        <div className='hello flex justify-center flex-col'>
-          <div className=' flex justify-center text-xl font-medium mb-3'>{formattedDate}</div>
-          <div className='wrapper'>
-            <div className='typing-demo mb-0 md:mb-6 flex justify-center xl:text-3xl lg:text-2xl font-medium'>
-              Hello<span className='text-[#C7002B]'>, Dear friend</span>.
-            </div>
-          </div>
-        </div>
-        <div className='motivation'>
-          <div className='rectposition flex justify-center'>
-            <div className='rectmot bg-white drop-shadow'>
-              <h2 className='mottext xl:text-2xl lg:text-2xl font-medium'>{randomMotivationalPhrase}</h2>
-              <Link to='/study/writing/task2'>
-                <button className='start rofl btn btn-primary text-white normal-case text-xl'>
-                  Start Now!
-                </button>
-              </Link>
-            </div>
-          </div>
-          <div className='calendar bg-white xl:h-36 lg:h-32 md:h-28 w-4/6 p-6 flex justify-center items-center mt-96 drop-shadow-md'>
-            <Calendar values={values} until={until} panelColors={panelColors} className='xl:h-32 md:h-24 lg:h-28' />
-          </div>
-        </div>
+        <Sidebar/>
       </div>
-      <Sidebar />
     </div>
   );
 };
