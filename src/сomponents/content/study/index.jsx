@@ -14,7 +14,7 @@ export const Study = () => {
           </div>
           <a href='/study/writing/task2' className='writingtask2btn flex justify-center items-center text-white hover:bg-red-600 transition-colors duration-500'>Start writing task 2</a>
         </div>
-        <Sidebar/>
+        <Sidebar className='fixed'/>
       </div>
     </div>
   );
