@@ -103,15 +103,15 @@ export const Auth = () => {
       
       <div className="main text-black w-screen h-screen  relative overflow-hidden flex justify-center bg-[#F5F5F5] p-4 md:p-24 top-0 left-0 right-0 ">
         <div className="edifaibg" ref={signInUpSectionRef}>
-        <div className="logo flex justify-center h-24 md:h-48 bg-slate-50 items-center rounded-lg drop-shadow-lg">
-          <h3 className="xl:text-5xl md:text-4xl sm:text-4xl text-black">Edif<span className="text-[#C7002B]">AI</span></h3>
+        <div className="logo flex justify-center xl:h-48 md:h-40 sm:h-32 h-32 bg-slate-50 items-center rounded-lg drop-shadow-lg">
+          <h3 className="xl:text-5xl md:text-4xl sm:text-4xl text-3xl text-black sm:p-4">Edif<span className="text-[#C7002B]">AI</span></h3>
         </div>
-        <div className="singup-signin btn-group flex justify-center mt-4 sm:mt-12 md:mt-6 ">
+        <div className="singup-signin btn-group flex justify-center  mt-4 sm:mt-10 md:mt-6 ">
           <input
             type="radio"
             name="options"
             data-title="Sign In"
-            className={`btn  text-black text-sm md:text-xs bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${!isSignUp ? 'checked' : ''}`}
+            className={`xl:w-1/3 md:w-1/2 sm:w-1/2 w-3/5 btn  text-black text-xs md:text-sm bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${!isSignUp ? 'checked' : ''}`}
             checked={!isSignUp}
             onChange={() => toggleSignUp()}
           />
@@ -119,7 +119,7 @@ export const Auth = () => {
             type="radio"
             name="options"
             data-title="Sign Up"
-            className={`btn    text-black text-sm md:text-xs bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${isSignUp ? 'checked' : ''}`}
+            className={`xl:w-1/3 md:w-1/2 sm:w-1/2 w-3/5 xl:h-12  flex justify-center items-center  btn    text-black text-xs md:text-sm bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${isSignUp ? 'checked' : ''}`}
             checked={isSignUp}
             onChange={() => toggleSignUp()}
           />

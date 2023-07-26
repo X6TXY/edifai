@@ -49,13 +49,24 @@
 }
 
 
-@media (max-width:500px){
+@media (max-width:580px){
+  .startbtn{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
   .mainsectionheading{
-    font-size: 30px;
-    display: block;
+    position: relative;
+    width: 90%;
+    font-size: 20px;
+    top:20px
+    
   }
   .secondarytext{
-    display: block;
+    
+    top:30px;
+    position: relative;
   }
   .firstimg{
     height: 0;
@@ -96,7 +107,7 @@
   }
 
   .sectionh {
-    font-size: 20px;
+    font-size: 40px;
   }
 
   .mainsection {
@@ -124,10 +135,7 @@
   }
 
   .firstimg {
-    display: block;
-    position: relative;
-    width: 0px;
-    padding: auto;
+    width: 300px;
   }
   .firstimg1{
       position: relative;
@@ -144,6 +152,11 @@
     align-items: center;
   }
 @media (max-width:1023px) {
+  .mainsectionheading {
+    width: auto;
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
   .backgroundlanding {
       height: 2400px;
       width: 100%;

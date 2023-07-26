@@ -49,12 +49,43 @@
   top:80px;
 }
 
+.calendarebg{
+  border-radius: 10px;
+  padding: 10px;
+  width: 70%;
+  position: absolute;
+  top:600px;
+}
+
+.calendare{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width:1025px) {
+  .calendarebg{
+    border-radius: 10px;
+    padding: 10px;
+    width: 60%;
+    position: absolute;
+    top:600px;
+  }
   
+  .calendare{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
 @media (max-width:767px){
   .motivaitontext{
     font-size: 20px;
     margin-left: 10px;
+  }
+  .calendar{
+    width: 80%;
   }
   .motivationbtn{
   

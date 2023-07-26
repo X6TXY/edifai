@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Calendar from 'react-github-contribution-calendar';
 import { Link } from 'react-router-dom';
 import { host_url } from '../../../urls.jsx';
 import { Sidebar } from '../../sidebar';
@@ -81,6 +82,11 @@ export const Home = () => {
                     </button>
                   </Link>
                 </div>
+              </div>
+            </div>
+            <div className='flex justify-center items-center'>
+              <div className='calendarebg bg-white drop-shadow-md'>
+                <Calendar values={values} until={until} panelColors={panelColors} className='calendare' />
               </div>
             </div>
           </div>

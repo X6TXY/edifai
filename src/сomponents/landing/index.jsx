@@ -27,7 +27,7 @@ export const Landing = () => {
               <p className='secondarytext text-[#7C7A7A] font-medium'>Prepare for the IELTS exam by practicing your skills with artificial intelligence</p>
               <div className='flex justify-center'>
                 <Link to='/login'>
-                  <button className='btn btn-primary text-white'>Start Now!</button>
+                  <button className='startbtn btn btn-primary text-white'>Start Now!</button>
                 </Link>
               </div>
             </div>
