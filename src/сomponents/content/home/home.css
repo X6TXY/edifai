@@ -88,20 +88,21 @@
     width: 80%;
   }
   .motivationbtn{
-  
     padding: 10px;
     margin-left: 15px;
   
   }
   .Homeheading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
     position: absolute;
     font-size: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30px;
-    left: 60px;
-    width: 90px;
+    left: 0;
+    color:#c7200b
   }
   .workingspacehome{
     width: 100%;
