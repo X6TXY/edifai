@@ -114,22 +114,43 @@ export const Test = () => {
   
   return (
     <div>
-      <div className='text-black'>
-        <div className='workingspacestudy'>
+      <div className='text-black '>
+        <div className='workingspacestudy '>
+  
           <div className='headingstudy font-bold'>
             Writing Task 2 
           </div>
-          <div></div>
-          <div className='submitionbtn '>
-            <button
-              className='btn btn-primary  border-none text-white hover:bg-red-600 transition-colors duration-500'
-              onClick={handleButtonClick}
-            >
-              {isLoading ? 'Loading...' : 'Submit'}
-            </button>
+          <div className='flex justify-center'>
+            <div className='workingspacewriting'>
+              <div className='workingsectionwriting'>
+              <div className='textareawritingsection'>
+                <textarea
+                  className='textareawriting resize-none border border-gray-300 drop-shadow-md rounded p-3 '
+                  placeholder='Write your essay'
+                  value={inputText}
+                  onChange={handleInputChange}
+                ></textarea>
+              </div>
+              </div>
+              <div className='responsearea '>
+                <div className='responseareabg border borde-gray-300 bg-white drop-shadow-md rounded'>
+                  <p className='bg-white  font-semibold p-3 '>Response:</p>
+                </div>
+              </div>
+
+            </div>
           </div>
+          <div className='button-container'>
+              <button
+                className='btn btn-primary  border-none text-white hover:bg-red-600 transition-colors duration-500'
+                onClick={handleButtonClick}
+              >
+                {isLoading ? 'Loading...' : 'Submit'}
+              </button>
+            </div>
         </div>
-        <Sidebar className='fixed'/>
+          
+        <Sidebar className='' />
       </div>
     </div>
   );
