@@ -49,28 +49,37 @@
     
   }
 
-  .warningtext{
-    font-size: 20px;
-  }
 
-  .texthint{
-    font-size: 14px;
-  }
-  @media (min-width:500px) {
+@media (min-width:500px) {
     .texthint{
         font-size: 14px;
       }
       .warningtext{
         font-size: 20px;
       }
+      .workingspacestudy{
+        width: 100%;
+        height: 750px;
+        background: #f5f5f5;
+        position: absolute;
+        right:0px;
+      }
   }
-  @media (min-width:1023px) {
+  @media (max-width:1024px) {
     .texthint{
-        font-size: 40px;
+        font-size: 10px;
       }
       .warningtext{
-        font-size: 100px;
+        font-size: 20px;
       }
+      .workingspacestudy{
+        width: 80%;
+        height: 100%;
+        background: #f5f5f5;
+        position: absolute;
+        right:0px;
+      }
+      
   }
   @media (min-width:640px) {
     .texthint{
@@ -79,6 +88,13 @@
     .warningtext{
         font-size: 20px;
     }
+    .workingspacestudy1{
+        width: 100%;
+        height: 750px;
+        background: #f5f5f5;
+        position: absolute;
+        right:0px;
+      }
   }
 
   @media (max-width:425px) {
@@ -88,4 +104,11 @@
     .warningtext{
         font-size: 18px;
     }
+    .workingspacestudy1{
+        width: 100%;
+        height: 750px;
+        background: #f5f5f5;
+        position: absolute;
+        right:0px;
+      }
   }

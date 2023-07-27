@@ -229,6 +229,57 @@ export const Test = () => {
         </div>
           
         <Sidebar className='' />
+        {showHintModal && (
+        <div>
+          <div onClick={handleBackdropClick} className="h-screen w-screen backdrop-filter backdrop-blur-sm flex justify-center items-center fixed inset-0 ">
+            <div className="modal-container p-4 rounded ">
+              <div className="lg:ml-72 flex justify-center   items-center">
+                <div className="modal-container  bg-gray-500 bg-opacity-75  p-4 rounded lg:w-5/6 sm:3/4 ">
+                  <p className='text-[#c7200b] font-medium warningtext lg:text-2xl w-full rounded bg-opacity-90 bg-gray-400 p-5 flex justify-center'>Warning: AI assessment may not be fully accurate. Remember, artificial intelligence evaluates your essay, but human evaluation remains invaluable.</p>
+                  <p className="font-semibold lg:text-xl sm:text-xl text-lg lg:mb-4 mb-3 text-white mt-3">Hints for IELTS Task 2:</p>
+                  <p className=" texthint lg:text-lg text-white">
+                    - You have 40 minutes to write the essay in the IELTS Task 2.
+                  </p>
+                  <p className="texthint lg:text-lg  text-white">
+                    - The time limit is set to assess your ability to express your ideas
+                    effectively within a reasonable timeframe.
+                  </p>
+                  <p className="texthint lg:text-lg text-white">
+                    - Use the time wisely to plan, write, and revise your essay
+                    adequately.
+                  </p>
+                  <p className="texthint lg:text-lg text-white">- Make sure to address the given topic.</p>
+                  <p className="texthint lg:text-lg text-white">
+                    - You will be evaluated based on your response's coherence,
+                    cohesion, vocabulary, grammar, and overall argument quality.
+                  </p>
+                  <p className="texthint lg:text-lg text-white">
+                    - Remember to have an introduction, body paragraphs, and a
+                    conclusion in your essay.
+                  </p>
+                  <p className="texthint lg:text-lg text-white">- Use formal language and avoid slang.</p>
+                  <p className="texthint lg:text-lg text-white">
+                    - Focus on presenting a well-structured and organized essay.
+                  </p>
+                  <p className="texthint lg:text-lg text-white">
+                    - You can choose any topic; just write "Topic:" and then provide
+                    your essay on that topic.
+                  </p>
+                
+                  <div className="flex justify-center">
+                    <button
+                      onClick={closeHintModal}
+                      className="btn btn-primary mt-4 text-white"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
     </div>
   );
