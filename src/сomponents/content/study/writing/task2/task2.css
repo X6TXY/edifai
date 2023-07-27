@@ -107,6 +107,12 @@
     justify-content: center;
   }
 }
+.button-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
 @media (max-width: 425px) {
   .texthint {

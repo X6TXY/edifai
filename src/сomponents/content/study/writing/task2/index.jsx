@@ -6,19 +6,25 @@ import "./task2.css";
 
 export const Task2 = () => {
   const [inputText, setInputText] = useState("");
-  const [selectedTopic, setSelectedTopic] = useState("");
+
   const [responseText, setResponseText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [timer, setTimer] = useState(40 * 60); // 40 minutes in seconds
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [score, setScore] = useState(0); // Initial score value
   const [showHintModal, setShowHintModal] = useState(false);
-  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showSecondModal, setShowSecondModal] = useState(false);
 
   const closeHintModal = () => {
+    localStorage.setItem("hintModalClosed", "true");
     setShowHintModal(false);
+    setShowSecondModal(true);
   };
 
+  const closeSecondModal = () => {
+    localStorage.setItem("secondModalClosed", "true");
+    setShowSecondModal(false);
+  };
   const handleInputChange = (e) => {
     setInputText(e.target.value);
   };
@@ -110,19 +116,29 @@ export const Task2 = () => {
   };
 
   useEffect(() => {
-    setShowHintModal(true);
-  }, []);
+    const isHintModalClosed = localStorage.getItem("hintModalClosed");
+    const isSecondModalClosed = localStorage.getItem("secondModalClosed");
 
+    if (isHintModalClosed !== "true") {
+      setShowHintModal(true);
+    }
+
+    if (isSecondModalClosed !== "true") {
+      setShowSecondModal(true);
+    }
+  }, []);
   return (
     <div>
       <div className="h-screen w-screen bg-[#f5f5f5]">
         <div className=" workingspacestudy1 lg:w-4/5 md:w-4/5 md:h-screen lg:h-screen absolute right-0 bg-[#f5f5f5] text-black">
-          <button
-            className=" button-container btn btn-primary  border-none text-white hover:bg-red-600 transition-colors duration-500"
-            onClick={handleButtonClick}
-          >
-            {isLoading ? "Loading..." : "Submit"}
-          </button>
+          <div className="button-container">
+            <button
+              className="btn btn-primary border-none text-white hover:bg-red-600 transition-colors duration-500"
+              onClick={handleButtonClick}
+            >
+              {isLoading ? "Loading..." : "Submit"}
+            </button>
+          </div>
 
           <div className="headingstudy lg:mt-7 sm:mt-3  lg:text-3xl sm:text-2xl font-semibold">
             Writing Task 2
@@ -265,54 +281,77 @@ export const Task2 = () => {
             >
               <div className="modal-container p-4 rounded ">
                 <div className="lg:ml-72 flex justify-center   items-center">
-                  <div className="modal-container  bg-gray-500 bg-opacity-75  p-4 rounded lg:w-5/6 sm:3/4 ">
-                    <p className="text-[#c7200b] font-medium warningtext lg:text-2xl w-full rounded bg-opacity-90 bg-gray-400 p-5 flex justify-center">
+                  <div className="modal-container  bg-slate-50 border-red-200 border bg-opacity-75  p-4 rounded lg:w-5/6 sm:3/4 ">
+                    <p className="text-[#c7200b] font-medium warningtext lg:text-2xl w-full rounded bg-opacity-90 bg-slate-100 border p-5 flex justify-center">
                       Warning: AI assessment may not be fully accurate.
                       Remember, artificial intelligence evaluates your essay,
                       but human evaluation remains invaluable.
                     </p>
-                    <p className="font-semibold lg:text-xl sm:text-xl text-lg lg:mb-4 mb-3 text-white mt-3">
+                    <div className="flex justify-center">
+                      <button
+                        onClick={closeHintModal}
+                        className="btn btn-primary mt-4 text-white"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        {showSecondModal && (
+          <div>
+            <div
+              onClick={handleBackdropClick}
+              className=" h-screen w-screen backdrop-filter backdrop-blur-sm flex justify-center items-center fixed inset-0 "
+            >
+              <div className="modal-container p-4 rounded ">
+                <div className="lg:ml-72 flex justify-center   items-center">
+                  <div className="modal-container  bg-white border-red-200 border drop-shadow-xl bg-opacity-75  p-4 rounded lg:w-5/6 sm:3/4 ">
+                    <p className="flex justify-center font-semibold lg:text-xl sm:text-xl text-lg lg:mb-4 mb-3 text-[#c7200b] mt-3">
                       Hints for IELTS Task 2:
                     </p>
-                    <p className=" texthint lg:text-lg text-white">
+                    <p className=" texthint lg:text-lg text-black ">
                       - You have 40 minutes to write the essay in the IELTS Task
                       2.
                     </p>
-                    <p className="texthint lg:text-lg  text-white">
+                    <p className="texthint lg:text-lg  text-black">
                       - The time limit is set to assess your ability to express
                       your ideas effectively within a reasonable timeframe.
                     </p>
-                    <p className="texthint lg:text-lg text-white">
+                    <p className="texthint lg:text-lg text-black">
                       - Use the time wisely to plan, write, and revise your
                       essay adequately.
                     </p>
-                    <p className="texthint lg:text-lg text-white">
+                    <p className="texthint lg:text-lg text-black">
                       - Make sure to address the given topic.
                     </p>
-                    <p className="texthint lg:text-lg text-white">
+                    <p className="texthint lg:text-lg text-black">
                       - You will be evaluated based on your response's
                       coherence, cohesion, vocabulary, grammar, and overall
                       argument quality.
                     </p>
-                    <p className="texthint lg:text-lg text-white">
+                    <p className="texthint lg:text-lg text-black">
                       - Remember to have an introduction, body paragraphs, and a
                       conclusion in your essay.
                     </p>
-                    <p className="texthint lg:text-lg text-white">
+                    <p className="texthint lg:text-lg text-black">
                       - Use formal language and avoid slang.
                     </p>
-                    <p className="texthint lg:text-lg text-white">
+                    <p className="texthint lg:text-lg text-black">
                       - Focus on presenting a well-structured and organized
                       essay.
                     </p>
-                    <p className="texthint lg:text-lg text-white">
+                    <p className="texthint lg:text-lg text-black">
                       - You can choose any topic; just write "Topic:" and then
                       provide your essay on that topic.
                     </p>
 
                     <div className="flex justify-center">
                       <button
-                        onClick={closeHintModal}
+                        onClick={closeSecondModal}
                         className="btn btn-primary mt-4 text-white"
                       >
                         Close
