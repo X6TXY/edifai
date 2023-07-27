@@ -3,15 +3,7 @@
     top:15%;
     min-height: 60%;
     margin-top: 3%;
-
 }
-
-.choose1{
-
-    padding: 1%;
-}
-
-
 
 .textareatask2r{
     position: absolute;
@@ -33,7 +25,6 @@
 .score-section{
     position: absolute;
     top:80%;
-    right:20%;
 }
 
 
@@ -49,7 +40,15 @@
     
   }
 
-
+@media (max-width:500px){
+    .textareatask2{
+        position: absolute;
+        top:15%;
+        min-height: 60%;
+        margin-top: 3%;
+        right: 50%;
+    }
+}
 @media (min-width:500px) {
     .texthint{
         font-size: 14px;
@@ -64,6 +63,18 @@
         position: absolute;
         right:0px;
       }
+      .score-section{
+        position: absolute;
+        top:80%;
+        right:20%;
+    }
+    .textareatask2{
+        position: absolute;
+        top:15%;
+        min-height: 60%;
+        margin-top: 3%;
+        right: 50%;
+    }
   }
   @media (max-width:768px) {
     .texthint{
@@ -72,6 +83,11 @@
       .warningtext{
         font-size: 20px;
       }
+      .score-section{
+        position: absolute;
+        top:80%;
+        right:20%;
+    }
       
       
   }
@@ -89,6 +105,12 @@
         position: absolute;
         right:0px;
       }
+      .score-section{
+        position: absolute;
+        top:80%;
+        display: flex;
+        justify-content: center;
+    }
   }
 
   @media (max-width:425px) {
@@ -105,6 +127,13 @@
         position: absolute;
         right:0px;
       }
+      .score-section{
+        position: absolute;
+        top:80%;
+        display: flex;
+        justify-content: center;
+        right: 10%;
+    }
   }
 
   @media (max-width: 768px) and (min-height: 750px){
