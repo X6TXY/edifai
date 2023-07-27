@@ -29,7 +29,7 @@ export const History = () => {
 
   const windowWidth = useWindowWidth();
   let responsesPerPage;
-  if (windowWidth > 768) {
+  if (windowWidth > 769) {
     responsesPerPage = 12;
   } else if (windowWidth <= 639) {
     responsesPerPage = 3;
@@ -86,7 +86,7 @@ export const History = () => {
         <div className="flex justify-center text-5xl mt-3 font-bold text-[#c7200b]">
           History
         </div>
-        <div className="absolute md:mt-32 lg:mt-20 xl:mt-24 mt-16 parent mx-6 flex justify-center items-center">
+        <div className="absolute md:mt-32 lg:mt-20 xl:mt-24 mt-24 parent mx-6 flex justify-center items-center">
           <div className="grid grid-cols-1  justify-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
             {currentResponses.map((response, index) => (
               <div
@@ -96,27 +96,25 @@ export const History = () => {
                 }`}
                 style={{ animationDelay: `${index * 150}ms` }} // Adjust animation delay for each card
               >
-                <p className="">
-                  <span className="font-bold text-[#c7200b] lg:text-lg sm:text-base">
-                    Date:{" "}
-                  </span>{" "}
+                <p className="text-xs lg:text-md sm:text-base">
+                  <span className="font-bold text-[#c7200b] ">Date: </span>{" "}
                   {response.date}
                 </p>
-                <p className="">
+                <p className="text-xs lg:text-md xl:text-md sm:text-base">
                   <span className="font-bold text-[#c7200b]">Essay:</span>{" "}
                   {response.request.split(" ").slice(0, 5).join(" ")}...
                 </p>
-                <p className="">
+                <p className="text-xs lg:text-md sm:text-base">
                   <span className="font-bold text-[#c7200b]">Feedback:</span>{" "}
                   {response.response.split(" ").slice(0, 5).join(" ")}...
                 </p>
-                <p className="">
+                <p className="text-xs lg:text-md sm:text-base lg:w-60 md:w-32 w-36 ">
                   <span className="font-bold text-[#c7200b]">Score:</span>{" "}
-                  {response.score}
+                  {response.score.split(" ").slice(0, 4).join(" ")}
                 </p>
-                <div className="w-40 mx-auto">
+                <div className="lg:w-40  md:w-32 w-32 mx-auto">
                   <button
-                    className="btn btn-primary mt-3 text-white mx-auto"
+                    className="btn text-xs btn-primary mt-3 text-white mx-auto"
                     onClick={() => openModal(response)}
                   >
                     More information
@@ -126,21 +124,21 @@ export const History = () => {
             ))}
           </div>
         </div>
-        <div className="flex justify-center items-end mb-3 md:mb-12">
+        <div className="flex justify-center items-end  xl:mb-7 lg:mb-7 md:mb-12">
           <button
             className="page-nav-button"
             disabled={currentPage === 1}
             onClick={() => paginate(currentPage - 1)}
           >
-            <LfArrow className="page-nav-button"></LfArrow>
+            <LfArrow className="page-nav-button "></LfArrow>
           </button>
-          <span className="mx-5">{currentPage}</span>
+          <span className="mx-5 ">{currentPage}</span>
           <button
             className="page-nav-button"
             disabled={indexOfLastResponse >= responses.length}
             onClick={() => paginate(currentPage + 1)}
           >
-            <RtArrow className="page-nav-button"></RtArrow>
+            <RtArrow className="page-nav-button  "></RtArrow>
           </button>
         </div>
       </div>
@@ -151,20 +149,20 @@ export const History = () => {
           }`}
           style={{ zIndex: "100" }}
         >
-          <div className="modal-card bg-white w-4/5  rounded-md p-4 transform transition-all ease-in-out">
+          <div className="modal-card bg-white w-4/5   rounded-md p-4 transform transition-all ease-in-out">
             <p className="">
               <span className="font-bold text-[#c7200b]">Date: </span>
               {selectedResponse.date}
             </p>
-            <p className="mt-2">
+            <p className="mt-2 text-xs lg:text-md sm:text-base">
               <span className="font-bold text-[#c7200b]">Essay:</span>{" "}
               {selectedResponse.request}
             </p>
-            <p className="mt-2">
+            <p className="mt-2 text-xs lg:text-md sm:text-base">
               <span className="font-bold text-[#c7200b]">Feedback:</span>{" "}
               {selectedResponse.response}
             </p>
-            <p className="mt-2">
+            <p className="mt-2 text-xs lg:text-md sm:text-base">
               <span className="font-bold text-[#c7200b]">Score:</span>{" "}
               {selectedResponse.score}
             </p>
