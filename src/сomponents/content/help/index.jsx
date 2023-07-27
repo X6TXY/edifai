@@ -9,20 +9,8 @@ export const Help = () => {
   const [inputValue, setInputValue] = useState("");
   const [answer, setAnswer] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [dots, setDots] = useState("");
+
   const [typedAnswer, setTypedAnswer] = useState("");
-
-  useEffect(() => {
-    // Update dots animation
-    const intervalId = setInterval(() => {
-      setDots((prevDots) => (prevDots === "..." ? "" : prevDots + "."));
-    }, 500);
-
-    return () => {
-      // Clean up interval
-      clearInterval(intervalId);
-    };
-  }, []);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -93,8 +81,8 @@ export const Help = () => {
           </div>
           <div className="flex justify-center items-center ">
             {isLoading ? (
-              <div className="answer bg-white border drop-shadow-md">
-                <div role="status" class="space-y-2.5 animate-pulse max-w-lg">
+              <div className="answer bg-white border drop-shadow-md w-3/4">
+                <div role="status" class="space-y-2.5 animate-pulse max-w-lg flex justify-center">
                   <div class="flex items-center w-full space-x-2">
                     <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-32"></div>
                     <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
@@ -129,7 +117,7 @@ export const Help = () => {
                 </div>
               </div>
             ) : typedAnswer ? (
-              <div className="answer w-96 bg-white border drop-shadow-md">
+              <div className="answer w-3/4 bg-white border drop-shadow-md">
                 {typedAnswer}
               </div>
             ) : null}

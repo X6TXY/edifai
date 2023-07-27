@@ -38,7 +38,7 @@ export const Storybot = () => {
 
   return (
     <div>
-      <div className="storybotworkingspace ">
+      <div className="storybotworkingspace  ">
         <div className="storybotheading font-bold text-[#c7200b]">
           Enjoy Storybot
         </div>
@@ -69,7 +69,7 @@ export const Storybot = () => {
         </div>
         <div className="flex justify-center items-center">
           {isLoading ? (
-            <div role="status" className="space-y-2.5 animate-pulse w-3/5">
+            <div role="status" className="space-y-2.5 animate-pulse w-4/5">
               <div className="flex items-center space-x-2 mt-10 bg-white h-10 p-4 rounded drop-shadow-md">
                 <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32"></div>
                 <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
