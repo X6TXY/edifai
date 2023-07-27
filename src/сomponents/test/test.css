@@ -195,7 +195,7 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 50px; /* Adjust the distance from the bottom as needed */
+    bottom: 30px; /* Adjust the distance from the bottom as needed */
     left: 50%;
     transform: translateX(-50%);
   }

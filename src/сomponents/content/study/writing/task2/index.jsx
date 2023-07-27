@@ -116,7 +116,7 @@ export const Task2 = () => {
     <div>
       
       <div className='h-screen w-screen bg-[#f5f5f5]'>
-        <div className=' workingspacestudy1 lg:w-4/5 lg:h-screen absolute right-0 bg-[#f5f5f5] text-black'>  
+        <div className=' workingspacestudy1 lg:w-4/5 md:w-4/5 md:h-screen lg:h-screen absolute right-0 bg-[#f5f5f5] text-black'>  
           <button
             className=' button-container btn btn-primary  border-none text-white hover:bg-red-600 transition-colors duration-500'
             onClick={handleButtonClick}
@@ -238,7 +238,7 @@ export const Task2 = () => {
         <Sidebar  />
         {showHintModal && (
         <div>
-          <div onClick={handleBackdropClick} className="h-screen w-screen backdrop-filter backdrop-blur-sm flex justify-center items-center fixed inset-0 ">
+          <div onClick={handleBackdropClick} className=" h-screen w-screen backdrop-filter backdrop-blur-sm flex justify-center items-center fixed inset-0 ">
             <div className="modal-container p-4 rounded ">
               <div className="lg:ml-72 flex justify-center   items-center">
                 <div className="modal-container  bg-gray-500 bg-opacity-75  p-4 rounded lg:w-5/6 sm:3/4 ">

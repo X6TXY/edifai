@@ -203,3 +203,13 @@
         margin-right: 10px;
     }
 }
+
+@media (min-height:750px){
+    .sidebarbg{
+        position: absolute;
+        background-color: #edeaea;
+        height: 100%;
+        transition: width 0.3s ease-in-out;
+        
+    }
+}
