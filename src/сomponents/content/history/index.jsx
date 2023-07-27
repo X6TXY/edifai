@@ -6,13 +6,36 @@ import { host_url } from "../../../urls.jsx";
 import { Sidebar } from "../../sidebar";
 import "./history.css";
 
+function useWindowWidth() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return windowWidth;
+}
+
 export const History = () => {
   const [responses, setResponses] = useState([]);
   const [selectedResponse, setSelectedResponse] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const responsesPerPage = 9;
+
   const [responseCardVisible, setResponseCardVisible] = useState(false);
 
+  const windowWidth = useWindowWidth();
+  let responsesPerPage;
+  if (windowWidth > 768) {
+    responsesPerPage = 12;
+  } else if (windowWidth <= 639) {
+    responsesPerPage = 3;
+  } else {
+    responsesPerPage = 6;
+  }
   useEffect(() => {
     // Fetch responses data from the backend API
     const user_token = localStorage.getItem("token");
@@ -58,65 +81,66 @@ export const History = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="w-screen h-screen  bg-[#f5f5f5] text-black">
-      <div className="grid grid-cols-1  md:w-4/5 w-screen h-screen absolute -right-0 bg-[#f5f5f5]">
-        <div className="flex justify-center text-5xl mt-5 font-bold text-[#c7200b]">
+    <div className="w-screen h-screen  bg-[#f5f5f5] text-black  ">
+      <div className="grid grid-cols-1 backgroundhistory md:w-4/5 sm:w-full w-full h-screen absolute -right-0 bg-[#f5f5f5]">
+        <div className="flex justify-center text-5xl mt-3 font-bold text-[#c7200b]">
           History
         </div>
-        <div className="absolute lg:mt-20 xl:mt-24 parent mx-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {currentResponses.map((response, index) => (
-            <div
-              key={response.id}
-              className={`response-card bg-white shadow-md rounded-md p-4 max-h-60 lg:max-h-56 grid grid-col-0.5 ${
-                responseCardVisible ? "animate-fade-in" : ""
-              }`}
-              style={{ animationDelay: `${index * 150}ms` }} // Adjust animation delay for each card
-            >
-              <p className="">
-                <span className="font-bold text-[#c7200b]">Date: </span>{" "}
-                {response.date}
-              </p>
-              <p className="">
-                <span className="font-bold text-[#c7200b]">Essay:</span>{" "}
-                {response.request.split(" ").slice(0, 5).join(" ")}...
-              </p>
-              <p className="">
-                <span className="font-bold text-[#c7200b]">Feedback:</span>{" "}
-                {response.response.split(" ").slice(0, 5).join(" ")}...
-              </p>
-              <p className="">
-                <span className="font-bold text-[#c7200b]">Score:</span>{" "}
-                {response.score}
-              </p>
-              <div className="w-40 mx-auto">
-                <button
-                  className="btn btn-primary mt-3 text-white mx-auto"
-                  onClick={() => openModal(response)}
-                >
-                  More information
-                </button>
+        <div className="absolute md:mt-32 lg:mt-20 xl:mt-24 mt-16 parent mx-6 flex justify-center items-center">
+          <div className="grid grid-cols-1  justify-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+            {currentResponses.map((response, index) => (
+              <div
+                key={response.id}
+                className={`response-card bg-white shadow-md rounded-md p-4 grid grid-col-0.5 ${
+                  responseCardVisible ? "animate-fade-in" : ""
+                }`}
+                style={{ animationDelay: `${index * 150}ms` }} // Adjust animation delay for each card
+              >
+                <p className="">
+                  <span className="font-bold text-[#c7200b] lg:text-lg sm:text-base">
+                    Date:{" "}
+                  </span>{" "}
+                  {response.date}
+                </p>
+                <p className="">
+                  <span className="font-bold text-[#c7200b]">Essay:</span>{" "}
+                  {response.request.split(" ").slice(0, 5).join(" ")}...
+                </p>
+                <p className="">
+                  <span className="font-bold text-[#c7200b]">Feedback:</span>{" "}
+                  {response.response.split(" ").slice(0, 5).join(" ")}...
+                </p>
+                <p className="">
+                  <span className="font-bold text-[#c7200b]">Score:</span>{" "}
+                  {response.score}
+                </p>
+                <div className="w-40 mx-auto">
+                  <button
+                    className="btn btn-primary mt-3 text-white mx-auto"
+                    onClick={() => openModal(response)}
+                  >
+                    More information
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-
-        <div className="grid grid-cols-3 w-40 absolute lg:bottom-3 xl:bottom-8 left-1/3 lg:ml-24 xl:ml-28 h-12   ">
+        <div className="flex justify-center items-end mb-3 md:mb-12">
           <button
-            className="btn btn-primary xl:h-12 lg:10 rounded-3xl"
+            className="page-nav-button"
             disabled={currentPage === 1}
             onClick={() => paginate(currentPage - 1)}
           >
-            <LfArrow></LfArrow>
+            <LfArrow className="page-nav-button"></LfArrow>
           </button>
-          <span className="h-12 flex justify-center items-center rounded-3xl p-4 bg-gray-200 text-xl ">
-            {currentPage}
-          </span>
+          <span className="mx-5">{currentPage}</span>
           <button
-            className="h-12 btn btn-primary rounded-3xl"
+            className="page-nav-button"
             disabled={indexOfLastResponse >= responses.length}
             onClick={() => paginate(currentPage + 1)}
           >
-            <RtArrow></RtArrow>
+            <RtArrow className="page-nav-button"></RtArrow>
           </button>
         </div>
       </div>
@@ -127,7 +151,7 @@ export const History = () => {
           }`}
           style={{ zIndex: "100" }}
         >
-          <div className="modal-card bg-white w-4/5 rounded-md p-4 transform transition-all ease-in-out">
+          <div className="modal-card bg-white w-4/5  rounded-md p-4 transform transition-all ease-in-out">
             <p className="">
               <span className="font-bold text-[#c7200b]">Date: </span>
               {selectedResponse.date}
