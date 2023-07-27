@@ -11,11 +11,7 @@
     padding: 1%;
 }
 
-.buttonsubmit1{
-    position: absolute;
-    top:90%;
-    left: 45%;
-}
+
 
 .textareatask2r{
     position: absolute;
@@ -53,4 +49,43 @@
     
   }
 
-  
+  .warningtext{
+    font-size: 20px;
+  }
+
+  .texthint{
+    font-size: 14px;
+  }
+  @media (min-width:500px) {
+    .texthint{
+        font-size: 14px;
+      }
+      .warningtext{
+        font-size: 20px;
+      }
+  }
+  @media (min-width:1023px) {
+    .texthint{
+        font-size: 40px;
+      }
+      .warningtext{
+        font-size: 100px;
+      }
+  }
+  @media (min-width:640px) {
+    .texthint{
+        font-size: 12px;
+      }
+    .warningtext{
+        font-size: 20px;
+    }
+  }
+
+  @media (max-width:425px) {
+    .texthint{
+        font-size: 11px;
+      }
+    .warningtext{
+        font-size: 18px;
+    }
+  }

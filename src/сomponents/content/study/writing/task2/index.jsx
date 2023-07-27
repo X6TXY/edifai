@@ -116,15 +116,15 @@ export const Task2 = () => {
     <div>
       
       <div className='h-screen w-screen bg-[#f5f5f5]'>
-        <div className='w-4/5 h-screen absolute right-0 bg-[#f5f5f5] text-black'>  
+        <div className='md:w-4/5 w-screen h-screen absolute right-0 bg-[#f5f5f5] text-black'>  
           <button
-            className='btn btn-primary  border-none text-white hover:bg-red-600 transition-colors duration-500'
+            className=' button-container btn btn-primary  border-none text-white hover:bg-red-600 transition-colors duration-500'
             onClick={handleButtonClick}
           >
             {isLoading ? 'Loading...' : 'Submit'}
           </button>
           
-          <div className='headingstudy mt-7 text-black text-3xl font-semibold'>
+          <div className='headingstudy lg:mt-7 sm:mt-3 text-black lg:text-3xl sm:text-2xl font-semibold'>
             Writing Task 2
           </div>
           
@@ -235,57 +235,56 @@ export const Task2 = () => {
           </div>
           </div>
         </div>
-        <Sidebar className='' />
+        <Sidebar  />
         {showHintModal && (
         <div>
-          
-        <div onClick={handleBackdropClick} className="h-screen w-screen backdrop-filter backdrop-blur-sm flex justify-center items-center fixed inset-0 ">
-          <div className="modal-container p-4 rounded ">
-            <div className="lg:ml-64 xl:ml-72 flex justify-center   items-center">
-              <div className="modal-container  bg-gray-500 bg-opacity-75  p-4 rounded w-5/6 ">
-                <p className='text-[#c7200b] font-medium text-2xl w-full rounded bg-opacity-90 bg-gray-400 p-5 flex justify-center'>Warning: AI assessment may not be fully accurate. Remember, artificial intelligence evaluates your essay, but human evaluation remains invaluable.</p>
-                <p className="font-semibold text-xl mb-4 text-white mt-3">Hints for IELTS Task 2:</p>
-                <p className="text-md text-white">
-                  - You have 40 minutes to write the essay in the IELTS Task 2.
-                </p>
-                <p className="text-md text-white">
-                  - The time limit is set to assess your ability to express your ideas
-                  effectively within a reasonable timeframe.
-                </p>
-                <p className="text-md text-white">
-                  - Use the time wisely to plan, write, and revise your essay
-                  adequately.
-                </p>
-                <p className="text-md text-white">- Make sure to address the given topic.</p>
-                <p className="text-md text-white">
-                  - You will be evaluated based on your response's coherence,
-                  cohesion, vocabulary, grammar, and overall argument quality.
-                </p>
-                <p className="text-md text-white">
-                  - Remember to have an introduction, body paragraphs, and a
-                  conclusion in your essay.
-                </p>
-                <p className="text-md text-white">- Use formal language and avoid slang.</p>
-                <p className="text-md text-white">
-                  - Focus on presenting a well-structured and organized essay.
-                </p>
-                <p className="text-md text-white">
-                  - You can choose any topic; just write "Topic:" and then provide
-                  your essay on that topic.
-                </p>
+          <div onClick={handleBackdropClick} className="h-screen w-screen backdrop-filter backdrop-blur-sm flex justify-center items-center fixed inset-0 ">
+            <div className="modal-container p-4 rounded ">
+              <div className="lg:ml-72 flex justify-center   items-center">
+                <div className="modal-container  bg-gray-500 bg-opacity-75  p-4 rounded lg:w-5/6 sm:3/4 ">
+                  <p className='text-[#c7200b] font-medium warningtext w-full rounded bg-opacity-90 bg-gray-400 p-5 flex justify-center'>Warning: AI assessment may not be fully accurate. Remember, artificial intelligence evaluates your essay, but human evaluation remains invaluable.</p>
+                  <p className="font-semibold lg:text-xl sm:text-xl text-md lg:mb-4 mb-3 text-white mt-3">Hints for IELTS Task 2:</p>
+                  <p className=" texthint text-white">
+                    - You have 40 minutes to write the essay in the IELTS Task 2.
+                  </p>
+                  <p className="texthint lg:text-md text-xs text-white">
+                    - The time limit is set to assess your ability to express your ideas
+                    effectively within a reasonable timeframe.
+                  </p>
+                  <p className="texthint text-white">
+                    - Use the time wisely to plan, write, and revise your essay
+                    adequately.
+                  </p>
+                  <p className="texthint text-white">- Make sure to address the given topic.</p>
+                  <p className="texthint text-white">
+                    - You will be evaluated based on your response's coherence,
+                    cohesion, vocabulary, grammar, and overall argument quality.
+                  </p>
+                  <p className="texthint text-white">
+                    - Remember to have an introduction, body paragraphs, and a
+                    conclusion in your essay.
+                  </p>
+                  <p className="texthint text-white">- Use formal language and avoid slang.</p>
+                  <p className="texthint text-white">
+                    - Focus on presenting a well-structured and organized essay.
+                  </p>
+                  <p className="texthint text-white">
+                    - You can choose any topic; just write "Topic:" and then provide
+                    your essay on that topic.
+                  </p>
                 
-                <div className="flex justify-center">
-                  <button
-                    onClick={closeHintModal}
-                    className="btn btn-primary mt-4 text-white"
-                  >
-                    Close
-                  </button>
+                  <div className="flex justify-center">
+                    <button
+                      onClick={closeHintModal}
+                      className="btn btn-primary mt-4 text-white"
+                    >
+                      Close
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
       )}
       </div>

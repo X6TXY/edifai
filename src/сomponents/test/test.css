@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 70px; /* Adjust the distance from the bottom as needed */
+  bottom: 50px; /* Adjust the distance from the bottom as needed */
   left: 50%;
   transform: translateX(-50%);
 }
@@ -171,7 +171,7 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 70px; /* Adjust the distance from the bottom as needed */
+    bottom: 50px; /* Adjust the distance from the bottom as needed */
     left: 50%;
     transform: translateX(-50%);
   }
@@ -195,7 +195,7 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 70px; /* Adjust the distance from the bottom as needed */
+    bottom: 50px; /* Adjust the distance from the bottom as needed */
     left: 50%;
     transform: translateX(-50%);
   }
@@ -242,8 +242,8 @@
   .button-container {
     display: flex;
     justify-content: center;
-    position: fixed;
-    bottom: 70px; /* Adjust the distance from the bottom as needed */
+    position: absolute;
+    bottom: 50px; /* Adjust the distance from the bottom as needed */
     left: 50%;
     transform: translateX(-50%);
   }
@@ -291,7 +291,7 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 70px; /* Adjust the distance from the bottom as needed */
+    bottom: 50px; /* Adjust the distance from the bottom as needed */
     left: 50%;
     transform: translateX(-50%);
   }
@@ -318,3 +318,5 @@
     right: 0px;
   }
 }
+
+
