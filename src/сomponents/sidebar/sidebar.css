@@ -1,17 +1,103 @@
-.sidebarbg{
-    position: absolute;
-    background-color: #edeaea;
-    width: 100%;
-    height: 750px;
-    transition: width 0.3s ease-in-out;
-    
+.sidebarbg {
+  position: absolute;
+  background-color: #edeaea;
+  width: 100%;
+  height: 750px;
+  transition: width 0.3s ease-in-out;
 }
 
 .sidebar-open {
-    width: 0;
+  width: 0;
 }
 
-.line{
+.line {
+  display: flex;
+  justify-content: center;
+  color: gray;
+  height: 1.5px;
+  width: 200px;
+  border-radius: 20px;
+  background-color: gray;
+}
+.sidebarheading {
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+  font-size: 30px;
+  padding: 3%;
+}
+.sidebarcontent {
+  margin-top: 15%;
+}
+
+.sections {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  padding: 10px;
+}
+.icons {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  margin-left: 15px;
+}
+
+.logoutsection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+}
+.logouticon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.menustyle {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hamburger-menu {
+  display: flex;
+  padding: 1rem; /* Add some padding to give space between the button and the edge */
+}
+.closeicon {
+  position: absolute;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+.openicon {
+  position: absolute;
+}
+.hamburger-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+@media (min-width: 768px) {
+  .sidebarbg {
+    position: absolute;
+    background-color: #edeaea;
+    width: 20%;
+    height: 100%;
+    display: fixed;
+  }
+
+  .line {
     display: flex;
     justify-content: center;
     color: gray;
@@ -19,197 +105,105 @@
     width: 200px;
     border-radius: 20px;
     background-color: gray;
-}
-.sidebarheading{
-    display: flex;
-    justify-content: center;
-    margin-top: 3%;
-    font-size: 30px;
-    padding: 3%;
-}
-.sidebarcontent{
-    margin-top: 15%;
-}
-
-.sections{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    padding: 10px;
-    
-}
-.icons{
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-    margin-left: 15px;
-}
-
-.logoutsection{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    bottom: 10px;
-}
-.logouticon{
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
-.menustyle{
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.hamburger-menu {
-    display: flex;
-    padding: 1rem; /* Add some padding to give space between the button and the edge */
   }
-.closeicon{
-    position: absolute;
-    right: 10px;
-    width: 40px;
-    height: 40px;
-}
-
-.openicon{
-    position: absolute;
-    
-}
-  .hamburger-button {
+  .sidebarheading {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    font-size: 30px;
+    padding: 5%;
+  }
+  .sidebarcontent {
+    margin-top: 15%;
+  }
+  .sections {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+    justify-content: flex-start;
+    font-size: 20px;
+    padding: 5px;
+  }
+  .icons {
     width: 30px;
     height: 30px;
+    margin-right: 10px;
+    margin-left: 20px;
   }
 
-@media  (min-width:768px){
-    .sidebarbg{
-        position: absolute;
-        background-color: #edeaea;
-        width: 20%;
-        height: 100%;
-        display: fixed ;
-    }
-    
-    .line{
-        display: flex;
-        justify-content: center;
-        color: gray;
-        height: 1.5px;
-        width: 200px;
-        border-radius: 20px;
-        background-color: gray;
-    }
-    .sidebarheading{
-        display: flex;
-        justify-content: center;
-        margin-top: 5%;
-        font-size: 30px;
-        padding: 5%;
-    }
-    .sidebarcontent{
-        margin-top: 15%;
-    }
-    .sections{
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        font-size: 20px;
-        padding: 5px;
-        
-    }
-    .icons{
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-        margin-left: 20px;
-    }
-    
-    .logoutsection{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        bottom: 15px;
-    }
-    .logouticon{
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-    }
+  .logoutsection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 15px;
+  }
+  .logouticon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
 }
 
-@media  (width:768px){
-    .sidebarbg{
-        position: absolute;
-        background-color: #edeaea;
-        width: 20%;
-        height: 100%;
-        display: fixed ;
-    }
-    
-    .line{
-        display: flex;
-        justify-content: center;
-        color: gray;
-        height: 1.5px;
-        width: 100px;
-        border-radius: 20px;
-        background-color: gray;
-    }
-    .sidebarheading{
-        display: flex;
-        justify-content: center;
-        margin-top: 5%;
-        font-size: 30px;
-        padding: 5%;
-    }
-    .sidebarcontent{
-        margin-top: 15%;
-    }
-    .sections{
-        display: flex;
-        align-items: center;
-        font-size: 20px;
-        padding: 5px;
-        
-    }
-    .icons{
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-        margin-left: 10px;
-    }
-    
-    .logoutsection{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        bottom: 15px;
-    }
-    .logouticon{
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-    }
+@media (width: 768px) {
+  .sidebarbg {
+    position: absolute;
+    background-color: #edeaea;
+    width: 20%;
+    height: 100%;
+    display: fixed;
+  }
+
+  .line {
+    display: flex;
+    justify-content: center;
+    color: gray;
+    height: 1.5px;
+    width: 100px;
+    border-radius: 20px;
+    background-color: gray;
+  }
+  .sidebarheading {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    font-size: 30px;
+    padding: 5%;
+  }
+  .sidebarcontent {
+    margin-top: 15%;
+  }
+  .sections {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    padding: 5px;
+  }
+  .icons {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .logoutsection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 15px;
+  }
+  .logouticon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
 }
 
-@media (min-height:750px){
-    .sidebarbg{
-        position: absolute;
-        background-color: #edeaea;
-        height: 100%;
-        transition: width 0.3s ease-in-out;
-        
-    }
+@media (min-height: 750px) {
+  .sidebarbg {
+    position: absolute;
+    background-color: #edeaea;
+    height: 100%;
+    transition: width 0.3s ease-in-out;
+  }
 }

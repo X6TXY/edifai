@@ -1,11 +1,11 @@
-.workingspacehome{
+.workingspacehome {
   width: 80%;
   height: 100%;
   background: #f5f5f5;
   position: absolute;
-  right:0px;
+  right: 0px;
 }
-.Homeheading{
+.Homeheading {
   position: absolute;
   font-size: 30px;
   width: 100px;
@@ -16,83 +16,81 @@
   left: 30px;
   height: 40px;
 }
-.motivaitontext{
+.motivaitontext {
   font-size: 30px;
   margin-left: 10px;
 }
-.motivationbtn{
+.motivationbtn {
   margin-left: 50px;
-
 }
-.motivationsection{
+.motivationsection {
   display: flex;
   justify-content: center;
 }
-.backgroundmotivation{
+.backgroundmotivation {
   position: relative;
-  top:100px;
+  top: 100px;
   height: 20%;
   display: flex;
   background-color: white;
 }
-.date{
+.date {
   position: relative;
-  top:70px;
+  top: 70px;
   font-size: 25px;
   display: flex;
   justify-content: center;
 }
-.typinghello{
+.typinghello {
   position: relative;
   display: flex;
   justify-content: center;
-  top:80px;
+  top: 80px;
 }
 
-.calendarebg{
+.calendarebg {
   border-radius: 10px;
   padding: 10px;
   width: 70%;
   position: absolute;
-  top:80%;
+  top: 80%;
 }
 
-.calendare{
+.calendare {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-@media (min-width:1025px) {
-  .calendarebg{
+@media (min-width: 1025px) {
+  .calendarebg {
     border-radius: 10px;
     padding: 10px;
     width: 60%;
     position: absolute;
-    top:75%;
+    top: 75%;
   }
-  
-  .calendare{
+
+  .calendare {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 }
 
-@media (max-width:767px){
-  .motivaitontext{
+@media (max-width: 767px) {
+  .motivaitontext {
     font-size: 20px;
     margin-left: 10px;
   }
-  .calendar{
+  .calendar {
     width: 80%;
   }
-  .motivationbtn{
+  .motivationbtn {
     padding: 10px;
     margin-left: 15px;
-  
   }
-  .Homeheading{
+  .Homeheading {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -102,25 +100,25 @@
     justify-content: center;
     align-items: center;
     left: 0;
-    color:#c7200b
+    color: #c7200b;
   }
-  .workingspacehome{
+  .workingspacehome {
     width: 100%;
     height: 750px;
     background: #f5f5f5;
     position: absolute;
-    right:0px;
+    right: 0px;
   }
 }
 
-.wrapper{
+.wrapper {
   /*This part is important for centering*/
   display: grid;
   place-items: center;
 }
-.typing-demo{
+.typing-demo {
   width: 310px;
-  animation: typing 2s steps(22), blink .4s step-end infinite alternate;
+  animation: typing 2s steps(22), blink 0.4s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid;
@@ -129,29 +127,28 @@
 
 @keyframes typing {
   from {
-    width: 0
-  }
-}
-    
-@keyframes blink {
-  50% {
-    border-color: transparent
+    width: 0;
   }
 }
 
-@media (max-width:420px) {
-  .motivaitontext{
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@media (max-width: 420px) {
+  .motivaitontext {
     font-size: 15px;
     margin-left: 5px;
   }
-  .motivationbtn{
+  .motivationbtn {
     width: 70px;
     height: 10px;
     padding: 10px;
     margin-left: 15px;
-  
   }
-  .Homeheading{
+  .Homeheading {
     position: absolute;
     font-size: 30px;
     display: flex;
@@ -161,12 +158,11 @@
     left: 60px;
     width: 90px;
   }
-  .workingspacehome{
+  .workingspacehome {
     width: 100%;
     height: 750px;
     background: #f5f5f5;
     position: absolute;
-    right:0px;
+    right: 0px;
   }
-  
 }

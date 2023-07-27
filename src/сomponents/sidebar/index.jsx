@@ -8,7 +8,7 @@ import { ReactComponent as InfoIcon } from "../../assets/info.svg";
 import { ReactComponent as LogOutIcon } from "../../assets/logout.svg";
 import { ReactComponent as StudyIcon } from "../../assets/study.svg";
 import { ReactComponent as TipsIcon } from "../../assets/tips.svg";
-import { ReactComponent as XmarkIcon } from '../../assets/xmar.svg';
+import { ReactComponent as XmarkIcon } from "../../assets/xmar.svg";
 import "./sidebar.css";
 
 export const Sidebar = ({ selectedResponse }) => {
@@ -51,12 +51,20 @@ export const Sidebar = ({ selectedResponse }) => {
 
   return (
     <div>
-      <div className={`sidebarbg ${isSidebarOpen ? "sidebar-open" : ""} text-black`}>
+      <div
+        className={`sidebarbg ${
+          isSidebarOpen ? "sidebar-open" : ""
+        } text-black`}
+      >
         {displaySize < 768 && (
           <div className="hamburger-menu">
             <div className="menustyle ">
               <button className="hamburger-button" onClick={toggleSidebar}>
-                {isSidebarOpen ? <BarsIcon className="openicon fixed" /> : <XmarkIcon className="closeicon fixed" />}
+                {isSidebarOpen ? (
+                  <BarsIcon className="openicon fixed" />
+                ) : (
+                  <XmarkIcon className="closeicon fixed" />
+                )}
               </button>
             </div>
           </div>
@@ -88,10 +96,15 @@ export const Sidebar = ({ selectedResponse }) => {
               </li>
               <li
                 className={`${
-                  location.pathname === "/study/writing/task2" ? "bg-[#d9d9d9] " : ""
+                  location.pathname === "/study/writing/task2"
+                    ? "bg-[#d9d9d9] "
+                    : ""
                 }mt-2 hover:bg-[#d9d9d9] transition-colors duration-500 rounded-xl`}
               >
-                <Link to="/study/writing/task2" className="sections text-black rounded">
+                <Link
+                  to="/study/writing/task2"
+                  className="sections text-black rounded"
+                >
                   <StudyIcon className="icons" />
                   Study
                 </Link>
