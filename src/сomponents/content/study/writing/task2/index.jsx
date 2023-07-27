@@ -18,13 +18,16 @@ export const Task2 = () => {
   const closeHintModal = () => {
     localStorage.setItem("hintModalClosed", "true");
     setShowHintModal(false);
-    setShowSecondModal(true);
+    const isSecondModalClosed = localStorage.getItem("secondModalClosed");
+    if (isSecondModalClosed !== "true") {
+      setShowSecondModal(true);
+    }
   };
-
   const closeSecondModal = () => {
     localStorage.setItem("secondModalClosed", "true");
     setShowSecondModal(false);
   };
+
   const handleInputChange = (e) => {
     setInputText(e.target.value);
   };
@@ -121,9 +124,7 @@ export const Task2 = () => {
 
     if (isHintModalClosed !== "true") {
       setShowHintModal(true);
-    }
-
-    if (isSecondModalClosed !== "true") {
+    } else if (isSecondModalClosed !== "true") {
       setShowSecondModal(true);
     }
   }, []);
