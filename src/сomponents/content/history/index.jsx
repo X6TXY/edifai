@@ -29,13 +29,16 @@ export const History = () => {
 
   const windowWidth = useWindowWidth();
   let responsesPerPage;
-  if (windowWidth > 769) {
-    responsesPerPage = 12;
-  } else if (windowWidth <= 639) {
-    responsesPerPage = 3;
-  } else {
+  if (windowWidth > 1023) {
+    responsesPerPage = 16;
+  } else if (windowWidth <= 1023 && windowWidth > 767) {
+    responsesPerPage = 9;
+  } else if (windowWidth <= 767 && windowWidth > 640) {
     responsesPerPage = 6;
+  } else if (windowWidth <= 640) {
+    responsesPerPage = 3;
   }
+
   useEffect(() => {
     // Fetch responses data from the backend API
     const user_token = localStorage.getItem("token");
@@ -82,12 +85,12 @@ export const History = () => {
 
   return (
     <div className="w-screen h-screen  bg-[#f5f5f5] text-black  ">
-      <div className="grid grid-cols-1 backgroundhistory md:w-4/5 sm:w-full w-full h-screen absolute -right-0 bg-[#f5f5f5]">
+      <div className="grid grid-cols-1 backgroundhistory  absolute -right-0 bg-[#f5f5f5]">
         <div className="flex justify-center text-5xl mt-3 font-bold text-[#c7200b]">
           History
         </div>
         <div className="absolute md:mt-32 lg:mt-20 xl:mt-24 mt-24 parent mx-6 flex justify-center items-center">
-          <div className="grid grid-cols-1  justify-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+          <div className="   grid grid-cols-1  justify-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
             {currentResponses.map((response, index) => (
               <div
                 key={response.id}
@@ -96,25 +99,25 @@ export const History = () => {
                 }`}
                 style={{ animationDelay: `${index * 150}ms` }} // Adjust animation delay for each card
               >
-                <p className="text-xs lg:text-md sm:text-base">
+                <p className="text-xs lg:text-md sm:text-xs">
                   <span className="font-bold text-[#c7200b] ">Date: </span>{" "}
                   {response.date}
                 </p>
-                <p className="text-xs lg:text-md xl:text-md sm:text-base">
+                <p className="text-xs lg:text-md xl:text-md sm:text-xs">
                   <span className="font-bold text-[#c7200b]">Essay:</span>{" "}
                   {response.request.split(" ").slice(0, 5).join(" ")}...
                 </p>
-                <p className="text-xs lg:text-md sm:text-base">
+                <p className="text-xs lg:text-md sm:text-xs">
                   <span className="font-bold text-[#c7200b]">Feedback:</span>{" "}
-                  {response.response.split(" ").slice(0, 5).join(" ")}...
+                  {response.response.split(" ").slice(0, 3).join(" ")}...
                 </p>
-                <p className="text-xs lg:text-md sm:text-base lg:w-60 md:w-32 w-36 ">
+                <p className="text-xs lg:text-md sm:text-xs lg:w-60 md:w-32  ">
                   <span className="font-bold text-[#c7200b]">Score:</span>{" "}
                   {response.score.split(" ").slice(0, 4).join(" ")}
                 </p>
-                <div className="lg:w-40  md:w-32 w-32 mx-auto">
+                <div className="flex justify-center mx-auto">
                   <button
-                    className="btn text-xs btn-primary mt-3 text-white mx-auto"
+                    className="btn text-xs btn-primary mt-3 text-white w-32"
                     onClick={() => openModal(response)}
                   >
                     More information
@@ -124,7 +127,7 @@ export const History = () => {
             ))}
           </div>
         </div>
-        <div className="flex justify-center items-end  xl:mb-7 lg:mb-7 md:mb-12">
+        <div className="flex justify-center items-end  xl:mb-7 lg:mb-7 md:mb-7 mb-12">
           <button
             className="page-nav-button"
             disabled={currentPage === 1}
