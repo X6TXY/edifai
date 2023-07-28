@@ -53,7 +53,7 @@ export const Storybot = () => {
         <div className="flex justify-center ">
           <form onSubmit={handleSubmit}>
             <input
-              className="storybotinputarea rounded drop-shadow-md h-12 p-3 text-black"
+              className="storybotinputarea mt-5 rounded drop-shadow-md h-12 p-3 text-black"
               type="text"
               value={inputValue}
               onChange={handleInputChange}
