@@ -64,7 +64,7 @@ export const Help = () => {
         <div className="flex justify-center">
           <form onSubmit={handleSubmit}>
             <input
-              className="assistantinputarea  drop-shadow-md h-12 p-3 rounded  text-black "
+              className="assistantinputarea mt-5 drop-shadow-md h-12 p-3 rounded  text-black "
               type="text"
               value={inputValue}
               onChange={handleInputChange}
