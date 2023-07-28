@@ -1,4 +1,4 @@
-.storybotworkingspace {
+.assistantworkingspace {
   position: absolute;
   width: 80%;
   height: 100%;
@@ -8,14 +8,14 @@
 .buttonsub {
   border-radius: 0 5px 5px 0;
 }
-.storybotheading {
+.assistantheading {
   display: flex;
   justify-content: center;
   color: #000;
   margin-top: 5%;
   font-size: 3em;
 }
-.storybottext {
+.assistanttext {
   background-color: #fff;
   display: flex;
   justify-content: center;
@@ -24,11 +24,11 @@
   border-radius: 10px;
   margin-top: 3%;
 }
-.storybotinputarea {
+.assistantinputarea {
   width: 45rem;
 }
 @media (min-width: 768px) and (max-width: 1040px) {
-  .storybottext {
+  .assistanttext {
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -37,21 +37,21 @@
     border-radius: 20px;
     margin-top: 5%;
   }
-  .storybotinputarea {
+  .assistantinputarea {
     width: 30rem;
   }
 }
 @media (max-width: 500px) {
-  .storybotworkingspace {
+  .assistantworkingspace {
     width: 100%;
     height: 750px;
   }
 
-  .storybotheading {
+  .assistantheading {
     margin-top: 4%;
     font-size: 1.5em;
   }
-  .storybottext {
+  .assistanttext {
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -60,21 +60,21 @@
     border-radius: 20px;
     margin-top: 3%;
   }
-  .storybotinputarea {
+  .assistantinputarea {
     width: 5rem;
   }
 }
 @media (max-width: 767px) {
-  .storybotworkingspace {
+  .assistantworkingspace {
     width: 100%;
     height: 750px;
   }
 
-  .storybotheading {
+  .assistantheading {
     margin-top: 1%;
     font-size: 2.5em;
   }
-  .storybottext {
+  .assistanttext {
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -83,22 +83,22 @@
     border-radius: 20px;
     margin-top: 5%;
   }
-  .storybotinputarea {
+  .assistantinputarea {
     width: 25rem;
   }
 }
 
 @media (max-width: 425px) {
-  .storybotworkingspace {
+  .assistantworkingspace {
     width: 100%;
     height: 750px;
   }
 
-  .storybotheading {
+  .assistantheading {
     margin-top: 3%;
     font-size: 1.75em;
   }
-  .storybottext {
+  .assistanttext {
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -107,23 +107,23 @@
     border-radius: 10px;
     margin-top: 10%;
   }
-  .storybotinputarea {
+  .assistantinputarea {
     width: 15rem;
   }
 }
 
 @media (max-width: 375px) {
-  .storybotworkingspace {
+  .assistantworkingspace {
     width: 100%;
     height: 750px;
     display: fixed;
   }
 
-  .storybotheading {
+  .assistantheading {
     margin-top: 4%;
     font-size: 1.5em;
   }
-  .storybottext {
+  .assistanttext {
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -132,22 +132,22 @@
     border-radius: 10px;
     margin-top: 10%;
   }
-  .storybotinputarea {
+  .assistantinputarea {
     width: 12rem;
   }
 }
 
 @media (max-width: 320px) {
-  .storybotworkingspace {
+  .assistantworkingspace {
     width: 100%;
     height: 750px;
   }
 
-  .storybotheading {
+  .assistantheading {
     margin-top: 6%;
     font-size: 1.25em;
   }
-  .storybottext {
+  .assistanttext {
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -156,13 +156,13 @@
     border-radius: 10px;
     margin-top: 10%;
   }
-  .storybotinputarea {
+  .assistantinputarea {
     width: 10rem;
   }
 }
 
 @media (min-height: 750px) {
-  .storybotworkingspace {
+  .assistantworkingspace {
     height: 100%;
   }
 }

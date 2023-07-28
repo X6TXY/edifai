@@ -1,126 +1,125 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { host_url } from "../../urls";
 import { Sidebar } from "../sidebar";
 import "./storybot.css";
 
-export const Test = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [answer, setAnswer] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const [typedAnswer, setTypedAnswer] = useState("");
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      setIsLoading(true); // Set loading state to true
-      const response = await axios.post(`${host_url}/helpbot/get_answer`, {
-        request: inputValue,
-      });
-      const answer = response.data.response;
-      setAnswer(answer);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false); // Set loading state to false
-      setInputValue("");
-    }
-  };
+function useWindowWidth() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    if (answer && !isLoading) {
-      let currentIndex = 0;
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-      const typeAnswer = () => {
-        if (currentIndex <= answer.length) {
-          setTypedAnswer(answer.slice(0, currentIndex));
-          currentIndex++;
-          setTimeout(typeAnswer, 50); // Adjust the typing speed here (milliseconds per character)
-        }
-      };
+  return windowWidth;
+}
 
-      typeAnswer();
-    }
-  }, [answer, isLoading]);
+export const Test = () => {
+  const [responses, setResponses] = useState([]);
+  const [selectedResponse, setSelectedResponse] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const [responseCardVisible, setResponseCardVisible] = useState(false);
+
+  const windowWidth = useWindowWidth();
+  let responsesPerPage;
+  if (windowWidth > 1023) {
+    responsesPerPage = 9;
+  } else if (windowWidth <= 1023 && windowWidth > 767) {
+    responsesPerPage = 6;
+  } else if (windowWidth <= 767 && windowWidth > 640) {
+    responsesPerPage = 6;
+  } else if (windowWidth <= 640) {
+    responsesPerPage = 3;
+  }
+
+  useEffect(() => {
+    // Fetch responses data from the backend API
+    const user_token = localStorage.getItem("token");
+    axios
+      .get(`${host_url}/wtask2/get_responses`, {
+        headers: {
+          Authorization: `Bearer ${user_token}`,
+        },
+      })
+      .then((response) => {
+        setResponses(response.data);
+        // Show response cards with animation after a short delay (e.g., 300ms)
+        setTimeout(() => {
+          setResponseCardVisible(true);
+        }, 30);
+      })
+      .catch((error) => {
+        console.error("Error fetching responses:", error);
+      });
+  }, []);
+
+  // Function to open the modal for a specific response
+  const openModal = (response) => {
+    setSelectedResponse(response);
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setSelectedResponse(null);
+  };
+
+  // Calculate the index of the last response for the current page
+  const indexOfLastResponse = currentPage * responsesPerPage;
+  // Calculate the index of the first response for the current page
+  const indexOfFirstResponse = indexOfLastResponse - responsesPerPage;
+  // Get the current responses to display on the page
+  const currentResponses = responses.slice(
+    indexOfFirstResponse,
+    indexOfLastResponse
+  );
+
+  // Function to handle pagination (change page)
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <div>
-      <div className="assistantworkingspace ">
-        <div className="assistantheading text-[#c7200b] font-bold">
-          IELTS Information
+      <div className="historyworkingspace">
+        <div className="historyheading flex justify-center text-[#c7200b] font-bold">
+          History
         </div>
-        <div className="flex justify-center ">
-          <div className="assistanttext text-black p-3 border">
-            Get IELTS info and resources from our helpful bot! Ace the exam with
-            tips and study materials.
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <form onSubmit={handleSubmit}>
-            <input
-              className="assistantinputarea  drop-shadow-md h-12 p-3 rounded  text-black "
-              type="text"
-              value={inputValue}
-              onChange={handleInputChange}
-              placeholder="Enter your question"
-            />
-            <button
-              type="submit"
-              className="buttonsub btn-primary border drop-shadow-md h-12 p-3"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-        <div className="flex justify-center">
-          {isLoading ? (
-            <div className=" bg-white border drop-shadow-md w-1/2 flex justify-center p-2 mt-5">
+        <div className=" flex justify-center items-center absolute mx-1 ">
+          <div className="historycontainers  text-black ">
+            {currentResponses.map((response, index) => (
               <div
-                role="status"
-                class="space-y-2.5 animate-pulse max-w-lg w-full"
+                key={response.id}
+                className={` bg-white shadow-md rounded-md p-4 `}
               >
-                <div class="flex items-center w-full space-x-2 ">
-                  <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-44"></div>
-                  <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
-                  <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+                <p className="">
+                  <span className="font-bold text-[#c7200b] ">Date: </span>{" "}
+                  {response.date}
+                </p>
+                <p className="">
+                  <span className="font-bold text-[#c7200b]">Essay:</span>{" "}
+                  {response.request.split(" ").slice(0, 5).join(" ")}...
+                </p>
+                <p className="">
+                  <span className="font-bold text-[#c7200b]">Feedback:</span>{" "}
+                  {response.response.split(" ").slice(0, 3).join(" ")}...
+                </p>
+                <p className="  ">
+                  <span className="font-bold text-[#c7200b]">Score:</span>{" "}
+                  {response.score.split(" ").slice(0, 4).join(" ")}
+                </p>
+                <div className="flex justify-center ">
+                  <button
+                    className=" text-basde text-white border bg-[#c7200b] p-2 rounded-md"
+                    onClick={() => openModal(response)}
+                  >
+                    More information
+                  </button>
                 </div>
-                <div class="flex items-center w-full space-x-2 max-w-[480px]">
-                  <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
-                  <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
-                  <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
-                </div>
-                <div class="flex items-center w-full space-x-2 max-w-[400px]">
-                  <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
-                  <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-80"></div>
-                  <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
-                </div>
-                <div class="flex items-center w-full space-x-2 max-w-[480px]">
-                  <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
-                  <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
-                  <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
-                </div>
-                <div class="flex items-center w-full space-x-2 max-w-[440px]">
-                  <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-32"></div>
-                  <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
-                  <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
-                </div>
-                <div class="flex items-center w-full space-x-2 max-w-[360px]">
-                  <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-500 w-full"></div>
-                  <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-80"></div>
-                  <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
-                </div>
-                <span class="sr-only">Loading...</span>
               </div>
-            </div>
-          ) : typedAnswer ? (
-            <div className="assitantanser w-1/2 overflow-auto h-96 mt-5  p-3 bg-white border  text-black ">
-              {typedAnswer}
-            </div>
-          ) : null}
+            ))}
+          </div>
         </div>
       </div>
       <Sidebar />

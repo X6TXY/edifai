@@ -132,16 +132,7 @@ export const Task2 = () => {
     <div>
       <div className="h-screen w-screen bg-[#f5f5f5]">
         <div className=" workingspacestudy1 lg:w-4/5 md:w-4/5 md:h-screen lg:h-screen absolute right-0 bg-[#f5f5f5] text-black">
-          <div className="button-container">
-            <button
-              className="btn btn-primary border-none text-white hover:bg-red-600 transition-colors duration-500"
-              onClick={handleButtonClick}
-            >
-              {isLoading ? "Loading..." : "Submit"}
-            </button>
-          </div>
-
-          <div className="headingstudy lg:mt-7 sm:mt-3  lg:text-3xl sm:text-2xl font-semibold">
+          <div className="headingstudy font-bold text-[#c7200b] ">
             Writing Task 2
           </div>
 
@@ -271,6 +262,14 @@ export const Task2 = () => {
                 Score: {score}
               </p>
             </div>
+          </div>
+          <div className="button-container  ">
+            <button
+              className="btn btn-primary border-none text-white hover:bg-red-600 transition-colors duration-500"
+              onClick={handleButtonClick}
+            >
+              {isLoading ? "Loading..." : "Submit"}
+            </button>
           </div>
         </div>
         <Sidebar />

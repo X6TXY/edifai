@@ -89,7 +89,7 @@ export const History = () => {
         <div className="flex justify-center text-5xl mt-3 font-bold text-[#c7200b]">
           History
         </div>
-        <div className="absolute md:mt-32 lg:mt-20 xl:mt-24 mt-24 parent mx-6 flex justify-center items-center">
+        <div className="absolute md:mt-32 lg:mt-20 xl:mt-24 mt-24  mx-5 flex justify-center items-center">
           <div className="   grid grid-cols-1  justify-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
             {currentResponses.map((response, index) => (
               <div
@@ -180,7 +180,7 @@ export const History = () => {
           </div>
         </div>
       )}
-      <Sidebar selectedResponse={selectedResponse} />
+      <Sidebar />
     </div>
   );
 };
