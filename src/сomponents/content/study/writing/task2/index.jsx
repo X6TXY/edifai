@@ -33,6 +33,10 @@ export const Task2 = () => {
   };
 
   const handleButtonClick = () => {
+    if (inputText.length < 200) {
+      alert("Please enter at least 200 characters.");
+      return;
+    }
     const user_token = localStorage.getItem("token");
     setIsLoading(true); // Set loading state to true
     axios
