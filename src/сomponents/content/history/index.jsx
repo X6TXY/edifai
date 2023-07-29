@@ -30,9 +30,9 @@ export const History = () => {
   const windowWidth = useWindowWidth();
   let responsesPerPage;
   if (windowWidth > 1023) {
-    responsesPerPage = 16;
+    responsesPerPage = 12;
   } else if (windowWidth <= 1023 && windowWidth > 767) {
-    responsesPerPage = 9;
+    responsesPerPage = 6;
   } else if (windowWidth <= 767 && windowWidth > 640) {
     responsesPerPage = 6;
   } else if (windowWidth <= 640) {
@@ -105,7 +105,7 @@ export const History = () => {
                 </p>
                 <p className="text-xs lg:text-md xl:text-md sm:text-xs">
                   <span className="font-bold text-[#c7200b]">Essay:</span>{" "}
-                  {response.request.split(" ").slice(0, 5).join(" ")}...
+                  {response.request.split(" ").slice(0, 2).join(" ")}...
                 </p>
                 <p className="text-xs lg:text-md sm:text-xs">
                   <span className="font-bold text-[#c7200b]">Feedback:</span>{" "}

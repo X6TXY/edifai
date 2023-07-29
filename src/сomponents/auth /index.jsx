@@ -49,7 +49,6 @@ export const Auth = () => {
             setIsUsernameTaken(true);
           });
 
-        
         console.log(response.data);
       } catch (error) {
         console.error(error);
