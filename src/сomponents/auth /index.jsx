@@ -102,93 +102,95 @@ export const Auth = () => {
   };
 
   return (
-    <div>
-      <div className="main text-black w-screen h-screen  relative overflow-hidden flex justify-center bg-[#F5F5F5] p-4 md:p-24 top-0 left-0 right-0 ">
-        <div className="edifaibg" ref={signInUpSectionRef}>
-          <div className="logo flex justify-center xl:h-48 md:h-40 sm:h-32 h-32 bg-slate-50 items-center rounded-lg drop-shadow-lg">
-            <h3 className="xl:text-5xl md:text-4xl sm:text-4xl text-3xl text-black sm:p-4">
-              Edif<span className="text-[#C7002B]">AI</span>
-            </h3>
+    <div className="workingspaceauth">
+      <div className="authiconsection flex justify-center ">
+        <div className="authheadingsection border">
+          <div className="font-medium">
+            EDIF<span className="text-[#c7200b] ">AI</span>
           </div>
-          <div className="singup-signin btn-group flex justify-center  mt-4 sm:mt-10 md:mt-6 ">
-            <input
-              type="radio"
-              name="options"
-              data-title="Sign In"
-              className={`xl:w-1/3 md:w-1/2 sm:w-1/2 w-3/5 btn  text-black text-xs md:text-sm bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${
-                !isSignUp ? "checked" : ""
-              }`}
-              checked={!isSignUp}
-              onChange={() => toggleSignUp()}
-            />
-            <input
-              type="radio"
-              name="options"
-              data-title="Sign Up"
-              className={`xl:w-1/3 md:w-1/2 sm:w-1/2 w-3/5 xl:h-12  flex justify-center items-center  btn    text-black text-xs md:text-sm bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${
-                isSignUp ? "checked" : ""
-              }`}
-              checked={isSignUp}
-              onChange={() => toggleSignUp()}
-            />
-          </div>
-          <form
-            onSubmit={handleFormSubmit}
-            className="flex flex-col justify-center items-center mt-4 md:mt-4"
-          >
-            <input
-              type="text"
-              placeholder="Username"
-              className="input input-md w-full max-w-xs bg-white mt-4 md:mt-6"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            {isUsernameTaken && isSignUp && (
-              <p className="error-text text-sm mt-2 text-red-500 font-mono">
-                Username is already taken
-              </p>
-            )}
-            <div className="password-input-container w-full max-w-xs">
+        </div>
+      </div>
+      <div className="singup-signin btn-group flex justify-center  mt-5 ">
+        <input
+          type="radio"
+          name="options"
+          data-title="Sign In"
+          className={`togglebuttonsingin  btn  text-black  bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${
+            !isSignUp ? "checked" : ""
+          }`}
+          checked={!isSignUp}
+          onChange={() => toggleSignUp()}
+        />
+        <input
+          type="radio"
+          name="options"
+          data-title="Sign Up"
+          className={`togglebuttonsingup text-black   btn  bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${
+            isSignUp ? "checked" : ""
+          }`}
+          checked={isSignUp}
+          onChange={() => toggleSignUp()}
+        />
+      </div>
+      <div className="flex  justify-center items-center">
+        <form onSubmit={handleFormSubmit} className="flex flex-col  mt-4">
+          <input
+            type="text"
+            placeholder="Username"
+            className="authinputs input input-md bg-white mt-4 md:mt-6"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          {isUsernameTaken && isSignUp && (
+            <p className="flex justify-center  error-text text-sm mt-3 text-red-500 font-mono">
+              Username is already taken
+            </p>
+          )}
+          <div className="password-input-container flex flex-col justify-center">
+            <div className="flex items-center">
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                className="input input-md w-full max-w-xs bg-white mt-4"
+                className="passwordinputs  input input-md bg-white mt-4"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              {isSignUp && (
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Confirm Password"
-                  className="input input-md w-full max-w-xs bg-white mt-4"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-              )}
-              {isSignUp && password !== confirmPassword && (
-                <p className="error-text text-sm mt-4 text-red-500 font-mono">
-                  Password and confirm password do not match
-                </p>
-              )}
               <button
                 type="button"
-                className="show-password-btn mt-2 md:mt-5 flex justify-center items-center w-full h-full"
+                className="show-password-btn bg-white ml-4 h-12 mt-4 flex justify-center items-center rounded-3xl"
                 onClick={toggleShowPassword}
               >
                 {showPassword ? <HideIcon /> : <ShowIcon />}
               </button>
             </div>
-            <button className="btn btn-primary mt-4 md:mt-6" type="submit">
-              {isSignUp ? "Sign Up" : "Sign In"}
-            </button>
-          </form>
-          {isRegistrationSuccessful && (
-            <p className="success-text flex justify-center  text-md font-mono mt-2 text-green-500">
-              Registration successful!
-            </p>
-          )}
-        </div>
-        <div ref={endSectionRef}></div>
+            {isSignUp && (
+              <div className="flex items-center mt-4">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Confirm Password"
+                  className="passwordinputs input input-md bg-white "
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className="show-password-btn bg-white ml-4 h-12  flex justify-center items-center rounded-3xl"
+                  onClick={toggleShowPassword}
+                >
+                  {showPassword ? <HideIcon /> : <ShowIcon />}
+                </button>
+              </div>
+            )}
+            {isSignUp && password !== confirmPassword && (
+              <p className="error-text flex justify-center text-sm mt-4 text-red-500 font-mono">
+                Password and confirm password do not match
+              </p>
+            )}
+          </div>
+          <button className="btn btn-primary mt-4 md:mt-6 mb-10" type="submit">
+            {isSignUp ? "Sign Up" : "Sign In"}
+          </button>
+        </form>
       </div>
     </div>
   );
