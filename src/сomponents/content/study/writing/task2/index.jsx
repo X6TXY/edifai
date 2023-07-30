@@ -317,18 +317,6 @@ export const Task2 = () => {
                     <p className="flex justify-center font-semibold lg:text-xl sm:text-xl text-lg lg:mb-4 mb-3 text-[#c7200b] mt-3">
                       Hints for IELTS Task 2:
                     </p>
-                    <p className=" texthint lg:text-lg text-black ">
-                      - You have 40 minutes to write the essay in the IELTS Task
-                      2.
-                    </p>
-                    <p className="texthint lg:text-lg  text-black">
-                      - The time limit is set to assess your ability to express
-                      your ideas effectively within a reasonable timeframe.
-                    </p>
-                    <p className="texthint lg:text-lg text-black">
-                      - Use the time wisely to plan, write, and revise your
-                      essay adequately.
-                    </p>
                     <p className="texthint lg:text-lg text-black">
                       - Make sure to address the given topic.
                     </p>

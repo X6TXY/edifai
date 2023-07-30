@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Calendar from "react-github-contribution-calendar";
 import { Link } from "react-router-dom";
+import { LineChart } from "../../../Linechart.jsx";
 import { host_url } from "../../../urls.jsx";
 import { Sidebar } from "../../sidebar";
 import "./home.css";
@@ -80,6 +81,13 @@ export const Home = () => {
                       Start Now!
                     </button>
                   </Link>
+                </div>
+              </div>
+            </div>
+            <div className="flex  justify-center items-center mt-64 ">
+              <div className="linechartbg drop-shadow-md">
+                <div className="">
+                  <LineChart />
                 </div>
               </div>
             </div>

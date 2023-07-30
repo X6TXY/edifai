@@ -5,6 +5,16 @@
   position: absolute;
   right: 0px;
 }
+.linechartbg {
+  position: absolute;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  height: 13rem;
+  width: 25rem;
+}
 .Homeheading {
   position: absolute;
   font-size: 30px;

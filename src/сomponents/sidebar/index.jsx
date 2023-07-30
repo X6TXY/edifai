@@ -12,6 +12,7 @@ import { ReactComponent as XmarkIcon } from "../../assets/xmar.svg";
 import "./sidebar.css";
 
 export const Sidebar = ({ selectedResponse }) => {
+  
   const currentPage = window.location.pathname;
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [displaySize, setDisplaySize] = useState(window.innerWidth);
