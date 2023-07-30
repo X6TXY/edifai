@@ -103,7 +103,7 @@ export const Auth = () => {
 
   return (
     <div className="workingspaceauth">
-      <div className="authiconsection flex justify-center ">
+      <div className="authiconsection flex justify-center  ">
         <div className="authheadingsection border">
           <div className="font-medium">
             EDIF<span className="text-[#c7200b] ">AI</span>

@@ -1,14 +1,11 @@
-
-.contact{
+.contact {
   width: 90%;
 }
 .backgroundlanding {
-  height: 2000px;
+  height: 1500px;
   width: 100%;
   background-color: #f5f5f5;
 }
-
-
 
 .headinsection {
   width: 90%;
@@ -28,15 +25,15 @@
   top: 100px;
 }
 
-.mainsection3{
-  position:relative;
+.mainsection3 {
+  position: relative;
   width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
-  top:1100px
+  top: 1100px;
 }
-.mainsectionh{
+.mainsectionh {
   font-size: 40px;
   width: 500px;
 }
@@ -47,38 +44,104 @@
 .secondarytext {
   margin-bottom: 20px;
 }
+@media (min-width: 1440px) {
+  .sectionslanding {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: center;
+    margin-top: 20px;
+  }
 
+  .sectionicon {
+    width: 140px;
+    display: flex;
+    justify-content: center;
+  }
 
-@media (max-width:900px) {
-  .firstimg{
+  .landingheading2 {
+    width: 90%;
+    font-size: 50px;
+    position: absolute;
+    top: 660px;
+  }
+
+  .sectionicon1 {
+    width: 160px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .section {
+    width: 180px;
+  }
+
+  .sectionh {
+    font-size: 40px;
+  }
+
+  .mainsection {
+    position: absolute;
+    top: 130px;
+  }
+
+  .landingrect2 {
+    position: absolute;
+    top: 700px;
+    height: 350px;
+    width: 90%;
+    background-color: white;
+  }
+
+  .mainsectionheading {
+    width: auto;
+    font-size: 60px;
+    margin-bottom: 10px;
+  }
+
+  .secondarytext {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .firstimg {
+    width: 300px;
+  }
+  .firstimg1 {
+    position: relative;
+    width: 690px;
+    padding: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .firstimg {
     width: 500px;
   }
 }
-@media(max-width:800px){
-  .firstimg{
+@media (max-width: 800px) {
+  .firstimg {
     width: 380px;
   }
 }
-@media (max-width:580px){
-  .startbtn{
+@media (max-width: 580px) {
+  .startbtn {
     position: relative;
     display: flex;
     justify-content: center;
     margin-top: 20px;
   }
-  .mainsectionheading{
+  .mainsectionheading {
     position: relative;
     width: 90%;
     font-size: 20px;
-    top:20px
-    
+    top: 20px;
   }
-  .secondarytext{
-    
-    top:30px;
+  .secondarytext {
+    top: 30px;
     position: relative;
   }
-  .firstimg{
+  .firstimg {
     height: 0;
     width: 0;
   }
@@ -92,7 +155,7 @@
     justify-content: center;
     margin-top: 20px;
   }
-  
+
   .sectionicon {
     width: 140px;
     display: flex;
@@ -147,109 +210,106 @@
   .firstimg {
     width: 300px;
   }
-  .firstimg1{
-      position: relative;
-      width: 690px;
-      padding: auto;
-    }
+  .firstimg1 {
+    position: relative;
+    width: 690px;
+    padding: auto;
+  }
 }
 
 .mainsection {
-    width: 90%;
-    height: 330px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-@media (max-width:1023px) {
+  width: 90%;
+  height: 330px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 1023px) {
   .mainsectionheading {
     width: auto;
     font-size: 30px;
     margin-bottom: 10px;
   }
   .backgroundlanding {
-      height: 2400px;
-      width: 100%;
-      background-color: #f5f5f5;
-    }
-  .buttonjoin{
-  
-      width: 100px;
-      height: 100px;
+    height: 1800px;
+    width: 100%;
+    background-color: #f5f5f5;
   }
-  .firstimg1{
-      width: 300px;
+  .buttonjoin {
+    width: 100px;
+    height: 100px;
   }
-  .mainsection3{
-      position:relative;
-      width: 90%;
-      display: flex;
-      flex-direction: column;
-      top:1600px
-
-    }
-    .mainsectionh{
-      font-size: 20px;
-      width: 80%;
-      display: flex;
-      justify-content: center;
-    }
+  .firstimg1 {
+    width: 300px;
+  }
+  .mainsection3 {
+    position: relative;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    top: 1600px;
+  }
+  .mainsectionh {
+    font-size: 20px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+  }
   .sectionslanding {
-      display: flex;
-      flex-direction: row;
-      width: 90%;
-      justify-content: center;
-      margin-top: 20px;
-    }
-   
-  .landingheading2{
-      position: absolute;
-      top:600px;
-      font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: center;
+    margin-top: 20px;
   }
-  .landingrect2{
-      position: absolute;
-      top: 650px;
-      width: 80%;
-      display: flex;
-      justify-content: center;
-      background-color: white;
+
+  .landingheading2 {
+    position: absolute;
+    top: 600px;
+    font-size: 25px;
   }
-  .sectionslanding{
-      display: flex;
-      flex-direction: column;
-      
+  .landingrect2 {
+    position: absolute;
+    top: 650px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
   }
-  .section{
-      height: 200px;
-      width: 100%;
-      margin-top: 10px;
-      padding: 5px;
+  .sectionslanding {
+    display: flex;
+    flex-direction: column;
   }
-  .sectionicon{
-      width: 100%;
-      display: flex;
-      justify-content: center;
+  .section {
+    height: 200px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 5px;
+  }
+  .sectionicon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   .sectionh {
-      font-size: 16px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
+    font-size: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
   .sectionp {
-      font-size: 12px;
-      width: 100%;
-      
-      display: flex;
-      justify-content: center;
-    }
-  .firstimg{
+    font-size: 12px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+  }
+  .firstimg {
     display: block;
   }
-  .sectionicon1{
-      width: 100%;
-      display: flex;
-      justify-content: center;
+  .sectionicon1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
