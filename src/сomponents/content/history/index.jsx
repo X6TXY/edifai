@@ -29,7 +29,9 @@ export const History = () => {
 
   const windowWidth = useWindowWidth();
   let responsesPerPage;
-  if (windowWidth > 1023) {
+  if (windowWidth > 1220 && windowWidth <= 1024) {
+    responsesPerPage = 8;
+  } else if (windowWidth > 1023) {
     responsesPerPage = 12;
   } else if (windowWidth <= 1023 && windowWidth > 767) {
     responsesPerPage = 6;
@@ -86,10 +88,10 @@ export const History = () => {
   return (
     <div className="w-screen h-screen  bg-[#f5f5f5] text-black  ">
       <div className="grid grid-cols-1 backgroundhistory  absolute -right-0 bg-[#f5f5f5]">
-        <div className="flex justify-center text-5xl mt-3 font-bold text-[#c7200b]">
+        <div className="flex justify-center text-5xl mt-5 font-bold text-[#c7200b]">
           History
         </div>
-        <div className="absolute md:mt-32 lg:mt-20 xl:mt-24 mt-24  mx-5 flex justify-center items-center">
+        <div className="absolute md:mt-32 lg:mt-36 xl:mt-36 mt-24  mx-5 flex justify-center items-center">
           <div className="   grid grid-cols-1  justify-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
             {currentResponses.map((response, index) => (
               <div
@@ -105,15 +107,15 @@ export const History = () => {
                 </p>
                 <p className="text-xs lg:text-md xl:text-md sm:text-xs">
                   <span className="font-bold text-[#c7200b]">Essay:</span>{" "}
-                  {response.request.split(" ").slice(0, 2).join(" ")}...
+                  {response.request.split(" ").slice(0, 1).join(" ")}...
                 </p>
                 <p className="text-xs lg:text-md sm:text-xs">
                   <span className="font-bold text-[#c7200b]">Feedback:</span>{" "}
-                  {response.response.split(" ").slice(0, 3).join(" ")}...
+                  {response.response.split(" ").slice(0, 2).join(" ")}...
                 </p>
                 <p className="text-xs lg:text-md sm:text-xs lg:w-60 md:w-32  ">
                   <span className="font-bold text-[#c7200b]">Score:</span>{" "}
-                  {response.score.split(" ").slice(0, 4).join(" ")}
+                  {response.score.split(" ").slice(0, 2).join(" ")}
                 </p>
                 <div className="flex justify-center mx-auto">
                   <button
