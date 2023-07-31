@@ -81,7 +81,7 @@
     position: absolute;
     top: 67%;
   }
-  .backgroundmotivation{
+  .backgroundmotivation {
     width: 60%;
   }
   .calendare {
@@ -125,8 +125,8 @@
     left: 0;
     color: #c7200b;
   }
-  .calendarebg{
-    top:75%;
+  .calendarebg {
+    top: 75%;
   }
   .workingspacehome {
     width: 100%;
@@ -145,7 +145,7 @@
     height: 13rem;
     width: 70%;
   }
-  .backgroundmotivation{
+  .backgroundmotivation {
     width: 70%;
   }
 }
@@ -181,8 +181,12 @@
     font-size: 15px;
     margin-left: 5px;
   }
-  .calendarebg{
-    top:75%
+  .backgroundmotivation {
+    width: 100%;
+  }
+  .calendarebg {
+    top: 80%;
+    width: 100%;
   }
   .motivationbtn {
     width: 70px;
@@ -215,10 +219,16 @@
     align-items: center;
     border-radius: 10px;
     height: 13rem;
-    width: 80%;
+    width: 100%;
   }
 }
-@media (max-width:360px) {
+@media (max-width: 360px) {
+  .calendarebg {
+    width: 100%;
+  }
+  .backgroundmotivation {
+    width: 100%;
+  }
   .linechartbg {
     position: absolute;
     background-color: white;
@@ -230,5 +240,3 @@
     width: 100%;
   }
 }
-
-
