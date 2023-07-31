@@ -38,9 +38,29 @@ export const Auth = () => {
           },
         };
 
-        const response = await axios
+        await axios
           .request(config)
-          .then((response) => {
+          .then(async (response) => {
+            // Now make a request to get the token
+            const tokenConfig = {
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                accept: "application/json",
+              },
+            };
+            const tokenResponse = await axios.post(
+              `${host_url}/auth/users/tokens`,
+              {
+                username: username,
+                password: password,
+              },
+              tokenConfig
+            );
+
+            // Save the token to local storage for later use
+            const token = tokenResponse.data.access_token; // adjust this line to match the actual response structure
+            localStorage.setItem("token", token);
+
             navigate("/home");
             setIsRegistrationSuccessful(true);
           })
@@ -48,8 +68,6 @@ export const Auth = () => {
             console.log(error);
             setIsUsernameTaken(true);
           });
-
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
