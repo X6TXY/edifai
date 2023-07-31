@@ -87,7 +87,7 @@ export const Home = () => {
             <div className="flex  justify-center items-center mt-64 ">
               <div className="linechartbg drop-shadow-md">
                 <div className="">
-                  <LineChart />
+                  <LineChart  />
                 </div>
               </div>
             </div>

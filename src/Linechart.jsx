@@ -44,6 +44,18 @@ export const options = {
       },
     },
   },
+  scales: {
+    x: {
+      grid: {
+        display: false, // Remove grid lines for the x-axis
+      },
+    },
+    y: {
+      grid: {
+        display: false, // Remove grid lines for the y-axis
+      },
+    },
+  },
 };
 
 export const LineChart = () => {
@@ -55,7 +67,9 @@ export const LineChart = () => {
         label: "Scores",
         data: [0, 0, 0, 0, 0],
         borderColor: "rgb(199, 32, 11)",
-        backgroundColor: "rgba(199, 32, 11, 0.5)",
+        backgroundColor: "rgb(199, 32, 11)",
+        fill: false,
+        borderWidth: 3,
       },
     ],
   });
@@ -82,13 +96,17 @@ export const LineChart = () => {
           parseFloat(item.score.trim())
         );
 
+        // Fill in the rest of the data with zeros if there are less than 5 scores
+        const filledData = scoreValues.concat(
+          Array.from({ length: 5 - scoreValues.length }).fill(0)
+        );
+
         setData((prevData) => ({
           ...prevData,
           datasets: [
             {
               ...prevData.datasets[0],
-              data:
-                scoreValues.length >= 5 ? scoreValues : [...Array(5).fill(0)], // If there are less than 5 scores, fill the rest with 0
+              data: filledData,
             },
           ],
         }));

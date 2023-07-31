@@ -86,6 +86,16 @@
     justify-content: center;
     align-items: center;
   }
+  .linechartbg {
+    position: absolute;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 15rem;
+    width: 25rem;
+  }
 }
 
 @media (max-width: 767px) {
@@ -119,6 +129,17 @@
     position: absolute;
     right: 0px;
   }
+  .linechartbg {
+    position: absolute;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 13rem;
+    width: 70%;
+  }
+  
 }
 
 .wrapper {
@@ -174,5 +195,27 @@
     background: #f5f5f5;
     position: absolute;
     right: 0px;
+  }
+  .linechartbg {
+    position: absolute;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 13rem;
+    width: 80%;
+  }
+}
+@media (max-width:360px) {
+  .linechartbg {
+    position: absolute;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 13rem;
+    width: 100%;
   }
 }
