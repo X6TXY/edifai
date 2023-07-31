@@ -84,7 +84,7 @@ export const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="flex  justify-center items-center mt-64 ">
+            <div className="flex  justify-center items-center mt-60 ">
               <div className="linechartbg drop-shadow-md">
                 <div className="">
                   <div className="flex justify-center p-1 font-bold text-xl text-[#c7200b]">Your last 5 Scores</div>
@@ -92,8 +92,8 @@ export const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-center items-center mt-10">
-              <div className="calendarebg bg-white drop-shadow-md">
+            <div className="flex justify-center items-center ">
+              <div className="calendarebg bg-white drop-shadow-md ">
                 <Calendar
                   values={values}
                   until={until}
