@@ -35,10 +35,10 @@ export const History = () => {
     responsesPerPage = 12;
   } else if (windowWidth <= 1023 && windowWidth > 767) {
     responsesPerPage = 6;
-  } else if (windowWidth <= 767 && windowWidth > 640) {
-    responsesPerPage = 6;
-  } else if (windowWidth <= 640) {
-    responsesPerPage = 3;
+  } else if (windowWidth <= 767 && windowWidth >= 425) {
+    responsesPerPage = 8;
+  } else if (windowWidth < 425) {
+    responsesPerPage = 4;
   }
 
   useEffect(() => {
@@ -86,13 +86,13 @@ export const History = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="w-screen h-screen  bg-[#f5f5f5] text-black  ">
+    <div className="h-screen w-screen  bg-[#f5f5f5] text-black  ">
       <div className="grid grid-cols-1 backgroundhistory  absolute -right-0 bg-[#f5f5f5]">
         <div className="flex justify-center text-5xl mt-5 font-bold text-[#c7200b]">
           History
         </div>
-        <div className="absolute md:mt-32 lg:mt-36 xl:mt-36 mt-24  mx-5 flex justify-center items-center">
-          <div className="   grid grid-cols-1  justify-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+        <div className="absolute md:mt-36 lg:mt-40 xl:mt-40 mt-32 xs:mt-40 mx-5 flex  items-center">
+          <div className="   grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4">
             {currentResponses.map((response, index) => (
               <div
                 key={response.id}
@@ -117,9 +117,9 @@ export const History = () => {
                   <span className="font-bold text-[#c7200b]">Score:</span>{" "}
                   {response.score.split(" ").slice(0, 2).join(" ")}
                 </p>
-                <div className="flex justify-center mx-auto">
+                <div className="flex justify-center ">
                   <button
-                    className="btn text-xs btn-primary mt-3 text-white w-32"
+                    className="btn text-xs btn-primary mt-3 text-white w-24 mr-5"
                     onClick={() => openModal(response)}
                   >
                     More information

@@ -7,9 +7,7 @@ body {
   width: 100%;
   height: 750px;
 }
-.response-card {
-  width: 100%;
-}
+
 
 @media (min-width: 768px) {
   .backgroundhistory {

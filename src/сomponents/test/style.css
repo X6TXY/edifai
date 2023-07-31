@@ -1,0 +1,25 @@
+.historyworkingsection {
+  position: absolute;
+  background-color: #f5f5f5;
+  right: 0;
+  height: 100%;
+  width: 80%;
+}
+.historyheading {
+  font-size: 3rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 767px) {
+  .historyworkingsection {
+    position: absolute;
+    background-color: #f5f5f5;
+    right: 0;
+    height: 100%;
+    width: 100%;
+  }
+  .historyheading {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+  }
+}

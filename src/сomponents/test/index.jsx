@@ -1,197 +1,134 @@
 import axios from "axios";
-import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { ReactComponent as HideIcon } from "../../assets/hide.svg";
-import { ReactComponent as ShowIcon } from "../../assets/show.svg";
+import React, { useEffect, useState } from "react";
 import { host_url } from "../../urls";
+import { Sidebar } from "../sidebar";
 import "./style.css";
 
+function useWindowWidth() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return windowWidth;
+}
+
 export const Test = () => {
-  const [isSignUp, setIsSignUp] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [isUsernameTaken, setIsUsernameTaken] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
-  const [isRegistrationSuccessful, setIsRegistrationSuccessful] =
-    useState(false);
+  const [responses, setResponses] = useState([]);
+  const [selectedResponse, setSelectedResponse] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const signInUpSectionRef = useRef(null);
-  const endSectionRef = useRef(null);
+  const [responseCardVisible, setResponseCardVisible] = useState(false);
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    if (isSignUp) {
-      if (password !== confirmPassword) {
-        console.log("Password and confirm password do not match");
-        return;
-      }
+  const windowWidth = useWindowWidth();
+  let responsesPerPage;
+  if (windowWidth > 1220 && windowWidth <= 1024) {
+    responsesPerPage = 8;
+  } else if (windowWidth > 1023) {
+    responsesPerPage = 12;
+  } else if (windowWidth <= 1023 && windowWidth > 767) {
+    responsesPerPage = 6;
+  } else if (windowWidth <= 767 && windowWidth > 640) {
+    responsesPerPage = 6;
+  } else if (windowWidth <= 640) {
+    responsesPerPage = 3;
+  }
 
-      try {
-        let config = {
-          method: "post",
-          maxBodyLength: Infinity,
-          url: `${host_url}/auth/users?email=${username}&password=${password}`,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        };
+  useEffect(() => {
+    // Fetch responses data from the backend API
+    const user_token = localStorage.getItem("token");
+    axios
+      .get(`${host_url}/wtask2/get_responses`, {
+        headers: {
+          Authorization: `Bearer ${user_token}`,
+        },
+      })
+      .then((response) => {
+        setResponses(response.data);
+        // Show response cards with animation after a short delay (e.g., 300ms)
+        setTimeout(() => {
+          setResponseCardVisible(true);
+        }, 30);
+      })
+      .catch((error) => {
+        console.error("Error fetching responses:", error);
+      });
+  }, []);
 
-        const response = await axios
-          .request(config)
-          .then((response) => {
-            navigate("/home");
-            setIsRegistrationSuccessful(true);
-          })
-          .catch((error) => {
-            console.log(error);
-            setIsUsernameTaken(true);
-          });
-
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      try {
-        const config = {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            accept: "application/json",
-          },
-        };
-
-        const response = await axios.post(
-          `${host_url}/auth/users/tokens`,
-          {
-            username: username,
-            password: password,
-          },
-          config
-        );
-
-        // Save the token to local storage or a state variable for later use
-        const token = response.data.access_token;
-
-        localStorage.setItem("token", token);
-
-        // Redirect to /home after successful sign-in
-        navigate("/home");
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    setUsername("");
-    setPassword("");
-    setConfirmPassword("");
+  // Function to open the modal for a specific response
+  const openModal = (response) => {
+    setSelectedResponse(response);
   };
 
-  const toggleSignUp = () => {
-    setIsSignUp(!isSignUp);
-    setIsUsernameTaken(false);
-    setIsRegistrationSuccessful(false);
+  // Function to close the modal
+  const closeModal = () => {
+    setSelectedResponse(null);
   };
 
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
+  // Calculate the index of the last response for the current page
+  const indexOfLastResponse = currentPage * responsesPerPage;
+  // Calculate the index of the first response for the current page
+  const indexOfFirstResponse = indexOfLastResponse - responsesPerPage;
+  // Get the current responses to display on the page
+  const currentResponses = responses.slice(
+    indexOfFirstResponse,
+    indexOfLastResponse
+  );
 
-  const handleLoginClick = () => {
-    endSectionRef.current.scrollIntoView({ behavior: "smooth" });
-  };
+  // Function to handle pagination (change page)
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="workingspaceauth">
-      <div className="authiconsection flex justify-center ">
-        <div className="authheadingsection border">
-          <div className="font-medium">
-            EDIF<span className="text-[#c7200b] ">AI</span>
+    <div>
+      <div className="historyworkingsection">
+        <div className="flex justify-center text-[#c7200b] font-bold historyheading">
+          History
+        </div>
+        <div className="flex justify-center  mt-10 items-center">
+          <div className="text-black bg-white p-5">
+            {currentResponses.map((response, index) => (
+              <div
+                key={response.id}
+                className={`${
+                  responseCardVisible ? "animate-fade-in" : ""
+                }`}
+                style={{ animationDelay: `${index * 150}ms` }} // Adjust animation delay for each card
+              >
+                <p className="">
+                  <span className="font-bold text-[#c7200b] ">Date: </span>{" "}
+                  {response.date}
+                </p>
+                <p className="">
+                  <span className="font-bold text-[#c7200b]">Essay:</span>{" "}
+                  {response.request.split(" ").slice(0, 1).join(" ")}...
+                </p>
+                <p className="">
+                  <span className="font-bold text-[#c7200b]">Feedback:</span>{" "}
+                  {response.response.split(" ").slice(0, 2).join(" ")}...
+                </p>
+                <p className=" ">
+                  <span className="font-bold text-[#c7200b]">Score:</span>{" "}
+                  {response.score.split(" ").slice(0, 2).join(" ")}
+                </p>
+                <div className="flex justify-center mx-auto">
+                  <button
+                    className="btn  btn-primary mt-3 text-white"
+                    onClick={() => openModal(response)}
+                  >
+                    More information
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-      <div className="singup-signin btn-group flex justify-center  mt-5 ">
-        <input
-          type="radio"
-          name="options"
-          data-title="Sign In"
-          className={`togglebuttonsingin  btn  text-black  bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${
-            !isSignUp ? "checked" : ""
-          }`}
-          checked={!isSignUp}
-          onChange={() => toggleSignUp()}
-        />
-        <input
-          type="radio"
-          name="options"
-          data-title="Sign Up"
-          className={`togglebuttonsingup text-black   btn  bg-white hover:bg-[#D9D9D9] hover:text-black border-none ${
-            isSignUp ? "checked" : ""
-          }`}
-          checked={isSignUp}
-          onChange={() => toggleSignUp()}
-        />
-      </div>
-      <div className="flex  justify-center items-center">
-        <form onSubmit={handleFormSubmit} className="flex flex-col  mt-4">
-          <input
-            type="text"
-            placeholder="Username"
-            className="authinputs input input-md bg-white mt-4 md:mt-6"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          {isUsernameTaken && isSignUp && (
-            <p className="flex justify-center  error-text text-sm mt-3 text-red-500 font-mono">
-              Username is already taken
-            </p>
-          )}
-          <div className="password-input-container flex flex-col justify-center">
-            <div className="flex items-center">
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                className="passwordinputs  input input-md bg-white mt-4"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <button
-                type="button"
-                className="show-password-btn bg-white ml-4 h-12 mt-4 flex justify-center items-center rounded-3xl"
-                onClick={toggleShowPassword}
-              >
-                {showPassword ? <HideIcon /> : <ShowIcon />}
-              </button>
-            </div>
-            {isSignUp && (
-              <div className="flex items-center mt-4">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Confirm Password"
-                  className="passwordinputs input input-md bg-white "
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-                <button
-                  type="button"
-                  className="show-password-btn bg-white ml-4 h-12  flex justify-center items-center rounded-3xl"
-                  onClick={toggleShowPassword}
-                >
-                  {showPassword ? <HideIcon /> : <ShowIcon />}
-                </button>
-              </div>
-            )}
-            {isSignUp && password !== confirmPassword && (
-              <p className="error-text flex justify-center text-sm mt-4 text-red-500 font-mono">
-                Password and confirm password do not match
-              </p>
-            )}
-          </div>
-          <button className="btn btn-primary mt-4 md:mt-6 mb-10" type="submit">
-            {isSignUp ? "Sign Up" : "Sign In"}
-          </button>
-        </form>
-      </div>
+      <Sidebar />
     </div>
   );
 };
