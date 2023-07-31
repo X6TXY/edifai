@@ -8,11 +8,17 @@ body {
   height: 750px;
 }
 
-
 @media (min-width: 768px) {
   .backgroundhistory {
     width: 80%;
     height: 100%;
     background-color: #f5f5f5;
   }
+}
+.modal-card {
+  position: fixed; /* Fix the position of the modal */
+  overflow: auto; /* Add a scrollbar if necessary */
+  max-height: 80%; /* Set a maximum height */
+  width: 80%; /* Set a width */
+  /* Other styles... */
 }

@@ -36,7 +36,7 @@ export const History = () => {
   } else if (windowWidth <= 1023 && windowWidth > 767) {
     responsesPerPage = 6;
   } else if (windowWidth <= 767 && windowWidth >= 425) {
-    responsesPerPage = 8;
+    responsesPerPage = 9;
   } else if (windowWidth < 425) {
     responsesPerPage = 4;
   }
@@ -91,12 +91,12 @@ export const History = () => {
         <div className="flex justify-center text-5xl mt-5 font-bold text-[#c7200b]">
           History
         </div>
-        <div className="absolute md:mt-36 lg:mt-40 xl:mt-40 mt-32 xs:mt-40 mx-5 flex  items-center">
+        <div className="absolute md:mt-36 lg:mt-40 xl:mt-40 mt-32 xs:mt-20 mx-5 flex  items-center">
           <div className="   grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4">
             {currentResponses.map((response, index) => (
               <div
                 key={response.id}
-                className={`response-card bg-white shadow-md rounded-md p-4 grid grid-col-0.5 ${
+                className={`response-card bg-white shadow-md rounded-md p-4 grid grid-col-1 ${
                   responseCardVisible ? "animate-fade-in" : ""
                 }`}
                 style={{ animationDelay: `${index * 150}ms` }} // Adjust animation delay for each card
@@ -148,13 +148,13 @@ export const History = () => {
         </div>
       </div>
       {selectedResponse && (
-        <div
-          className={`absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50 ${
-            selectedResponse ? "" : "modal-hidden"
-          }`}
-          style={{ zIndex: "100" }}
-        >
-          <div className="modal-card bg-white w-4/5   rounded-md p-4 transform transition-all ease-in-out">
+         <div
+         className={`absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50  ${
+           selectedResponse ? "" : "modal-hidden"
+         }`}
+         style={{ zIndex: "100" }}
+       >
+          <div className="modal-card bg-white w-4/5   rounded-md p-4 transform transition-all ease-in-out ">
             <p className="">
               <span className="font-bold text-[#c7200b]">Date: </span>
               {selectedResponse.date}
