@@ -33,7 +33,12 @@ export const options = {
     },
     title: {
       display: false,
-      text: "Scores",
+      position:'top',
+      text: "Your Scores",
+      color: 'rgb(199,32,11)',
+      font: {
+        size:18,
+      }
     },
     tooltip: {
       callbacks: {
