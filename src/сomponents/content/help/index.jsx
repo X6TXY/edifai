@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { host_url } from "../../../urls.jsx";
 import { Sidebar } from "../../sidebar";
 
@@ -9,8 +9,6 @@ export const Help = () => {
   const [inputValue, setInputValue] = useState("");
   const [answer, setAnswer] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  const [typedAnswer, setTypedAnswer] = useState("");
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -32,22 +30,6 @@ export const Help = () => {
       setInputValue("");
     }
   };
-
-  useEffect(() => {
-    if (answer && !isLoading) {
-      let currentIndex = 0;
-
-      const typeAnswer = () => {
-        if (currentIndex <= answer.length) {
-          setTypedAnswer(answer.slice(0, currentIndex));
-          currentIndex++;
-          setTimeout(typeAnswer, 50); // Adjust the typing speed here (milliseconds per character)
-        }
-      };
-
-      typeAnswer();
-    }
-  }, [answer, isLoading]);
 
   return (
     <div>
@@ -118,9 +100,9 @@ export const Help = () => {
                 <span class="sr-only">Loading...</span>
               </div>
             </div>
-          ) : typedAnswer ? (
+          ) : answer ? (
             <div className="assitantanser w-1/2 overflow-auto h-96 mt-5  p-3 bg-white border  text-black ">
-              {typedAnswer}
+              {answer}
             </div>
           ) : null}
         </div>
