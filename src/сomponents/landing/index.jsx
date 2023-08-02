@@ -153,7 +153,7 @@ export const Landing = () => {
 
             <li>
               <a
-                href="https://www.nfactorial.school/"
+                href="https://www.nfactorial.live/"
                 class="flex items-center hover:underline "
               >
                 <img

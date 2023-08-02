@@ -134,6 +134,7 @@ export const Task2 = () => {
         const responseData = response.data;
         // Update the state with the response data
         setResponseText(responseData.response);
+
         const newScore = responseData.score; // Assuming the score is included in the response data
         setScore(newScore); // Update the score state with the new score
       })
@@ -424,8 +425,9 @@ export const Task2 = () => {
                       essay.
                     </p>
                     <p className="texthint lg:text-lg text-black">
-                      - You can choose any topic; just write "Topic:" and then
-                      provide your essay on that topic.
+                      - You can get questions by clicking on the questions
+                      button or write a question: and write an essay on this
+                      question
                     </p>
 
                     <div className="flex justify-center">
