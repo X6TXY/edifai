@@ -8,6 +8,8 @@ import "./task2.css";
 export const Task2 = () => {
   const [inputText, setInputText] = useState("");
 
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [responseText, setResponseText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [timer, setTimer] = useState(40 * 60); // 40 minutes in seconds
@@ -38,6 +40,60 @@ export const Task2 = () => {
     setShowTopicModal(false);
   };
 
+  const topics = [
+    "Advantages and disadvantages of online education",
+    "The impact of climate change on our daily lives",
+    "The role of technology in modern medicine",
+    "Effects of social media on interpersonal communication",
+    "Nuclear energy: Solution to the global energy crisis or not?",
+    "Animal testing for medical research",
+    "The significance of learning a second language",
+    "Measures to control population growth",
+    "Importance of art education in schools",
+    "Health effects of a vegan diet",
+    "The influence of celebrities on youth culture",
+    "Public transport vs. private vehicles",
+    "Should physical education be mandatory in schools?",
+    "The effect of violent video games on children",
+    "The ethical issues of genetic engineering",
+    "The impact of e-commerce on traditional businesses",
+    "Strategies to reduce the gap between the rich and the poor",
+    "Pros and cons of space exploration",
+    "The role of parents and teachers in child development",
+    "For a long time art has been considered an essential part of all cultures in the world. However, nowadays people’s values have changed, and we tend to consider science, technology and business more important than arts.What do you think are the causes of this?What can be done to draw people’s attention to art?",
+    "The government's investment in arts, music and theatre is a waste of money. Governments should invest these funds in public services instead.To what extent do you agree with this statement?",
+    " Studying art in school improves students' performance in other subjects, because it is easier for multi-skilled students to learn new things. That's why art should be obligatory in schools.Do you agree or disagree?",
+    " Some students work while studying. This often results in lacking time for education and constantly feeling under pressure.What do you think are the causes of this?What solutions can you suggest?",
+    " Children are generally more successful in foreign language studies than adults. Thus, it is better to learn languages in childhood.Do you agree or disagree?Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+    "Online education is becoming more and more popular. Some people claim that e-learning has so many benefits that it will replace face-to-face education soon. Others say that traditional education is irreplaceable.Discuss both views and give your opinion.",
+    "In contemporary society, everyone should have equal opportunities in education. Therefore, universities should accept equal numbers of male and female students in every subject.To what extent do you agree or disagree?",
+    "Everyone deserves to be educated. It's unfair that intelligent people are not admitted to private universities because of their financial background. University education should be free for everyone.Do you agree or disagree?Provide relevant examples if necessary.",
+    "Some people argue that girls and boys should be educated separately, while others think that it is more advantageous for children to study at the same school.What is your opinion?",
+    "Nowadays university education is considered very important for people's future. However, there are a lot of successful people who didn't get higher education.Do you think that higher education is necessary to succeed in life?Justify your opinion with relevant examples.",
+    "Students should focus on learning in the classroom rather than show their status by wearing fashionable clothes. Therefore, all students have to wear school uniforms.Do you agree or disagree with this statement?",
+    "Climate change is a big environmental problem that has become critical in last couple of decades. Some people claim that humans should stop burning fossil fuels and use only alternative energy resources, such as wind and solar power. Others say that oil, gas and coal are essential for many industries, and not using them will lead to economic collapse.What is your opinion?Support your point of view with relevant examples.",
+    "Influence of human beings on the world's ecosystem is leading to the extinction of species and loss of bio-diversity.What are the primary causes of loss of bio-diversity?What solutions can you suggest?",
+    "The planet's population is reaching unsustainable levels, and people are facing shortage of resources like water, food and fuel.To what consequences may overpopulation lead?In your opinion, what measures can be taken to fight overpopulation?",
+    "Production of carbon dioxide and other greenhouse gases has a heating effect on the atmosphere and results in global warming.Why global warming is considered one of the most serious issues nowadays?How can this problem be solved?",
+    "Forests produce fresh oxygen and participate in regulating climate. But every year tree cover of our planet is lessening due to deforestation.What are the primary causes of deforestation?To what results may it lead?",
+    "Young people prefer listening to music rather than listening to the news on the radio. Is this a positive opposite negative trend?",
+    "Some people believe that homework should not be given to school children. Others, however, say that homework is an important requirement for children to be able to develop appropriately. Discuss both views and give your opinion",
+    "Even though globalization affects the world’s economies in a very positive way, its negative side should not be forgotten.",
+    "Nowadays families are not as close as they used to be. What do you think are the causes of this? What can be done to make families closer?",
+    "New technologies have changed the way children spend their free time. Do you think the advantages of this trend outweigh the disadvantages?",
+    "Many people argue that museums and art galleries should present the nation’s art, as opposed to artworks from other countries. To what extent do you agree or disagree?",
+    "Nowadays families are not as close as they used to be. What do you think are the causes of this? What can be done to make families closer?",
+    "New technologies have changed the way children spend their free time. Do you think the advantages of this trend outweigh the disadvantages?",
+    "Some people argue that because the internet makes it so easy for children to access facts, schools should not focus on teaching facts. Instead, they should focus on developing children’s skills and potential, and their relationships with other people.To what extent do you agree or disagree with this opinion?",
+    "Some people choose a career according to the social status and salary, while others choose a career according to whether they will enjoy the work. Give your opinion which one is the best.",
+    "Some people believe that couples should be allowed to determine the size of their family. However, in many countries, the governments interfere in matters of family planning. Do you agree or disagree with us?",
+    "The disabled are not always treated fairly. What measures can be taken to assist disabled people?",
+    "Some people believe that criminals should be punished with lengthy jail terms. Others are of the opinion that they must be re-educated and rehabilitated through community service programs. Do you agree or disagree?",
+    "Do you think that governments should reserve jobs for women?",
+    "Some people prefer to travel alone. Others are more interested in going with someone. Discuss both views and give your own opinion.",
+    "A large number of people now change jobs several times. Is this a positive or a negative development? Discuss.",
+    "Today food travels thousands of miles before it reaches consumers. Why is this so? Is this a positive or a negative development?",
+  ];
   const closeHintModal = () => {
     localStorage.setItem("hintModalClosed", "true");
     setShowHintModal(false);
@@ -394,9 +450,9 @@ export const Task2 = () => {
                   <p className="flex justify-center font-semibold lg:text-2xl sm:text-xl text-lg lg:mb-4 mb-3 text-[#c7200b] mt-3">
                     Choose a question for IELTS Task 2:
                   </p>
-                  <div className="p-4  ">
+                  <div className="p-3  ">
                     <div className="flex justify-between items-center">
-                      <div className="text-xl">
+                      <div className="text-md text-black">
                         <input
                           type="checkbox"
                           id="addTopicToTextarea"
@@ -410,6 +466,27 @@ export const Task2 = () => {
                           Add question
                         </label>
                       </div>
+                      <input
+                        type="text"
+                        placeholder="Search topics..."
+                        value={searchTerm}
+                        className="text-black w-20 sm:w-60 rounded-md border p-3 "
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                      />
+                      <button
+                        className="text-white border p-1 rounded-md bg-[#c7200b]"
+                        onClick={() =>
+                          setSearchResults(
+                            topics.filter((topic) =>
+                              topic
+                                .toLowerCase()
+                                .includes(searchTerm.toLowerCase())
+                            )
+                          )
+                        }
+                      >
+                        Search
+                      </button>
                       <button onClick={closeTopicModal} className="    ">
                         <CloseIcon className=" w-8 h-8 hover:bg-red-500 rounded-3xl" />
                       </button>
@@ -417,6 +494,14 @@ export const Task2 = () => {
                   </div>
                   <div className="h-[500px]  overflow-y-scroll">
                     <ul className=" grid gap-1">
+                      {searchResults.map((filteredTopic) => (
+                        <li
+                          className="texthint lg:text-lg text-black bg-[#d9d9d9] flex justify-center p-3 gap-1 rounded-md "
+                          onClick={() => selectTopic(filteredTopic)}
+                        >
+                          {filteredTopic}
+                        </li>
+                      ))}
                       <li
                         className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  mt-1"
                         onClick={() =>
@@ -864,13 +949,14 @@ export const Task2 = () => {
                         className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
                         onClick={() =>
                           selectTopic(
-                            "Even though globalization affects the world’s economies in a very positive way, its negative side should not be forgotten."
+                            "Many people argue that museums and art galleries should present the nation’s art, as opposed to artworks from other countries. To what extent do you agree or disagree?"
                           )
                         }
                       >
-                        39.Even though globalization affects the world’s
-                        economies in a very positive way, its negative side
-                        should not be forgotten.
+                        39.Many people argue that museums and art galleries
+                        should present the nation’s art, as opposed to artworks
+                        from other countries. To what extent do you agree or
+                        disagree?
                       </li>
                       <li
                         className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
