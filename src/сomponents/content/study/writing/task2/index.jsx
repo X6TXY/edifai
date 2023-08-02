@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { ReactComponent as CloseIcon } from "../../../../../assets/close.svg";
 import { host_url } from "../../../../../urls";
 import { Sidebar } from "../../../../sidebar";
 import "./task2.css";
@@ -14,6 +15,28 @@ export const Task2 = () => {
   const [score, setScore] = useState(0); // Initial score value
   const [showHintModal, setShowHintModal] = useState(false);
   const [showSecondModal, setShowSecondModal] = useState(false);
+  const [showTopicModal, setShowTopicModal] = useState(false);
+  const [selectedTopic, setSelectedTopic] = useState("");
+  const [addTopicToTextarea, setAddTopicToTextarea] = useState(false);
+
+  const handleCheckboxChange = (e) => {
+    setAddTopicToTextarea(e.target.checked);
+  };
+
+  const selectTopic = (topic) => {
+    closeTopicModal();
+    if (addTopicToTextarea) {
+      setInputText(`Question: ${topic}\n\n${inputText}`);
+    }
+  };
+
+  const openTopicModal = () => {
+    setShowTopicModal(true);
+  };
+
+  const closeTopicModal = () => {
+    setShowTopicModal(false);
+  };
 
   const closeHintModal = () => {
     localStorage.setItem("hintModalClosed", "true");
@@ -139,8 +162,15 @@ export const Task2 = () => {
           <div className="headingstudy font-bold text-[#c7200b] ">
             Writing Task 2
           </div>
-
           <div className=" h-4/5">
+            <div className="flex justify-start lg:ml-20 sm:ml-20 ml-10 absolute top-20">
+              <button
+                className="bg-[#c7200b] rounded-md drop-shadow-md p-2 sm:text-lg text-md text-white border-none  hover:bg-red-600 transition-colors duration-500"
+                onClick={openTopicModal}
+              >
+                Choose Question
+              </button>
+            </div>
             <textarea
               className="textareatask2 absolute w-2/5 p-4 text-lg resize-none border border-gray-300 drop-shadow-md rounded ml-20"
               placeholder="Write your essay"
@@ -261,12 +291,13 @@ export const Task2 = () => {
                 )}
               </div>
             </div>
-            <div className="score-section bg-[#C7002B] w-28  flex justify-center items-center rounded-md drop-shadow-md ">
+            <div className="score-section bg-[#C7002B] w-28 lg:right-44 xl:right-52 sl:right-32 flex justify-center items-center rounded-md drop-shadow-md ">
               <p className="text-lg font-semibold text-white p-1 ">
                 Score: {score}
               </p>
             </div>
           </div>
+
           <div className="button-container  ">
             <button
               className="btn btn-primary border-none text-white hover:bg-red-600 transition-colors duration-500"
@@ -349,6 +380,635 @@ export const Task2 = () => {
                         Close
                       </button>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        {showTopicModal && (
+          <div className=" h-screen w-screen backdrop-filter backdrop-blur-sm flex justify-center items-center fixed inset-0 ">
+            <div className="modal-container p-4 rounded w-4/5 h-4/5 flex justify-center items-center">
+              <div className="lg:ml-72 flex justify-center   items-center ">
+                <div className="modal-container  bg-white border-red-200 border drop-shadow-xl bg-opacity-75  p-4 rounded lg:w-5/6 sm:3/4 ">
+                  <p className="flex justify-center font-semibold lg:text-2xl sm:text-xl text-lg lg:mb-4 mb-3 text-[#c7200b] mt-3">
+                    Choose a question for IELTS Task 2:
+                  </p>
+                  <div className="p-4  ">
+                    <div className="flex justify-between items-center">
+                      <div className="text-xl">
+                        <input
+                          type="checkbox"
+                          id="addTopicToTextarea"
+                          checked={addTopicToTextarea}
+                          onChange={handleCheckboxChange}
+                        />
+                        <label
+                          htmlFor="addTopicToTextarea"
+                          className=" ml-2 text-black"
+                        >
+                          Add topic to textarea
+                        </label>
+                      </div>
+                      <button onClick={closeTopicModal} className="    ">
+                        <CloseIcon className=" w-8 h-8 hover:bg-red-500 rounded-3xl" />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="h-[500px]  overflow-y-scroll">
+                    <ul className=" grid gap-1">
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  mt-1"
+                        onClick={() =>
+                          selectTopic(
+                            "Advantages and disadvantages of online education"
+                          )
+                        }
+                      >
+                        1.Advantages and disadvantages of online education
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3 "
+                        onClick={() =>
+                          selectTopic(
+                            "The impact of climate change on our daily lives"
+                          )
+                        }
+                      >
+                        2.The impact of climate change on our daily lives
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3 "
+                        onClick={() =>
+                          selectTopic(
+                            "The role of technology in modern medicine"
+                          )
+                        }
+                      >
+                        3.The role of technology in modern medicine
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3 "
+                        onClick={() =>
+                          selectTopic(
+                            "Effects of social media on interpersonal communication"
+                          )
+                        }
+                      >
+                        4.Effects of social media on interpersonal communication
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3 "
+                        onClick={() =>
+                          selectTopic(
+                            "Nuclear energy: Solution to the global energy crisis or not?"
+                          )
+                        }
+                      >
+                        5.Nuclear energy: Solution to the global energy crisis
+                        or not?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3 "
+                        onClick={() =>
+                          selectTopic("Animal testing for medical research")
+                        }
+                      >
+                        6.Animal testing for medical research
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "The significance of learning a second language"
+                          )
+                        }
+                      >
+                        7.The significance of learning a second language
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic("Measures to control population growth")
+                        }
+                      >
+                        8.Measures to control population growth
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic("Importance of art education in schools")
+                        }
+                      >
+                        9.Importance of art education in schools
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic("Health effects of a vegan diet")
+                        }
+                      >
+                        10.Health effects of a vegan diet
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "The influence of celebrities on youth culture"
+                          )
+                        }
+                      >
+                        11.The influence of celebrities on youth culture
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic("Public transport vs. private vehicles")
+                        }
+                      >
+                        12.Public transport vs. private vehicles
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Should physical education be mandatory in schools?"
+                          )
+                        }
+                      >
+                        13.Should physical education be mandatory in schools?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "The effect of violent video games on children"
+                          )
+                        }
+                      >
+                        14.The effect of violent video games on children
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "The ethical issues of genetic engineering"
+                          )
+                        }
+                      >
+                        15.The ethical issues of genetic engineering
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "The impact of e-commerce on traditional businesses"
+                          )
+                        }
+                      >
+                        16.The impact of e-commerce on traditional businesses
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Strategies to reduce the gap between the rich and the poor"
+                          )
+                        }
+                      >
+                        17.Strategies to reduce the gap between the rich and the
+                        poor
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic("Pros and cons of space exploration")
+                        }
+                      >
+                        18.Pros and cons of space exploration
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "The role of parents and teachers in child development"
+                          )
+                        }
+                      >
+                        19.The role of parents and teachers in child development
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "For a long time art has been considered an essential part of all cultures in the world. However, nowadays people’s values have changed, and we tend to consider science, technology and business more important than arts.What do you think are the causes of this?What can be done to draw people’s attention to art?"
+                          )
+                        }
+                      >
+                        20.For a long time art has been considered an essential
+                        part of all cultures in the world. However, nowadays
+                        people’s values have changed, and we tend to consider
+                        science, technology and business more important than
+                        arts.What do you think are the causes of this?What can
+                        be done to draw people’s attention to art?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "The government's investment in arts, music and theatre is a waste of money. Governments should invest these funds in public services instead.To what extent do you agree with this statement?"
+                          )
+                        }
+                      >
+                        21.The government's investment in arts, music and
+                        theatre is a waste of money. Governments should invest
+                        these funds in public services instead.To what extent do
+                        you agree with this statement?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            " Studying art in school improves students' performance in other subjects, because it is easier for multi-skilled students to learn new things. That's why art should be obligatory in schools.Do you agree or disagree?"
+                          )
+                        }
+                      >
+                        22.Studying art in school improves students' performance
+                        in other subjects, because it is easier for
+                        multi-skilled students to learn new things. That's why
+                        art should be obligatory in schools.Do you agree or
+                        disagree?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            " Some students work while studying. This often results in lacking time for education and constantly feeling under pressure.What do you think are the causes of this?What solutions can you suggest?"
+                          )
+                        }
+                      >
+                        23.Some students work while studying. This often results
+                        in lacking time for education and constantly feeling
+                        under pressure.What do you think are the causes of
+                        this?What solutions can you suggest?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            " Children are generally more successful in foreign language studies than adults. Thus, it is better to learn languages in childhood.Do you agree or disagree?Give reasons for your answer and include any relevant examples from your own knowledge or experience."
+                          )
+                        }
+                      >
+                        24.Children are generally more successful in foreign
+                        language studies than adults. Thus, it is better to
+                        learn languages in childhood.Do you agree or
+                        disagree?Give reasons for your answer and include any
+                        relevant examples from your own knowledge or experience.
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Online education is becoming more and more popular. Some people claim that e-learning has so many benefits that it will replace face-to-face education soon. Others say that traditional education is irreplaceable.Discuss both views and give your opinion."
+                          )
+                        }
+                      >
+                        25.Online education is becoming more and more popular.
+                        Some people claim that e-learning has so many benefits
+                        that it will replace face-to-face education soon. Others
+                        say that traditional education is irreplaceable.Discuss
+                        both views and give your opinion.
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "In contemporary society, everyone should have equal opportunities in education. Therefore, universities should accept equal numbers of male and female students in every subject.To what extent do you agree or disagree?"
+                          )
+                        }
+                      >
+                        26.In contemporary society, everyone should have equal
+                        opportunities in education. Therefore, universities
+                        should accept equal numbers of male and female students
+                        in every subject.To what extent do you agree or
+                        disagree?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Everyone deserves to be educated. It's unfair that intelligent people are not admitted to private universities because of their financial background. University education should be free for everyone.Do you agree or disagree?Provide relevant examples if necessary."
+                          )
+                        }
+                      >
+                        27.Everyone deserves to be educated. It's unfair that
+                        intelligent people are not admitted to private
+                        universities because of their financial background.
+                        University education should be free for everyone.Do you
+                        agree or disagree?Provide relevant examples if
+                        necessary.
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Some people argue that girls and boys should be educated separately, while others think that it is more advantageous for children to study at the same school.What is your opinion?"
+                          )
+                        }
+                      >
+                        28.Some people argue that girls and boys should be
+                        educated separately, while others think that it is more
+                        advantageous for children to study at the same
+                        school.What is your opinion?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Nowadays university education is considered very important for people's future. However, there are a lot of successful people who didn't get higher education.Do you think that higher education is necessary to succeed in life?Justify your opinion with relevant examples."
+                          )
+                        }
+                      >
+                        29.Nowadays university education is considered very
+                        important for people's future. However, there are a lot
+                        of successful people who didn't get higher education.Do
+                        you think that higher education is necessary to succeed
+                        in life?Justify your opinion with relevant examples.
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Students should focus on learning in the classroom rather than show their status by wearing fashionable clothes. Therefore, all students have to wear school uniforms.Do you agree or disagree with this statement?"
+                          )
+                        }
+                      >
+                        30.Students should focus on learning in the classroom
+                        rather than show their status by wearing fashionable
+                        clothes. Therefore, all students have to wear school
+                        uniforms.Do you agree or disagree with this statement?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Climate change is a big environmental problem that has become critical in last couple of decades. Some people claim that humans should stop burning fossil fuels and use only alternative energy resources, such as wind and solar power. Others say that oil, gas and coal are essential for many industries, and not using them will lead to economic collapse.What is your opinion?Support your point of view with relevant examples."
+                          )
+                        }
+                      >
+                        31.Climate change is a big environmental problem that
+                        has become critical in last couple of decades. Some
+                        people claim that humans should stop burning fossil
+                        fuels and use only alternative energy resources, such as
+                        wind and solar power. Others say that oil, gas and coal
+                        are essential for many industries, and not using them
+                        will lead to economic collapse.What is your
+                        opinion?Support your point of view with relevant
+                        examples.
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Influence of human beings on the world's ecosystem is leading to the extinction of species and loss of bio-diversity.What are the primary causes of loss of bio-diversity?What solutions can you suggest?"
+                          )
+                        }
+                      >
+                        32.Influence of human beings on the world's ecosystem is
+                        leading to the extinction of species and loss of
+                        bio-diversity.What are the primary causes of loss of
+                        bio-diversity?What solutions can you suggest?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "The planet's population is reaching unsustainable levels, and people are facing shortage of resources like water, food and fuel.To what consequences may overpopulation lead?In your opinion, what measures can be taken to fight overpopulation?"
+                          )
+                        }
+                      >
+                        33.The planet's population is reaching unsustainable
+                        levels, and people are facing shortage of resources like
+                        water, food and fuel.To what consequences may
+                        overpopulation lead?In your opinion, what measures can
+                        be taken to fight overpopulation?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Production of carbon dioxide and other greenhouse gases has a heating effect on the atmosphere and results in global warming.Why global warming is considered one of the most serious issues nowadays?How can this problem be solved?"
+                          )
+                        }
+                      >
+                        34.Production of carbon dioxide and other greenhouse
+                        gases has a heating effect on the atmosphere and results
+                        in global warming.Why global warming is considered one
+                        of the most serious issues nowadays?How can this problem
+                        be solved?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Forests produce fresh oxygen and participate in regulating climate. But every year tree cover of our planet is lessening due to deforestation.What are the primary causes of deforestation?To what results may it lead?"
+                          )
+                        }
+                      >
+                        35.Forests produce fresh oxygen and participate in
+                        regulating climate. But every year tree cover of our
+                        planet is lessening due to deforestation.What are the
+                        primary causes of deforestation?To what results may it
+                        lead?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Young people prefer listening to music rather than listening to the news on the radio. Is this a positive opposite negative trend?"
+                          )
+                        }
+                      >
+                        36.Young people prefer listening to music rather than
+                        listening to the news on the radio. Is this a positive
+                        opposite negative trend?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Some people believe that homework should not be given to school children. Others, however, say that homework is an important requirement for children to be able to develop appropriately. Discuss both views and give your opinion"
+                          )
+                        }
+                      >
+                        37.Some people believe that homework should not be given
+                        to school children. Others, however, say that homework
+                        is an important requirement for children to be able to
+                        develop appropriately. Discuss both views and give your
+                        opinion
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Even though globalization affects the world’s economies in a very positive way, its negative side should not be forgotten."
+                          )
+                        }
+                      >
+                        38.Even though globalization affects the world’s
+                        economies in a very positive way, its negative side
+                        should not be forgotten.
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Even though globalization affects the world’s economies in a very positive way, its negative side should not be forgotten."
+                          )
+                        }
+                      >
+                        39.Even though globalization affects the world’s
+                        economies in a very positive way, its negative side
+                        should not be forgotten.
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Nowadays families are not as close as they used to be. What do you think are the causes of this? What can be done to make families closer?"
+                          )
+                        }
+                      >
+                        40.Nowadays families are not as close as they used to
+                        be. What do you think are the causes of this? What can
+                        be done to make families closer?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "New technologies have changed the way children spend their free time. Do you think the advantages of this trend outweigh the disadvantages?"
+                          )
+                        }
+                      >
+                        41.New technologies have changed the way children spend
+                        their free time. Do you think the advantages of this
+                        trend outweigh the disadvantages?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Some people argue that because the internet makes it so easy for children to access facts, schools should not focus on teaching facts. Instead, they should focus on developing children’s skills and potential, and their relationships with other people.To what extent do you agree or disagree with this opinion?"
+                          )
+                        }
+                      >
+                        42.Some people argue that because the internet makes it
+                        so easy for children to access facts, schools should not
+                        focus on teaching facts. Instead, they should focus on
+                        developing children’s skills and potential, and their
+                        relationships with other people. To what extent do you
+                        agree or disagree with this opinion?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Some people choose a career according to the social status and salary, while others choose a career according to whether they will enjoy the work. Give your opinion which one is the best."
+                          )
+                        }
+                      >
+                        43.Some people choose a career according to the social
+                        status and salary, while others choose a career
+                        according to whether they will enjoy the work. Give your
+                        opinion which one is the best.
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Some people believe that couples should be allowed to determine the size of their family. However, in many countries, the governments interfere in matters of family planning. Do you agree or disagree with us?"
+                          )
+                        }
+                      >
+                        44.Some people believe that couples should be allowed to
+                        determine the size of their family. However, in many
+                        countries, the governments interfere in matters of
+                        family planning. Do you agree or disagree with us?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "The disabled are not always treated fairly. What measures can be taken to assist disabled people?"
+                          )
+                        }
+                      >
+                        45.The disabled are not always treated fairly. What
+                        measures can be taken to assist disabled people?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Some people believe that criminals should be punished with lengthy jail terms. Others are of the opinion that they must be re-educated and rehabilitated through community service programs. Do you agree or disagree?"
+                          )
+                        }
+                      >
+                        46.Some people believe that criminals should be punished
+                        with lengthy jail terms. Others are of the opinion that
+                        they must be re-educated and rehabilitated through
+                        community service programs. Do you agree or disagree?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Do you think that governments should reserve jobs for women?"
+                          )
+                        }
+                      >
+                        47.Do you think that governments should reserve jobs for
+                        women?
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Some people prefer to travel alone. Others are more interested in going with someone. Discuss both views and give your own opinion."
+                          )
+                        }
+                      >
+                        48.Some people prefer to travel alone. Others are more
+                        interested in going with someone. Discuss both views and
+                        give your own opinion.
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "A large number of people now change jobs several times. Is this a positive or a negative development? Discuss."
+                          )
+                        }
+                      >
+                        49.A large number of people now change jobs several
+                        times. Is this a positive or a negative development?
+                        Discuss.
+                      </li>
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  "
+                        onClick={() =>
+                          selectTopic(
+                            "Today food travels thousands of miles before it reaches consumers. Why is this so? Is this a positive or a negative development?"
+                          )
+                        }
+                      >
+                        50.Today food travels thousands of miles before it
+                        reaches consumers. Why is this so? Is this a positive or
+                        a negative development?
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>

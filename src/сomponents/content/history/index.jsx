@@ -107,11 +107,11 @@ export const History = () => {
                 </p>
                 <p className="text-xs lg:text-md xl:text-md sm:text-xs">
                   <span className="font-bold text-[#c7200b]">Essay:</span>{" "}
-                  {response.request.split(" ").slice(0, 1).join(" ")}...
+                  {response.request.substring(0, 15)}...
                 </p>
                 <p className="text-xs lg:text-md sm:text-xs">
                   <span className="font-bold text-[#c7200b]">Feedback:</span>{" "}
-                  {response.response.split(" ").slice(0, 2).join(" ")}...
+                  {response.response.substring(0, 15)}...
                 </p>
                 <p className="text-xs lg:text-md sm:text-xs lg:w-60 md:w-32  ">
                   <span className="font-bold text-[#c7200b]">Score:</span>{" "}
