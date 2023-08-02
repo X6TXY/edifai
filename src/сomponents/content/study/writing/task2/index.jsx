@@ -451,43 +451,46 @@ export const Task2 = () => {
                     Choose a question for IELTS Task 2:
                   </p>
                   <div className="p-3  ">
-                    <div className="flex justify-between items-center">
-                      <div className="text-md text-black">
+                    <div className="flex justify-between ">
+                      <div>
+                        <div className="text-md text-black">
+                          <input
+                            type="checkbox"
+                            id="addTopicToTextarea"
+                            className="h-4 w-4"
+                            checked={addTopicToTextarea}
+                            onChange={handleCheckboxChange}
+                          />
+                          <label
+                            htmlFor="addTopicToTextarea"
+                            className=" ml-2 text-black lg:text-xl"
+                          >
+                            Add question
+                          </label>
+                        </div>
                         <input
-                          type="checkbox"
-                          id="addTopicToTextarea"
-                          checked={addTopicToTextarea}
-                          onChange={handleCheckboxChange}
+                          type="text"
+                          placeholder="Search topics..."
+                          value={searchTerm}
+                          className="text-black w-24 sm:w-96 rounded-md border p-3 mt-3"
+                          onChange={(e) => setSearchTerm(e.target.value)}
                         />
-                        <label
-                          htmlFor="addTopicToTextarea"
-                          className=" ml-2 text-black"
-                        >
-                          Add question
-                        </label>
-                      </div>
-                      <input
-                        type="text"
-                        placeholder="Search topics..."
-                        value={searchTerm}
-                        className="text-black w-20 sm:w-60 rounded-md border p-3 "
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                      />
-                      <button
-                        className="text-white border p-1 rounded-md bg-[#c7200b]"
-                        onClick={() =>
-                          setSearchResults(
-                            topics.filter((topic) =>
-                              topic
-                                .toLowerCase()
-                                .includes(searchTerm.toLowerCase())
+                        <button
+                          className="text-white border p-1 h-12 rounded-md bg-[#c7200b]"
+                          onClick={() =>
+                            setSearchResults(
+                              topics.filter((topic) =>
+                                topic
+                                  .toLowerCase()
+                                  .includes(searchTerm.toLowerCase())
+                              )
                             )
-                          )
-                        }
-                      >
-                        Search
-                      </button>
-                      <button onClick={closeTopicModal} className="    ">
+                          }
+                        >
+                          Search
+                        </button>
+                      </div>
+                      <button onClick={closeTopicModal} className="">
                         <CloseIcon className=" w-8 h-8 hover:bg-red-500 rounded-3xl" />
                       </button>
                     </div>
