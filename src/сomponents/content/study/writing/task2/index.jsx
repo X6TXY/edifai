@@ -168,7 +168,7 @@ export const Task2 = () => {
                 className="bg-[#c7200b] rounded-md drop-shadow-md p-2 sm:text-lg text-md text-white border-none  hover:bg-red-600 transition-colors duration-500"
                 onClick={openTopicModal}
               >
-                Choose Question
+                Questions
               </button>
             </div>
             <textarea
