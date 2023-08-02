@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as AIIcon } from "../../assets/ailanding.svg";
 import { ReactComponent as AnalyzeIcon } from "../../assets/analyzelanding.svg";
+import { ReactComponent as CommentIcon } from "../../assets/comment.svg";
 import { ReactComponent as DataIcon } from "../../assets/datalanding.svg";
 import IeltsIcon from "../../assets/ieltsicon2.png";
 import MainIcon from "../../assets/ieltsmainicon.png";
@@ -127,6 +128,14 @@ export const Landing = () => {
           <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-black sm:mt-0">
             <li>
               <a
+                href="https://forms.gle/tsXoX7ncaXgdjS9n8"
+                className="mr-4 flex items-center hover:underline md:mr-6"
+              >
+                <CommentIcon className="lg:w-8 lg:h-8 sm:h-5 sm:w-5 w-5 h-5" />
+              </a>
+            </li>
+            <li>
+              <a
                 href="https://www.linkedin.com/in/bahauddintoleu/"
                 class="mr-4 hover:underline md:mr-6 flex items-center"
               >
@@ -136,7 +145,7 @@ export const Landing = () => {
             <li>
               <a
                 href="https://www.instagram.com/x6txy/"
-                class="mr-4 flex items-center hover:underline md:mr-6"
+                className="mr-4 flex items-center hover:underline md:mr-6"
               >
                 <Insta className="lg:w-8  lg:h-8 sm:h-5 sm:w-5 w-5 h-5" />
               </a>
