@@ -407,7 +407,7 @@ export const Task2 = () => {
                           htmlFor="addTopicToTextarea"
                           className=" ml-2 text-black"
                         >
-                          Add topic to textarea
+                          Add question
                         </label>
                       </div>
                       <button onClick={closeTopicModal} className="    ">
