@@ -7,6 +7,7 @@ import "./task2.css";
 
 export const Task2 = () => {
   const [inputText, setInputText] = useState("");
+  const Swal = require("sweetalert2");
 
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -113,7 +114,12 @@ export const Task2 = () => {
 
   const handleButtonClick = () => {
     if (inputText.length < 200) {
-      alert("Please enter at least 200 characters.");
+      Swal.fire({
+        title: "Please enter at least 200 characters.",
+        icon: "error",
+        confirmButtonText: "Continue",
+        confirmButtonColor: "#c7200b",
+      });
       return;
     }
     const user_token = localStorage.getItem("token");

@@ -16,11 +16,10 @@ export const Home = () => {
   const panelColors = ["#f5f5f5", "#F7B4BB", "#F46D75", "#C7002B", "#a31000"];
 
   const motivationalPhrases = [
-    "Start now, no regrets.",
-    "Take the first step.",
+    "Inhale courage, exhale fear.",
     "Embrace the challenge, begin.",
-    "Just start, make progress.",
-    "Begin the journey today.",
+    "Every ending is a new beginning.",
+    
   ];
 
   useEffect(() => {
@@ -60,7 +59,6 @@ export const Home = () => {
     <div>
       <div className="text-black">
         <div className="workingspacehome">
-          <div className="Homeheading font-bold">Home</div>
           <div className="Homemainsections">
             <div className="date font-medium">{formattedDate}</div>
             <div className="typinghello">
@@ -72,12 +70,12 @@ export const Home = () => {
             </div>
             <div className="motivationsection">
               <div className="backgroundmotivation drop-shadow-md rounded-xl p-6">
-                <div className="flex items-center">
-                  <div className="font-medium motivaitontext ">
+                <div className="flex items-center justify-between">
+                  <div className="font-medium motivaitontext w-11/12   ">
                     {randomMotivationalPhrase}
                   </div>
                   <Link to="/study/writing/task2">
-                    <button className="motivationbtn  btn btn-primary text-white ">
+                    <button className="motivationbtn  btn btn-primary text-white absolte  ">
                       Start Now!
                     </button>
                   </Link>
@@ -87,8 +85,10 @@ export const Home = () => {
             <div className="flex  justify-center items-center mt-60 ">
               <div className="linechartbg drop-shadow-md">
                 <div className="">
-                  <div className="flex justify-center p-1 font-bold text-xl text-[#c7200b]">Your last 5 Scores</div>
-                  <LineChart  />
+                  <div className="flex justify-center p-1 font-bold text-xl text-[#c7200b]">
+                    Your last 5 Scores
+                  </div>
+                  <LineChart />
                 </div>
               </div>
             </div>

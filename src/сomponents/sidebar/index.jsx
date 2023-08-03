@@ -88,7 +88,7 @@ export const Sidebar = ({ selectedResponse }) => {
               <li
                 className={`${
                   location.pathname === "/home" ? "bg-[#d9d9d9] " : ""
-                }homesection  hover:bg-[#d9d9d9] transition-colors duration-500 rounded-xl`}
+                }homesection  hover:bg-[#d9d9d9] transition-colors duration-500 rounded-sm`}
               >
                 <Link to="/home" className="sections   text-black rounded">
                   <HomeIcon className="icons" />
@@ -100,7 +100,7 @@ export const Sidebar = ({ selectedResponse }) => {
                   location.pathname === "/study/writing/task2"
                     ? "bg-[#d9d9d9] "
                     : ""
-                }mt-2 hover:bg-[#d9d9d9] transition-colors duration-500 rounded-xl`}
+                }mt-2 hover:bg-[#d9d9d9] transition-colors duration-500 rounded-sm`}
               >
                 <Link
                   to="/study/writing/task2"
@@ -113,7 +113,7 @@ export const Sidebar = ({ selectedResponse }) => {
               <li
                 className={`${
                   location.pathname === "/history" ? "bg-[#d9d9d9] " : ""
-                }mt-2 hover:bg-[#d9d9d9] transition-colors duration-500 rounded-xl`}
+                }mt-2 hover:bg-[#d9d9d9] transition-colors duration-500 rounded-sm`}
               >
                 <Link to="/history" className="sections  text-black rounded">
                   <HistoryIcon className="icons" />
@@ -123,7 +123,7 @@ export const Sidebar = ({ selectedResponse }) => {
               <li
                 className={`${
                   location.pathname === "/storybot" ? "bg-[#d9d9d9] " : ""
-                }mt-2 hover:bg-[#d9d9d9]  transition-colors duration-500 rounded-xl`}
+                }mt-2 hover:bg-[#d9d9d9]  transition-colors duration-500 rounded-sm`}
               >
                 <Link to="/storybot" className="sections text-black rounded">
                   <TipsIcon className="icons" />
@@ -133,7 +133,7 @@ export const Sidebar = ({ selectedResponse }) => {
               <li
                 className={`${
                   location.pathname === "/assistant" ? "bg-[#d9d9d9] " : ""
-                } mt-2 hover:bg-[#d9d9d9] transition-colors duration-500 rounded-xl`}
+                } mt-2 hover:bg-[#d9d9d9] transition-colors duration-500 rounded-sm`}
               >
                 <Link to="/assistant" className="sections text-black rounded">
                   <HelpIcon className="icons" />
@@ -143,7 +143,7 @@ export const Sidebar = ({ selectedResponse }) => {
               <li
                 className={`${
                   location.pathname === "/about" ? "bg-[#d9d9d9] " : ""
-                }mt-2 hover:bg-[#d9d9d9] transition-colors duration-500 rounded-xl`}
+                }mt-2 hover:bg-[#d9d9d9] transition-colors duration-500 rounded-sm`}
               >
                 <Link to="/about" className="sections text-black rounded">
                   <InfoIcon className="icons" />

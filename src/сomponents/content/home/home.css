@@ -27,7 +27,7 @@
   height: 40px;
 }
 .motivaitontext {
-  font-size: 30px;
+  font-size: 1.5rem;
   margin-left: 10px;
 }
 .motivationbtn {
@@ -35,6 +35,7 @@
 }
 .motivationsection {
   display: flex;
+  
   justify-content: center;
 }
 .backgroundmotivation {
@@ -48,7 +49,7 @@
 .date {
   position: relative;
   top: 70px;
-  font-size: 25px;
+  font-size: 1.5rem;
   display: flex;
   justify-content: center;
 }
@@ -103,7 +104,7 @@
 
 @media (max-width: 767px) {
   .motivaitontext {
-    font-size: 20px;
+    font-size: 1.2rem;
     margin-left: 10px;
   }
   .calendar {
@@ -118,7 +119,7 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    font-size: 30px;
+    font-size: 1.3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -161,7 +162,7 @@
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid;
-  font-size: 35px;
+  font-size: 2.2rem;
 }
 
 @keyframes typing {
@@ -178,7 +179,7 @@
 
 @media (max-width: 420px) {
   .motivaitontext {
-    font-size: 15px;
+    font-size: 1rem;
     margin-left: 5px;
   }
   .backgroundmotivation {
