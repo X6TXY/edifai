@@ -1,134 +1,50 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { host_url } from "../../urls";
-import { Sidebar } from "../sidebar";
-import "./style.css";
-
-function useWindowWidth() {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  return windowWidth;
-}
-
+import React from "react";
+import { Link } from "react-router-dom";
+import MainIcon from "../../assets/mainpagefirst photo.png";
+import "./main.css";
 export const Test = () => {
-  const [responses, setResponses] = useState([]);
-  const [selectedResponse, setSelectedResponse] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const [responseCardVisible, setResponseCardVisible] = useState(false);
-
-  const windowWidth = useWindowWidth();
-  let responsesPerPage;
-  if (windowWidth > 1220 && windowWidth <= 1024) {
-    responsesPerPage = 8;
-  } else if (windowWidth > 1023) {
-    responsesPerPage = 12;
-  } else if (windowWidth <= 1023 && windowWidth > 767) {
-    responsesPerPage = 6;
-  } else if (windowWidth <= 767 && windowWidth > 640) {
-    responsesPerPage = 6;
-  } else if (windowWidth <= 640) {
-    responsesPerPage = 3;
-  }
-
-  useEffect(() => {
-    // Fetch responses data from the backend API
-    const user_token = localStorage.getItem("token");
-    axios
-      .get(`${host_url}/wtask2/get_responses`, {
-        headers: {
-          Authorization: `Bearer ${user_token}`,
-        },
-      })
-      .then((response) => {
-        setResponses(response.data);
-        // Show response cards with animation after a short delay (e.g., 300ms)
-        setTimeout(() => {
-          setResponseCardVisible(true);
-        }, 30);
-      })
-      .catch((error) => {
-        console.error("Error fetching responses:", error);
-      });
-  }, []);
-
-  // Function to open the modal for a specific response
-  const openModal = (response) => {
-    setSelectedResponse(response);
-  };
-
-  // Function to close the modal
-  const closeModal = () => {
-    setSelectedResponse(null);
-  };
-
-  // Calculate the index of the last response for the current page
-  const indexOfLastResponse = currentPage * responsesPerPage;
-  // Calculate the index of the first response for the current page
-  const indexOfFirstResponse = indexOfLastResponse - responsesPerPage;
-  // Get the current responses to display on the page
-  const currentResponses = responses.slice(
-    indexOfFirstResponse,
-    indexOfLastResponse
-  );
-
-  // Function to handle pagination (change page)
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   return (
     <div>
-      <div className="historyworkingsection">
-        <div className="flex justify-center text-[#c7200b] font-bold historyheading">
-          History
-        </div>
-        <div className="flex justify-center  mt-10 items-center">
-          <div className="text-black bg-white p-5">
-            {currentResponses.map((response, index) => (
-              <div
-                key={response.id}
-                className={`${
-                  responseCardVisible ? "animate-fade-in" : ""
-                }`}
-                style={{ animationDelay: `${index * 150}ms` }} // Adjust animation delay for each card
-              >
-                <p className="">
-                  <span className="font-bold text-[#c7200b] ">Date: </span>{" "}
-                  {response.date}
-                </p>
-                <p className="">
-                  <span className="font-bold text-[#c7200b]">Essay:</span>{" "}
-                  {response.request.split(" ").slice(0, 1).join(" ")}...
-                </p>
-                <p className="">
-                  <span className="font-bold text-[#c7200b]">Feedback:</span>{" "}
-                  {response.response.split(" ").slice(0, 2).join(" ")}...
-                </p>
-                <p className=" ">
-                  <span className="font-bold text-[#c7200b]">Score:</span>{" "}
-                  {response.score.split(" ").slice(0, 2).join(" ")}
-                </p>
-                <div className="flex justify-center mx-auto">
-                  <button
-                    className="btn  btn-primary mt-3 text-white"
-                    onClick={() => openModal(response)}
-                  >
-                    More information
-                  </button>
-                </div>
+      <div className="backgroundmain absolute bg-[#f5f5f5] text-black ">
+        <header>
+          <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 ">
+            <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+              <Link to="/" className="flex">
+                <span class="self-center text-xl font-semibold whitespace-nowrap ">
+                  Edif<span className="text-[#c7200b]">AI</span>
+                </span>
+              </Link>
+              <div class="flex items-center lg:order-2">
+                <Link to="/login">
+                  <p className="text-[#c7200b] border border-[#c7200b] hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2  focus:outline-none ">
+                    Log in{" "}
+                  </p>
+                </Link>
               </div>
-            ))}
+            </div>
+          </nav>
+        </header>
+        <div className="w-full flex justify-center">
+          <div className="mainpagefirstsection flex items-center justify-center">
+            <div className="">
+              <div className=" font-semibold text-5xl ">
+                We take your score higher
+              </div>
+              <p className=" text-[#7C7A7A] font-medium mt-5 text-md">
+                Prepare for the IELTS exam by practicing your skills with
+                artificial intelligence
+              </p>
+
+              <Link to="/login" className="flex justify-center mt-5">
+                <button className="startbtn btn btn-primary text-white">
+                  Start Now!
+                </button>
+              </Link>
+            </div>
+            <img src={MainIcon} className="firstimg" alt="IELTS Main Icon" />
           </div>
         </div>
       </div>
-      <Sidebar />
     </div>
   );
 };
