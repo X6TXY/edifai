@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SecondImg from "../../assets/ieltsnewlogo1.png";
 import MainIcon from "../../assets/mainpagefirst photo.png";
 import "./main.css";
 export const Test = () => {
@@ -43,6 +44,21 @@ export const Test = () => {
             </div>
             <img src={MainIcon} className="firstimg" alt="IELTS Main Icon" />
           </div>
+        </div>
+        <div className="w-full flex justify-center ">
+          <div className="mainpagefirstsection">
+            <div className=" font-semibold flex justify-center items-center text-4xl">
+              Get Instant Essay Scores! Improve your Writing Today!
+              <div className="flex justify-center mt-10">
+                <Link to="/login">
+                  <button className="buttonjoin btn btn-primary text-white lg:h-20 lg:w-40 xl:text-xl">
+                    JOIN NOW!
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+          <img src={SecondImg} className="firstimg" alt="IELTS second image" />
         </div>
       </div>
     </div>

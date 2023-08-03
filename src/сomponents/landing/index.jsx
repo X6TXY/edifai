@@ -2,14 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as AIIcon } from "../../assets/ailanding.svg";
 import { ReactComponent as AnalyzeIcon } from "../../assets/analyzelanding.svg";
-import { ReactComponent as CommentIcon } from "../../assets/comment.svg";
 import { ReactComponent as DataIcon } from "../../assets/datalanding.svg";
-import IeltsIcon from "../../assets/ieltsicon2.png";
-import MainIcon from "../../assets/ieltsmainicon.png";
-import { ReactComponent as Insta } from "../../assets/insta.svg";
+import IeltsIcon from "../../assets/ieltsnewlogo1.png";
 import { ReactComponent as Landing1 } from "../../assets/landing1.svg";
-import { ReactComponent as LinkedinIcon } from "../../assets/linkedin.svg";
-import Nfactorial from "../../assets/nfac.png";
+import MainIcon from "../../assets/mainpagefirst photo.png";
 import { ReactComponent as TimeIcon } from "../../assets/timelanding.svg";
 import { ReactComponent as TriangleIcon } from "../../assets/trianglelanding.svg";
 import "./landing.css";
@@ -19,19 +15,24 @@ export const Landing = () => {
   return (
     <div>
       <div className="backgroundlanding bg-[#f5f5f5] text-black ">
-        <div className="flex justify-center">
-          <div className="headinsection">
-            <div className="headingicon text-black font-medium">
-              Edif<span className="text-[#c7200b]">AI</span>
+        <header>
+          <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 ">
+            <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+              <Link to="/" className="flex">
+                <span class="self-center text-xl font-semibold whitespace-nowrap ">
+                  Edif<span className="text-[#c7200b]">AI</span>
+                </span>
+              </Link>
+              <div class="flex items-center lg:order-2">
+                <Link to="/login">
+                  <p className="text-[#c7200b] border border-[#c7200b] hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2  focus:outline-none ">
+                    Log in{" "}
+                  </p>
+                </Link>
+              </div>
             </div>
-            <a
-              href="/login"
-              className="loginbtn text-[#c7200b] border p-2 rounded-md border-[#c7200b] hover:underline"
-            >
-              Login
-            </a>
-          </div>
-        </div>
+          </nav>
+        </header>
         <div className="w-full relative flex justify-center">
           <div className="mainsection">
             <div className="mainsectiontext">
@@ -118,52 +119,49 @@ export const Landing = () => {
             <img src={IeltsIcon} className="firstimg1" alt="IELTS Main Icon" />
           </div>
         </div>
-        <footer class="fixed bottom-0 left-0 z-20 w-full p-6 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 ">
-          <span class="text-sm text-black sm:text-center ">
-            © 2023{" "}
-            <a href="https://edifai.vercel.app/" class="hover:underline">
-              EdifAI™
-            </a>
-          </span>
-          <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-black sm:mt-0">
-            <li>
-              <a
-                href="https://forms.gle/tsXoX7ncaXgdjS9n8"
-                className="mr-4 flex items-center hover:underline md:mr-6"
-              >
-                <CommentIcon className="lg:w-8 lg:h-8 sm:h-5 sm:w-5 w-5 h-5" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/bahauddintoleu/"
-                class="mr-4 hover:underline md:mr-6 flex items-center"
-              >
-                <LinkedinIcon className="lg:w-8  lg:h-8 sm:h-5 sm:w-5 w-5 h-5" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.instagram.com/x6txy/"
-                className="mr-4 flex items-center hover:underline md:mr-6"
-              >
-                <Insta className="lg:w-8  lg:h-8 sm:h-5 sm:w-5 w-5 h-5" />
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="https://www.nfactorial.live/"
-                class="flex items-center hover:underline "
-              >
-                <img
-                  src={Nfactorial}
-                  className="lg:w-8  lg:h-8 sm:h-5 sm:w-5 w-5 h-5"
-                />
-              </a>
-            </li>
-          </ul>
-        </footer>
+        <div className="footersection">
+          <footer class="bg-white rounded-lg shadow m-4 ">
+            <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+              <span class="text-sm text-black sm:text-center ">
+                © 2023 EdifAI™ . All Rights Reserved.
+              </span>
+              <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-black  sm:mt-0">
+                <li>
+                  <a
+                    href="https://www.nfactorial.live"
+                    class="mr-4 hover:underline md:mr-6 "
+                  >
+                    Nfacotial
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/x6txy"
+                    class="mr-4 hover:underline md:mr-6"
+                  >
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/bahauddintoleu"
+                    class="mr-4 hover:underline md:mr-6"
+                  >
+                    Linkedin
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://forms.gle/xwAJqmRRDJMjvRoM7"
+                    class="hover:underline"
+                  >
+                    Feedback
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </footer>
+        </div>
         <Landing1></Landing1>
         <TriangleIcon></TriangleIcon>|
       </div>
