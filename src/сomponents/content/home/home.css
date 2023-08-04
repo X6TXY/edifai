@@ -5,6 +5,10 @@
   position: absolute;
   right: 0px;
 }
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
 .linechartbg {
   position: absolute;
   background-color: white;
@@ -35,7 +39,7 @@
 }
 .motivationsection {
   display: flex;
-  
+
   justify-content: center;
 }
 .backgroundmotivation {
@@ -65,7 +69,7 @@
   padding: 10px;
   width: 70%;
   position: absolute;
-  top: 81%;
+  top: 35rem;
 }
 
 .calendare {
@@ -80,7 +84,7 @@
     padding: 10px;
     width: 60%;
     position: absolute;
-    top: 67%;
+    top: 35rem;
   }
   .backgroundmotivation {
     width: 60%;

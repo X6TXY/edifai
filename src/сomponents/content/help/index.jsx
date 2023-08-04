@@ -54,7 +54,7 @@ export const Help = () => {
             />
             <button
               type="submit"
-              className="buttonsub btn-primary border drop-shadow-md h-12 p-3"
+              className="buttonsub btn-primary border drop-shadow-md h-13 p-3"
             >
               Submit
             </button>
@@ -62,7 +62,7 @@ export const Help = () => {
         </div>
         <div className="flex justify-center">
           {isLoading ? (
-            <div className=" bg-white border drop-shadow-md w-1/2 flex justify-center p-2 mt-5">
+            <div className=" bg-white border drop-shadow-md w-1/2 flex justify-center p-4 mt-5">
               <div
                 role="status"
                 class="space-y-2.5 animate-pulse max-w-lg w-full"
@@ -101,7 +101,7 @@ export const Help = () => {
               </div>
             </div>
           ) : answer ? (
-            <div className="assitantanser w-1/2 overflow-auto h-96 mt-5  p-3 bg-white border  text-black ">
+            <div className="assitantanser text-xl w-3/4 overflow-auto  mt-5  p-4 bg-white border  text-black h-1/2 ">
               {answer}
             </div>
           ) : null}

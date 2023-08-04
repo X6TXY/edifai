@@ -25,17 +25,11 @@ export const Info = () => {
     <div className="w-screen h-screen bg-[#f5f5f5]">
       <div className="min-h-screen  text-black  xl:w-4/5 lg:w-4/5 md:w-4/5 sm:w-full w-full absolute -right-0 bg-[#f5f5f5] flex justify-center ">
         <div className="w-full max-w-2xl p-4">
-          <h3 className="bg-[#c7200b] text-white rounded text-2xl sm:text-3xl md:text-4xl p-2 text-center mt-6 fade-in">
+          <h3 className="bg-[#d9d9d9] text-black rounded text-2xl sm:text-3xl md:text-4xl p-2 text-center mt-6 fade-in">
             Main Idea
           </h3>
           <div className="rounded bg-white shadow-md p-4 mt-2 text-xl sm:text-2xl font-semibold">
             {typedText}
-          </div>
-          <h3 className="bg-[#c7200b] text-white rounded text-2xl sm:text-3xl md:text-4xl p-2 text-center mt-6">
-            About
-          </h3>
-          <div className="rounded bg-white shadow-md p-4 mt-2">
-            about section
           </div>
         </div>
       </div>

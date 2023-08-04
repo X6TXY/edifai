@@ -19,7 +19,6 @@ export const Home = () => {
     "Inhale courage, exhale fear.",
     "Embrace the challenge, begin.",
     "Every ending is a new beginning.",
-    
   ];
 
   useEffect(() => {
@@ -70,15 +69,17 @@ export const Home = () => {
             </div>
             <div className="motivationsection">
               <div className="backgroundmotivation drop-shadow-md rounded-xl p-6">
-                <div className="flex items-center justify-between">
-                  <div className="font-medium motivaitontext w-11/12   ">
+                <div className="flex items-center justify-between xl:ml-10 2xl:ml-20">
+                  <div className="font-medium motivaitontext">
                     {randomMotivationalPhrase}
                   </div>
-                  <Link to="/study/writing/task2">
-                    <button className="motivationbtn  btn btn-primary text-white absolte  ">
-                      Start Now!
-                    </button>
-                  </Link>
+                  <div className="">
+                    <Link to="/study/writing/task2">
+                      <button className="motivationbtn btn btn-primary text-white ">
+                        Start Now!
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -93,7 +94,7 @@ export const Home = () => {
               </div>
             </div>
             <div className="flex justify-center items-center ">
-              <div className="calendarebg bg-white drop-shadow-md ">
+              <div className="calendarebg bg-white drop-shadow-md  ">
                 <Calendar
                   values={values}
                   until={until}

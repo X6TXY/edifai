@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as HideIcon } from "../../assets/hide.svg";
 import { ReactComponent as ShowIcon } from "../../assets/show.svg";
 import { host_url } from "../../urls";
+import Swal from 'sweetalert2'
 import "./auth.css";
 
 export const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
+  const Swal = require('sweetalert2')
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -63,6 +65,17 @@ export const Auth = () => {
 
             navigate("/home");
             setIsRegistrationSuccessful(true);
+            Swal.fire({
+              icon: 'success',
+              title: 'Welcome to my Website.',
+              width: 600,
+              confirmButtonColor:'#c7200b',
+              padding: '3em',
+              color: '#c7200b',
+              confirmButtonText: 'Cool',
+              background: '#fff url(/images/trees.png)',
+              
+            })
           })
           .catch((error) => {
             console.log(error);

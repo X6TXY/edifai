@@ -61,7 +61,7 @@ export const Storybot = () => {
             />
             <button
               type="submit"
-              className="buttonsub btn-primary border drop-shadow-md h-12 p-3"
+              className="buttonsub btn-primary border drop-shadow-md h-13 p-3"
             >
               Submit
             </button>

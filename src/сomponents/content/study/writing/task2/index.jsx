@@ -20,7 +20,7 @@ export const Task2 = () => {
   const [showSecondModal, setShowSecondModal] = useState(false);
   const [showTopicModal, setShowTopicModal] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState("");
-  const [addTopicToTextarea, setAddTopicToTextarea] = useState(false);
+  const [addTopicToTextarea, setAddTopicToTextarea] = useState(true);
 
   const handleCheckboxChange = (e) => {
     setAddTopicToTextarea(e.target.checked);
@@ -29,7 +29,7 @@ export const Task2 = () => {
   const selectTopic = (topic) => {
     closeTopicModal();
     if (addTopicToTextarea) {
-      setInputText(`Question: ${topic}\n\n${inputText}`);
+      setInputText(`Topic: ${topic}\n\n${inputText}`);
     }
   };
 
@@ -231,7 +231,7 @@ export const Task2 = () => {
                 className="bg-[#c7200b] rounded-md drop-shadow-md p-2 sm:text-lg text-md text-white border-none  hover:bg-red-600 transition-colors duration-500"
                 onClick={openTopicModal}
               >
-                Questions
+                Topics
               </button>
             </div>
             <textarea
@@ -456,12 +456,12 @@ export const Task2 = () => {
               <div className="lg:ml-72 flex justify-center   items-center ">
                 <div className="modal-container  bg-white border-red-200 border drop-shadow-xl bg-opacity-75  p-4 rounded lg:w-5/6 sm:3/4 ">
                   <p className="flex justify-center font-semibold lg:text-2xl sm:text-xl text-lg lg:mb-4 mb-3 text-[#c7200b] mt-3">
-                    Choose a question for IELTS Task 2:
+                    Choose a topic for IELTS Task 2:
                   </p>
                   <div className="p-3  ">
                     <div className="flex justify-between ">
                       <div>
-                        <div className="text-md text-black">
+                        <div className="text-md text-black hidden">
                           <input
                             type="checkbox"
                             id="addTopicToTextarea"
@@ -473,7 +473,7 @@ export const Task2 = () => {
                             htmlFor="addTopicToTextarea"
                             className=" ml-2 text-black lg:text-xl"
                           >
-                            Add question
+                            Add topic
                           </label>
                         </div>
                         <input
@@ -513,6 +513,13 @@ export const Task2 = () => {
                           {filteredTopic}
                         </li>
                       ))}
+                      <li
+                        className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  mt-1
+                      "
+                        onClick={() => selectTopic("")}
+                      >
+                        Create a custom topic
+                      </li>
                       <li
                         className="texthint lg:text-lg text-black bg-[#d9d9d9] hover:bg-slate-50 rounded-md p-3  mt-1"
                         onClick={() =>

@@ -96,24 +96,24 @@ export const History = () => {
             {currentResponses.map((response, index) => (
               <div
                 key={response.id}
-                className={`response-card bg-white shadow-md rounded-md p-4 grid grid-col-1 ${
+                className={`response-card bg-white shadow-md rounded-md p-4 grid grid-col-1   ${
                   responseCardVisible ? "animate-fade-in" : ""
                 }`}
                 style={{ animationDelay: `${index * 150}ms` }} // Adjust animation delay for each card
               >
-                <p className="text-xs lg:text-md sm:text-xs">
+                <p className="text-xs lg:text-md sm:text-xs ">
                   <span className="font-bold text-[#c7200b] ">Date: </span>{" "}
                   {response.date}
                 </p>
-                <p className="text-xs lg:text-md xl:text-md sm:text-xs">
+                <p className="text-xs lg:text-md xl:text-md sm:text-xs ">
                   <span className="font-bold text-[#c7200b]">Essay:</span>{" "}
-                  {response.request.substring(0, 15)}...
+                  {response.request.substring(0, 10)}...
                 </p>
-                <p className="text-xs lg:text-md sm:text-xs">
+                <p className="text-xs lg:text-md sm:text-xs ">
                   <span className="font-bold text-[#c7200b]">Feedback:</span>{" "}
-                  {response.response.substring(0, 15)}...
+                  {response.response.substring(0, 10)}...
                 </p>
-                <p className="text-xs lg:text-md sm:text-xs lg:w-60 md:w-32  ">
+                <p className="text-xs lg:text-md sm:text-xs lg:w-60 md:w-32   ">
                   <span className="font-bold text-[#c7200b]">Score:</span>{" "}
                   {response.score.split(" ").slice(0, 2).join(" ")}
                 </p>
@@ -130,30 +130,34 @@ export const History = () => {
           </div>
         </div>
         <div className="flex justify-center items-end  xl:mb-7 lg:mb-7 md:mb-7 mb-12">
-          <button
-            className="page-nav-button"
-            disabled={currentPage === 1}
-            onClick={() => paginate(currentPage - 1)}
-          >
-            <LfArrow className="page-nav-button "></LfArrow>
-          </button>
-          <span className="mx-5 ">{currentPage}</span>
-          <button
-            className="page-nav-button"
-            disabled={indexOfLastResponse >= responses.length}
-            onClick={() => paginate(currentPage + 1)}
-          >
-            <RtArrow className="page-nav-button  "></RtArrow>
-          </button>
+          {responses.length > responsesPerPage && (
+            <>
+              <button
+                className="page-nav-button"
+                disabled={currentPage === 1}
+                onClick={() => paginate(currentPage - 1)}
+              >
+                <LfArrow className="page-nav-button "></LfArrow>
+              </button>
+              <span className="mx-5 ">{currentPage}</span>
+              <button
+                className="page-nav-button"
+                disabled={indexOfLastResponse >= responses.length}
+                onClick={() => paginate(currentPage + 1)}
+              >
+                <RtArrow className="page-nav-button  "></RtArrow>
+              </button>
+            </>
+          )}
         </div>
       </div>
       {selectedResponse && (
-         <div
-         className={`absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50  ${
-           selectedResponse ? "" : "modal-hidden"
-         }`}
-         style={{ zIndex: "100" }}
-       >
+        <div
+          className={`absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50  ${
+            selectedResponse ? "" : "modal-hidden"
+          }`}
+          style={{ zIndex: "100" }}
+        >
           <div className="modal-card bg-white w-4/5   rounded-md p-4 transform transition-all ease-in-out ">
             <p className="">
               <span className="font-bold text-[#c7200b]">Date: </span>
